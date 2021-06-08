@@ -1,0 +1,24 @@
+{
+    "name": "Tests.Runtime",
+    "rootNamespace": "",
+    "references": [
+        "GUID:03911ad9f9351b04aa2e49f725a4e16b",
+        "GUID:27619889b8ba8c24980f49ee34dbb44a",
+        "GUID:89a6d1cafc1cd6d4990418a6d7c66e15"
+    ],
+    "includePlatforms": [],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": true,
+    "precompiledReferences": [
+        "nunit.framework.dll",
+        "NSubstitute.dll",
+        "FluentAssertions.dll"
+    ],
+    "autoReferenced": true,
+    "defineConstraints": [
+        "UNITY_INCLUDE_TESTS"
+    ],
+    "versionDefines": [],
+    "noEngineReferences": false
+}

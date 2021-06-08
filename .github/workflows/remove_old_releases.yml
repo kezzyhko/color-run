@@ -1,0 +1,24 @@
+name: Remove old releases
+
+on:
+    schedule:
+        # Every day at 1am
+        - cron: '0 1 * * *'
+    workflow_dispatch:
+        inputs:
+            keep_latest:
+                description: 'Keep Latest'
+                required: true
+                default: '1'
+jobs:
+    remove-old-releases:
+        runs-on: ubuntu-latest
+        timeout-minutes: 10
+
+        steps:
+            - uses: dev-drprasad/delete-older-releases@v0.2.0
+              with:
+                keep_latest: ${{ github.event.inputs.keep_latest || '1' }}
+              env:
+                GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+

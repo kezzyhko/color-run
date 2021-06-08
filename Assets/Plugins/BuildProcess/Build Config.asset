@@ -1,0 +1,31 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 41c7285c50a89414eb28c377325608f6, type: 3}
+  m_Name: Build Config
+  m_EditorClassIdentifier: 
+  displayedName: Test App IGD
+  companyName: Indie GameDev Club
+  androidConfiguration:
+    releaseBuild: 0
+    packageName: com.igdclub.gamename
+    version: 0.1
+    bundleVersion: 0
+    keyStoreFile: 
+    password: 
+  IOSBuildConfiguration:
+    packageName: com.igdclub.test
+    version: 0.1
+    buildVersion: 0
+    teamID: A4X587W55Y
+    provisionProfileID: 259127fe-9b5f-4447-b1b1-5a94c1ff4c1e
+    facebookIsUsed: 1
+    niceVibrationIsUsed: 1

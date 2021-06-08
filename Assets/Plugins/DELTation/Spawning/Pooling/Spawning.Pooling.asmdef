@@ -1,0 +1,16 @@
+{
+    "name": "Spawning.Pooling",
+    "references": [
+        "GUID:df4eb322b5b518d43987f237afd57d0a",
+        "GUID:48e1ecdb4de93c347b7694ffe5eaf7d5"
+    ],
+    "includePlatforms": [],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": true,
+    "defineConstraints": [],
+    "versionDefines": [],
+    "noEngineReferences": false
+}

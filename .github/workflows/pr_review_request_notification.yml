@@ -1,0 +1,59 @@
+name: PR review request notification
+
+on:
+    pull_request:
+        branches:
+            - master
+            - dev
+            - gd
+            - art
+        types:
+            - review_requested
+
+env:
+    UNITY_LICENSE: ${{ secrets.UNITY_LICENSE }}
+    PROJECT_PATH: .
+
+jobs:
+    notify:
+        name: Send Discord notification
+        runs-on: ubuntu-latest
+        steps:
+              -   uses: actions/checkout@v2
+              -   name: Create message
+                  id: pr_info
+                  uses: actions/github-script@0.3.0
+                  with:
+                      github-token: ${{github.token}}
+                      script: |
+                          const core = require('@actions/core');
+                          const github_to_discord = require(process.env.GITHUB_WORKSPACE + '/.github/github_to_discord.json');
+                          
+                          function get_discord_name(github_login) {
+                                return github_to_discord[github_login] || github_login;
+                          }
+                          
+                          const pr = context.payload.pull_request;
+                          const repo_name = pr.head.repo.full_name;
+                          const link = pr.html_url;
+                          const author = get_discord_name(pr.user.login)
+                          const reviewers = pr.requested_reviewers.map(function(reviewer) {
+                            return get_discord_name(reviewer.login);
+                          });
+                          if (reviewers.length == 0) 
+                          {
+                            console.log('::set-output name=skip::true');
+                            return;
+                          }
+                          const notification = '`' + repo_name + '`: Review was requested for the pull request by <@' + author +
+                                                '>. Reviewers: ' + reviewers.map(r => '<@' + r + '>').join(', ') + 
+                                                '. Link: ' + link;
+                          console.log('::set-output name=message::' + notification);
+
+              -   name: Discord notification
+                  env:
+                      DISCORD_WEBHOOK: ${{ secrets.DISCORD_WEBHOOK_PR }}
+                  uses: Ilshidur/action-discord@master
+                  if: steps.pr_info.outputs.skip != 'true'
+                  with:
+                      args: '${{ steps.pr_info.outputs.message }}'
