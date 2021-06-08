@@ -5,8 +5,8 @@ using UnityEngine;
 public class PlayerControl : MonoBehaviour
 {
 
-    [SerializeField] private const float forwardMoveSpeed = 2.0f;
-    [SerializeField] private const float horizontalMoveSpeed = 2.0f;
+    public float forwardMoveSpeed = 2.0f;
+    public float horizontalMoveSpeed = 2.0f;
 
     void Update()
     {
