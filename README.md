@@ -1,4 +1,5 @@
-# Template Project
+# Internship 2021 Web Team 1
+Unity game (implemented by Sergey Semushin).
 
 ## Technologies
 
