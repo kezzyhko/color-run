@@ -14,7 +14,12 @@ public class ColorMixing : MonoBehaviour
     private LinkedList<Color> colors = new LinkedList<Color>();
     private Color mixedColor = Color.black;
 
-    public void UpdateColor(GameObject sender)
+    void Start()
+    {
+        GameObject.Find("Player").GetComponent<Renderer>().material.color = Color.black;
+    }
+
+    void UpdateColor(GameObject sender)
     {
         Color newColor = sender.GetComponent<UnityEngine.UI.Image>().color;
         colors.AddLast(newColor);
