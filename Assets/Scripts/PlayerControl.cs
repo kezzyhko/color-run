@@ -10,16 +10,8 @@ public class PlayerControl : MonoBehaviour
 
     void Update()
     {
-        float horizontalMoveAmount = 0;
-
-        if (Input.GetKey(KeyCode.LeftArrow) || Input.GetKey(KeyCode.A))
-            horizontalMoveAmount -= 1;
-
-        if (Input.GetKey(KeyCode.RightArrow) || Input.GetKey(KeyCode.D))
-            horizontalMoveAmount += 1;
-
         transform.position += new Vector3(
-            Time.deltaTime * horizontalMoveSpeed * horizontalMoveAmount,
+            Time.deltaTime * horizontalMoveSpeed * Input.GetAxis("Horizontal"),
             0,
             Time.deltaTime * forwardMoveSpeed
         );
