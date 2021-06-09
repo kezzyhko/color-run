@@ -6,6 +6,9 @@ using System;
 public class ColorMixing : MonoBehaviour
 {
 
+    public GameObject player;
+    public GameObject currentColorIndicator;
+
     public float lineThickness = 8.0f;
 
     private bool isSelectingInProcess = false;
@@ -16,7 +19,7 @@ public class ColorMixing : MonoBehaviour
 
     void Start()
     {
-        GameObject.Find("Player").GetComponent<Renderer>().material.color = Color.black;
+        player.GetComponent<Renderer>().material.color = Color.black;
     }
 
     void UpdateColor(GameObject sender)
@@ -25,14 +28,14 @@ public class ColorMixing : MonoBehaviour
         colors.AddLast(newColor);
         mixedColor += newColor;
         if (mixedColor.r == 1 && mixedColor.g == 1 && mixedColor.b == 1) mixedColor = Color.black;
-        GameObject.Find("CurrentColor").GetComponent<UnityEngine.UI.Image>().color = mixedColor;
+        currentColorIndicator.GetComponent<UnityEngine.UI.Image>().color = mixedColor;
     }
 
     public void PointerClick(GameObject sender)
     {
         Color newColor = sender.GetComponent<UnityEngine.UI.Image>().color;
-        GameObject.Find("CurrentColor").GetComponent<UnityEngine.UI.Image>().color = newColor;
-        GameObject.Find("Player").GetComponent<Renderer>().material.color = newColor;
+        currentColorIndicator.GetComponent<UnityEngine.UI.Image>().color = newColor;
+        player.GetComponent<Renderer>().material.color = newColor;
     }
 
     public void BeginDrag(GameObject sender)
@@ -59,7 +62,7 @@ public class ColorMixing : MonoBehaviour
         isSelectingInProcess = false;
         lines.Clear();
         colors.Clear();
-        GameObject.Find("Player").GetComponent<Renderer>().material.color = mixedColor;
+        player.GetComponent<Renderer>().material.color = mixedColor;
     }
 
     void OnGUI()
