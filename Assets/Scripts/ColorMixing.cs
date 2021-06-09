@@ -10,7 +10,7 @@ public class ColorMixing : MonoBehaviour
 
     private bool isSelectingInProcess = false;
     private Vector2 startLinePosition;
-    private LinkedList<Tuple<Vector2, Vector2>> lines = new LinkedList<Tuple<Vector2, Vector2>>();
+    private LinkedList<(Vector2, Vector2)> lines = new LinkedList<(Vector2, Vector2)>();
     private LinkedList<Color> colors = new LinkedList<Color>();
     private Color mixedColor = Color.black;
 
@@ -49,7 +49,7 @@ public class ColorMixing : MonoBehaviour
         Color color = sender.GetComponent<UnityEngine.UI.Image>().color;
         if (colors.Contains(color)) return;
 
-        lines.AddLast(new Tuple<Vector2, Vector2>(startLinePosition, sender.transform.position));
+        lines.AddLast((startLinePosition, sender.transform.position));
         startLinePosition = sender.transform.position;
         UpdateColor(sender);
     }
@@ -64,9 +64,9 @@ public class ColorMixing : MonoBehaviour
 
     void OnGUI()
     {
-        foreach (Tuple<Vector2, Vector2> line in lines)
+        foreach ((Vector2 start, Vector2 end) line in lines)
         {
-            DrawLine(line.Item1, line.Item2);
+            DrawLine(line.start, line.end);
         }
         if (isSelectingInProcess)
         {
