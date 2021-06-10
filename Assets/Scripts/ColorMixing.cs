@@ -23,7 +23,7 @@ public class ColorMixing : MonoBehaviour
         currentColorIndicator.GetComponent<UnityEngine.UI.Image>().color = mixedColor;
     }
 
-    bool CompareWithoutAlpha(Color c1, Color c2)
+    public static bool CompareWithoutAlpha(Color c1, Color c2)
     {
         return c1.r == c2.r && c1.g == c2.g && c1.b == c2.b;
     }

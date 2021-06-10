@@ -2,16 +2,17 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class CharacterProperties : MonoBehaviour
+public class Properties : MonoBehaviour
 {
 
-    public enum Team
+    public enum Type
     {
         Player,
         FreeCrowd,
         Enemy,
+        Obstacle,
     };
 
-    public Team team;
+    public Type type;
 
 }

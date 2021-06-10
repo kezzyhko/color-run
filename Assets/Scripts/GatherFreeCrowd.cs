@@ -5,25 +5,26 @@ using UnityEngine;
 public class GatherFreeCrowd : MonoBehaviour
 {
 
-    public GameObject currentColorIndicator;
-
     void OnTriggerEnter(Collider collider)
     {
         // get info
         GameObject newPlayer = collider.gameObject;
-        CharacterProperties props = newPlayer.GetComponent<CharacterProperties>();
-        if (props.team != CharacterProperties.Team.FreeCrowd) return;
+        Properties props = newPlayer.GetComponent<Properties>();
+        if (props == null || props.type != Properties.Type.FreeCrowd) return;
 
         // change team
-        props.team = CharacterProperties.Team.Player;
+        props.type = Properties.Type.Player;
 
         // change color
-        Color currentColor = currentColorIndicator.GetComponent<UnityEngine.UI.Image>().color;
-        newPlayer.GetComponent<Renderer>().material.color = currentColor;
+        Color playerColor = gameObject.GetComponent<Renderer>().material.color;
+        newPlayer.GetComponent<Renderer>().material.color = playerColor;
 
         // add necessary scripts
-        newPlayer.AddComponent<GatherFreeCrowd>();
         newPlayer.AddComponent<PlayerControl>();
+        newPlayer.AddComponent<GatherFreeCrowd>();
+        newPlayer.AddComponent<ObstacleCollision>();
+        newPlayer.AddComponent<Rigidbody>();
+        newPlayer.GetComponent<Rigidbody>().isKinematic = true;
     }
 
 }
