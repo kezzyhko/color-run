@@ -1094,6 +1094,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6064d5105956a554988a6b913b93cfe1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  colorMixingScript: {fileID: 1877194000}
 --- !u!54 &798104994
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -1809,8 +1810,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 37e7936770db6684794403f017656d6b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  player: {fileID: 798104986}
   currentColorIndicator: {fileID: 274662244}
+  initialPlayer: {fileID: 798104986}
   lineThickness: 8
 --- !u!1 &1921606591
 GameObject:

@@ -5,6 +5,8 @@ using UnityEngine;
 public class GatherFreeCrowd : MonoBehaviour
 {
 
+    public ColorMixing colorMixingScript;
+
     void OnTriggerEnter(Collider collider)
     {
         // get info
@@ -14,6 +16,7 @@ public class GatherFreeCrowd : MonoBehaviour
 
         // change team
         props.type = Properties.Type.Player;
+        colorMixingScript.players.AddLast(newPlayer);
 
         // change color
         Color playerColor = gameObject.GetComponent<Renderer>().material.color;
@@ -22,6 +25,7 @@ public class GatherFreeCrowd : MonoBehaviour
         // add necessary scripts
         newPlayer.AddComponent<PlayerControl>();
         newPlayer.AddComponent<GatherFreeCrowd>();
+        newPlayer.GetComponent<GatherFreeCrowd>().colorMixingScript = colorMixingScript;
         newPlayer.AddComponent<ObstacleCollision>();
         newPlayer.AddComponent<Rigidbody>();
         newPlayer.GetComponent<Rigidbody>().isKinematic = true;
