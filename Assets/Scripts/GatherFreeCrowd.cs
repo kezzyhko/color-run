@@ -27,6 +27,7 @@ public class GatherFreeCrowd : MonoBehaviour
         newPlayer.AddComponent<GatherFreeCrowd>();
         newPlayer.GetComponent<GatherFreeCrowd>().colorMixingScript = colorMixingScript;
         newPlayer.AddComponent<ObstacleCollision>();
+        newPlayer.GetComponent<ObstacleCollision>().colorMixingScript = colorMixingScript;
         newPlayer.AddComponent<Rigidbody>();
         newPlayer.GetComponent<Rigidbody>().isKinematic = true;
     }

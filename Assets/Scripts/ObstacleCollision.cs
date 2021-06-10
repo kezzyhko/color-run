@@ -5,6 +5,8 @@ using UnityEngine;
 public class ObstacleCollision : MonoBehaviour
 {
 
+    public ColorMixing colorMixingScript;
+
     void OnTriggerEnter(Collider collider)
     {
         // get info
@@ -22,6 +24,7 @@ public class ObstacleCollision : MonoBehaviour
         else
         {
             // player didn't match the colors, destroy player
+            colorMixingScript.players.Remove(gameObject);
             Destroy(gameObject);
         }
     }
