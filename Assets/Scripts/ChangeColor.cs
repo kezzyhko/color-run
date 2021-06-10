@@ -32,7 +32,6 @@ public class ChangeColor : MonoBehaviour
     void Start()
     {
         gameObject.GetComponent<Renderer>().material.color = colors[(int)colorName];
-        //gameObject.GetComponent<Renderer>().material.color = color;
     }
 
 }
