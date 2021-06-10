@@ -22,12 +22,17 @@ public class ColorMixing : MonoBehaviour
         player.GetComponent<Renderer>().material.color = Color.black;
     }
 
+    bool CompareWithoutAlpha(Color c1, Color c2)
+    {
+        return c1.r == c2.r && c1.g == c2.g && c1.b == c2.b;
+    }
+
     void UpdateColor(GameObject sender)
     {
         Color newColor = sender.GetComponent<UnityEngine.UI.Image>().color;
         colors.AddLast(newColor);
         mixedColor += newColor;
-        if (mixedColor.r == 1 && mixedColor.g == 1 && mixedColor.b == 1) mixedColor = Color.black;
+        if (CompareWithoutAlpha(mixedColor, Color.white)) mixedColor = Color.black;
         currentColorIndicator.GetComponent<UnityEngine.UI.Image>().color = mixedColor;
     }
 
