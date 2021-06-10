@@ -844,6 +844,7 @@ GameObject:
   - component: {fileID: 798104988}
   - component: {fileID: 798104987}
   - component: {fileID: 798104991}
+  - component: {fileID: 798104992}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -942,6 +943,19 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   forwardMoveSpeed: 2
   horizontalMoveSpeed: 2
+--- !u!114 &798104992
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 798104986}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d15dbf7e81df1684996cdeca797eaa69, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  colorName: 6
 --- !u!1 &865945962
 GameObject:
   m_ObjectHideFlags: 0
@@ -1389,7 +1403,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8911f1965eb14108bdb8b092b45649fe, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _dependencies: []
+  _dependencies:
+  - {fileID: 1877194000}
 --- !u!1 &1877193995
 GameObject:
   m_ObjectHideFlags: 0
@@ -1507,4 +1522,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 37e7936770db6684794403f017656d6b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  player: {fileID: 798104986}
+  currentColorIndicator: {fileID: 274662244}
   lineThickness: 8

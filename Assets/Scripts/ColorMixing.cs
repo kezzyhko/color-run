@@ -15,11 +15,12 @@ public class ColorMixing : MonoBehaviour
     private Vector2 startLinePosition;
     private LinkedList<(Vector2, Vector2)> lines = new LinkedList<(Vector2, Vector2)>();
     private LinkedList<Color> colors = new LinkedList<Color>();
-    private Color mixedColor = Color.black;
+    private Color mixedColor;
 
     void Start()
     {
-        player.GetComponent<Renderer>().material.color = Color.black;
+        mixedColor = player.GetComponent<Renderer>().material.color;
+        currentColorIndicator.GetComponent<UnityEngine.UI.Image>().color = mixedColor;
     }
 
     bool CompareWithoutAlpha(Color c1, Color c2)
