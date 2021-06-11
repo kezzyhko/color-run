@@ -14,7 +14,7 @@ public class ObstacleCollision : MonoBehaviour
         Properties props = obstacle.GetComponent<Properties>();
         if (props == null || props.type != Properties.Type.Obstacle) return;
 
-        Color playerColor = gameObject.GetComponent<Renderer>().material.color;
+        Color playerColor = GetComponent<Renderer>().material.color;
         Color obstacleColor = obstacle.GetComponent<Renderer>().material.color;
         if (ColorMixing.CompareWithoutAlpha(playerColor, obstacleColor))
         {
