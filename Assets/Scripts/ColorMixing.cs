@@ -30,7 +30,7 @@ public class ColorMixing : MonoBehaviour
         return c1.r == c2.r && c1.g == c2.g && c1.b == c2.b;
     }
 
-    void UpdateColor(GameObject sender)
+    void UpdateMixedColor(GameObject sender)
     {
         Color newColor = sender.GetComponent<UnityEngine.UI.Image>().color;
         colors.AddLast(newColor);
@@ -39,14 +39,19 @@ public class ColorMixing : MonoBehaviour
         currentColorIndicator.GetComponent<UnityEngine.UI.Image>().color = mixedColor;
     }
 
-    public void PointerClick(GameObject sender)
+    void ChangePlayersColor(Color newColor)
     {
-        Color newColor = sender.GetComponent<UnityEngine.UI.Image>().color;
-        currentColorIndicator.GetComponent<UnityEngine.UI.Image>().color = newColor;
         foreach (GameObject player in players)
         {
             player.GetComponent<Renderer>().material.color = newColor;
         }
+    }
+
+    public void PointerClick(GameObject sender)
+    {
+        Color newColor = sender.GetComponent<UnityEngine.UI.Image>().color;
+        currentColorIndicator.GetComponent<UnityEngine.UI.Image>().color = newColor;
+        ChangePlayersColor(newColor);
     }
 
     public void BeginDrag(GameObject sender)
@@ -54,7 +59,7 @@ public class ColorMixing : MonoBehaviour
         startLinePosition = sender.transform.position;
         isSelectingInProcess = true;
         mixedColor = Color.black;
-        UpdateColor(sender);
+        UpdateMixedColor(sender);
     }
 
     public void PointerEnter(GameObject sender)
@@ -65,7 +70,7 @@ public class ColorMixing : MonoBehaviour
 
         lines.AddLast((startLinePosition, sender.transform.position));
         startLinePosition = sender.transform.position;
-        UpdateColor(sender);
+        UpdateMixedColor(sender);
     }
 
     public void EndDrag(GameObject sender)
@@ -73,10 +78,7 @@ public class ColorMixing : MonoBehaviour
         isSelectingInProcess = false;
         lines.Clear();
         colors.Clear();
-        foreach (GameObject player in players)
-        {
-            player.GetComponent<Renderer>().material.color = mixedColor;
-        }
+        ChangePlayersColor(mixedColor);
     }
 
     void OnGUI()
