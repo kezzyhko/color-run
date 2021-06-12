@@ -13,6 +13,6 @@ public class Properties : MonoBehaviour
         Obstacle,
     };
 
-    public Type type;
+    public Type ObjectType;
 
 }

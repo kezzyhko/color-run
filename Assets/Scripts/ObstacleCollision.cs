@@ -5,14 +5,14 @@ using UnityEngine;
 public class ObstacleCollision : MonoBehaviour
 {
 
-    public ColorMixing colorMixingScript;
+    public ColorMixing ColorMixing;
 
     void OnTriggerEnter(Collider collider)
     {
         // get info
         GameObject obstacle = collider.gameObject;
         Properties props = obstacle.GetComponent<Properties>();
-        if (props == null || props.type != Properties.Type.Obstacle) return;
+        if (props == null || props.ObjectType != Properties.Type.Obstacle) return;
 
         Color playerColor = GetComponent<Renderer>().material.color;
         Color obstacleColor = obstacle.GetComponent<Renderer>().material.color;
@@ -24,7 +24,7 @@ public class ObstacleCollision : MonoBehaviour
         else
         {
             // player didn't match the colors, destroy player
-            colorMixingScript.players.Remove(gameObject);
+            ColorMixing.Players.Remove(gameObject);
             Destroy(gameObject);
         }
     }

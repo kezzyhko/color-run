@@ -6,23 +6,23 @@ using System;
 public class ColorMixing : MonoBehaviour
 {
 
-    public GameObject currentColorIndicator;
-    public GameObject initialPlayer;
-    public LinkedList<GameObject> players = new LinkedList<GameObject>();
+    public GameObject CurrentColorIndicator;
+    public GameObject InitialPlayer;
+    public LinkedList<GameObject> Players = new LinkedList<GameObject>();
 
-    public float lineThickness = 8.0f;
+    public float LineThickness = 8.0f;
 
-    private bool isSelectingInProcess = false;
-    private Vector2 startLinePosition;
-    private LinkedList<(Vector2, Vector2)> lines = new LinkedList<(Vector2, Vector2)>();
-    private LinkedList<Color> colors = new LinkedList<Color>();
-    private Color mixedColor;
+    private bool _isSelectingInProcess = false;
+    private Vector2 _startLinePosition;
+    private LinkedList<(Vector2, Vector2)> _lines = new LinkedList<(Vector2, Vector2)>();
+    private LinkedList<Color> _colors = new LinkedList<Color>();
+    private Color _mixedColor;
 
     void Start()
     {
-        players.AddLast(initialPlayer);
-        mixedColor = initialPlayer.GetComponent<Renderer>().material.color;
-        currentColorIndicator.GetComponent<UnityEngine.UI.Image>().color = mixedColor;
+        Players.AddLast(InitialPlayer);
+        _mixedColor = InitialPlayer.GetComponent<Renderer>().material.color;
+        CurrentColorIndicator.GetComponent<UnityEngine.UI.Image>().color = _mixedColor;
     }
 
     public static bool CompareWithoutAlpha(Color c1, Color c2)
@@ -33,15 +33,15 @@ public class ColorMixing : MonoBehaviour
     void UpdateMixedColor(GameObject sender)
     {
         Color newColor = sender.GetComponent<UnityEngine.UI.Image>().color;
-        colors.AddLast(newColor);
-        mixedColor += newColor;
-        if (CompareWithoutAlpha(mixedColor, Color.white)) mixedColor = Color.black;
-        currentColorIndicator.GetComponent<UnityEngine.UI.Image>().color = mixedColor;
+        _colors.AddLast(newColor);
+        _mixedColor += newColor;
+        if (CompareWithoutAlpha(_mixedColor, Color.white)) _mixedColor = Color.black;
+        CurrentColorIndicator.GetComponent<UnityEngine.UI.Image>().color = _mixedColor;
     }
 
     void ChangePlayersColor(Color newColor)
     {
-        foreach (GameObject player in players)
+        foreach (GameObject player in Players)
         {
             player.GetComponent<Renderer>().material.color = newColor;
         }
@@ -50,46 +50,46 @@ public class ColorMixing : MonoBehaviour
     public void PointerClick(GameObject sender)
     {
         Color newColor = sender.GetComponent<UnityEngine.UI.Image>().color;
-        currentColorIndicator.GetComponent<UnityEngine.UI.Image>().color = newColor;
+        CurrentColorIndicator.GetComponent<UnityEngine.UI.Image>().color = newColor;
         ChangePlayersColor(newColor);
     }
 
     public void BeginDrag(GameObject sender)
     {
-        startLinePosition = sender.transform.position;
-        isSelectingInProcess = true;
-        mixedColor = Color.black;
+        _startLinePosition = sender.transform.position;
+        _isSelectingInProcess = true;
+        _mixedColor = Color.black;
         UpdateMixedColor(sender);
     }
 
     public void PointerEnter(GameObject sender)
     {
-        if (!isSelectingInProcess) return;
+        if (!_isSelectingInProcess) return;
         Color color = sender.GetComponent<UnityEngine.UI.Image>().color;
-        if (colors.Contains(color)) return;
+        if (_colors.Contains(color)) return;
 
-        lines.AddLast((startLinePosition, sender.transform.position));
-        startLinePosition = sender.transform.position;
+        _lines.AddLast((_startLinePosition, sender.transform.position));
+        _startLinePosition = sender.transform.position;
         UpdateMixedColor(sender);
     }
 
     public void EndDrag(GameObject sender)
     {
-        isSelectingInProcess = false;
-        lines.Clear();
-        colors.Clear();
-        ChangePlayersColor(mixedColor);
+        _isSelectingInProcess = false;
+        _lines.Clear();
+        _colors.Clear();
+        ChangePlayersColor(_mixedColor);
     }
 
     void OnGUI()
     {
-        foreach ((Vector2 start, Vector2 end) line in lines)
+        foreach ((Vector2 start, Vector2 end) line in _lines)
         {
             DrawLine(line.start, line.end);
         }
-        if (isSelectingInProcess)
+        if (_isSelectingInProcess)
         {
-            DrawLine(startLinePosition, Input.mousePosition);
+            DrawLine(_startLinePosition, Input.mousePosition);
         }
     }
 
@@ -109,12 +109,12 @@ public class ColorMixing : MonoBehaviour
         GUI.color = Color.black;
 
         // calculate
-        float startX = pointA.x - lineThickness / 2;
-        float startY = pointA.y - lineThickness / 2;
-        float length = (pointB - pointA).magnitude + lineThickness;
+        float startX = pointA.x - LineThickness / 2;
+        float startY = pointA.y - LineThickness / 2;
+        float length = (pointB - pointA).magnitude + LineThickness;
 
         // draw
-        GUI.DrawTexture(new Rect(startX, startY, length, lineThickness), lineTex);
+        GUI.DrawTexture(new Rect(startX, startY, length, LineThickness), lineTex);
 
         // restore rotation
         GUI.matrix = matrixBackup;

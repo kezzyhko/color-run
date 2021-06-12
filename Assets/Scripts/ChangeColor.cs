@@ -16,7 +16,7 @@ public class ChangeColor : MonoBehaviour
         Black,
     };
 
-    private Color[] colors = new Color[]
+    private Color[] _colors = new Color[]
     {
         Color.red,
         Color.green,
@@ -27,11 +27,11 @@ public class ChangeColor : MonoBehaviour
         Color.black,
     };
 
-    public AcceptableColor colorName;
+    public AcceptableColor ColorName;
 
     void Start()
     {
-        GetComponent<Renderer>().material.color = colors[(int) colorName];
+        GetComponent<Renderer>().material.color = _colors[(int) ColorName];
     }
 
 }
