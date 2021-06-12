@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 705507994}
-  m_IndirectSpecularColor: {r: 0.11376931, g: 0.52441406, b: 0.99365073, a: 1}
+  m_IndirectSpecularColor: {r: 0.113525465, g: 0.52343833, b: 0.99121004, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -864,7 +864,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6a6e4af3c477fa64495f0b4d5dba15f5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  type: 3
+  ObjectType: 3
 --- !u!65 &789749672
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -953,7 +953,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d15dbf7e81df1684996cdeca797eaa69, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  colorName: 0
+  ColorName: 0
 --- !u!1 &798104986
 GameObject:
   m_ObjectHideFlags: 0
@@ -1067,8 +1067,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b3ceb86fd1fee424b95fd4b360240775, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  forwardMoveSpeed: 2
-  horizontalMoveSpeed: 2
+  ForwardMoveSpeed: 2
+  HorizontalMoveSpeed: 2
 --- !u!114 &798104992
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1081,7 +1081,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d15dbf7e81df1684996cdeca797eaa69, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  colorName: 6
+  ColorName: 6
 --- !u!114 &798104993
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1094,7 +1094,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6064d5105956a554988a6b913b93cfe1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  colorMixingScript: {fileID: 1877194000}
+  ColorMixing: {fileID: 1877194000}
 --- !u!54 &798104994
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -1123,7 +1123,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6a6e4af3c477fa64495f0b4d5dba15f5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  type: 0
+  ObjectType: 0
 --- !u!114 &798104996
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1136,7 +1136,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b43fb0461d842ed4aa3a54873c02d740, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  colorMixingScript: {fileID: 1877194000}
+  ColorMixing: {fileID: 1877194000}
 --- !u!1 &841896607
 GameObject:
   m_ObjectHideFlags: 0
@@ -1245,7 +1245,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6a6e4af3c477fa64495f0b4d5dba15f5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  type: 1
+  ObjectType: 1
 --- !u!1 &865945962
 GameObject:
   m_ObjectHideFlags: 0
@@ -1434,8 +1434,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b3ceb86fd1fee424b95fd4b360240775, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  forwardMoveSpeed: 2
-  horizontalMoveSpeed: 1.5
+  ForwardMoveSpeed: 2
+  HorizontalMoveSpeed: 1.5
 --- !u!1 &1545355845
 GameObject:
   m_ObjectHideFlags: 0
@@ -1826,9 +1826,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 37e7936770db6684794403f017656d6b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  currentColorIndicator: {fileID: 274662244}
-  initialPlayer: {fileID: 798104986}
-  lineThickness: 8
+  CurrentColorIndicator: {fileID: 274662244}
+  InitialPlayer: {fileID: 798104986}
+  LineThickness: 8
 --- !u!1 &1921606591
 GameObject:
   m_ObjectHideFlags: 0
@@ -1862,7 +1862,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6a6e4af3c477fa64495f0b4d5dba15f5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  type: 3
+  ObjectType: 3
 --- !u!65 &1921606593
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -1951,4 +1951,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d15dbf7e81df1684996cdeca797eaa69, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  colorName: 3
+  ColorName: 3
