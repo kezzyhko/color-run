@@ -23,7 +23,7 @@ public class GatherFreeCrowd : MonoBehaviour
         newPlayer.GetComponent<Renderer>().material.color = playerColor;
 
         // add necessary scripts
-        newPlayer.AddComponent<PlayerControl>();
+        newPlayer.AddComponent<MoveForward>();
         newPlayer.AddComponent<GatherFreeCrowd>();
         newPlayer.GetComponent<GatherFreeCrowd>().ColorMixing = ColorMixing;
         newPlayer.AddComponent<ObstacleCollision>();
