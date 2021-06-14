@@ -49,6 +49,7 @@ public class ColorMixing : MonoBehaviour
 
     public void PointerClick(GameObject sender)
     {
+        if (_isSelectingInProcess) return;
         Color newColor = sender.GetComponent<UnityEngine.UI.Image>().color;
         CurrentColorIndicator.GetComponent<UnityEngine.UI.Image>().color = newColor;
         ChangePlayersColor(newColor);
