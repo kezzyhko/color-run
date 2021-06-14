@@ -22,7 +22,7 @@ public class ChangeColor : MonoBehaviour
         Color.green,
         Color.blue,
         Color.magenta,
-        Color.yellow,
+        new Color(1, 1, 0), // Color.yellow is (1, 0.92, 0.016, 1)
         Color.cyan,
         Color.black,
     };
