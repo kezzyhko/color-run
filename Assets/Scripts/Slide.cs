@@ -9,9 +9,9 @@ public class Slide : MonoBehaviour
 
     private float _platformWidth;
 
-    public void Construct(BoxCollider platforCollider)
+    public void Construct(BoxCollider platformCollider)
     {
-        _platformWidth = platforCollider.transform.localScale.x;
+        _platformWidth = platformCollider.transform.localScale.x;
     }
 
     void Update()
