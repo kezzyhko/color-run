@@ -6,17 +6,11 @@ public class Slide : MonoBehaviour
 {
 
     public float Speed = 2.0f;
-
-    private float _platformWidth;
-
-    public void Construct(BoxCollider platformCollider)
-    {
-        _platformWidth = platformCollider.transform.localScale.x;
-    }
+    public float Amplitude = 5.0f;
 
     void Update()
     {
-        if (Mathf.Abs(transform.position.x) - _platformWidth / 2 > 0)
+        if (Mathf.Abs(transform.position.x) - Amplitude / 2 > 0)
         {
             Speed = -Speed;
         }
