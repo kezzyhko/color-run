@@ -1267,6 +1267,11 @@ PrefabInstance:
       propertyPath: ColorMixing
       value: 
       objectReference: {fileID: 1877194000}
+    - target: {fileID: 1494339742, guid: d1ba2045b5e094c4a9f2349cdcbf3eec, type: 3}
+      propertyPath: PlayerPrefab
+      value: 
+      objectReference: {fileID: 1551536911099717812, guid: d1ba2045b5e094c4a9f2349cdcbf3eec,
+        type: 3}
     - target: {fileID: 1551536911099717812, guid: d1ba2045b5e094c4a9f2349cdcbf3eec,
         type: 3}
       propertyPath: m_Name
