@@ -28,10 +28,15 @@ public class ChangeColor : MonoBehaviour
     };
 
     public AcceptableColor ColorName;
+    public bool DestroyWhenFinished = true;
 
     void Start()
     {
         GetComponent<Renderer>().material.color = _colors[(int) ColorName];
+        if (DestroyWhenFinished)
+        {
+            Destroy(this);
+        }
     }
 
 }

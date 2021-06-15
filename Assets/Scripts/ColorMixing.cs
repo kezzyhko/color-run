@@ -8,7 +8,6 @@ public class ColorMixing : MonoBehaviour
 
     public GameObject CurrentColorIndicator;
     public GameObject InitialPlayer;
-    public LinkedList<GameObject> Players = new LinkedList<GameObject>();
 
     public float LineThickness = 8.0f;
 
@@ -17,11 +16,12 @@ public class ColorMixing : MonoBehaviour
     private LinkedList<(Vector2, Vector2)> _lines = new LinkedList<(Vector2, Vector2)>();
     private LinkedList<Color> _colors = new LinkedList<Color>();
     private Color _mixedColor;
+    private Material _playerMaterial;
 
     void Start()
     {
-        Players.AddLast(InitialPlayer);
-        _mixedColor = InitialPlayer.GetComponent<Renderer>().material.color;
+        _playerMaterial = InitialPlayer.GetComponent<Renderer>().sharedMaterial;
+        _mixedColor = _playerMaterial.color;
         CurrentColorIndicator.GetComponent<UnityEngine.UI.Image>().color = _mixedColor;
     }
 
@@ -41,10 +41,7 @@ public class ColorMixing : MonoBehaviour
 
     void ChangePlayersColor(Color newColor)
     {
-        foreach (GameObject player in Players)
-        {
-            player.GetComponent<Renderer>().material.color = newColor;
-        }
+        _playerMaterial.color = newColor;
     }
 
     public void PointerClick(GameObject sender)

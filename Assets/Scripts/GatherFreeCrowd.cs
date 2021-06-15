@@ -24,11 +24,6 @@ public class GatherFreeCrowd : MonoBehaviour
         // create new player
         Destroy(freeCrowd);
         GameObject newPlayer = Instantiate(PlayerPrefab, freeCrowd.transform.position, freeCrowd.transform.rotation);
-        _colorMixing.Players.AddLast(newPlayer);
-
-        // set color
-        Color playerColor = GetComponent<Renderer>().material.color;
-        newPlayer.GetComponent<Renderer>().material.color = playerColor;
     }
 
 }

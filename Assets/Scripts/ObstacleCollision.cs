@@ -19,8 +19,8 @@ public class ObstacleCollision : MonoBehaviour
         Properties props = obstacle.GetComponent<Properties>();
         if (props == null || props.ObjectType != Properties.Type.Obstacle) return;
 
-        Color playerColor = GetComponent<Renderer>().material.color;
-        Color obstacleColor = obstacle.GetComponent<Renderer>().material.color;
+        Color playerColor = GetComponent<Renderer>().sharedMaterial.color;
+        Color obstacleColor = obstacle.GetComponent<Renderer>().sharedMaterial.color;
         if (ColorMixing.CompareWithoutAlpha(playerColor, obstacleColor))
         {
             // player matched the colors, destroy obstacle
@@ -29,7 +29,6 @@ public class ObstacleCollision : MonoBehaviour
         else
         {
             // player didn't match the colors, destroy player
-            _colorMixing.Players.Remove(gameObject);
             Destroy(gameObject);
         }
     }
