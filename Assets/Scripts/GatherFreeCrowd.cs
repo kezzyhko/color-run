@@ -5,8 +5,14 @@ using UnityEngine;
 public class GatherFreeCrowd : MonoBehaviour
 {
 
-    public ColorMixing ColorMixing;
     public GameObject PlayerPrefab;
+
+    private ColorMixing _colorMixing;
+
+    public void Construct(ColorMixing colorMixing)
+    {
+        _colorMixing = colorMixing;
+    }
 
     void OnTriggerEnter(Collider collider)
     {
@@ -18,13 +24,10 @@ public class GatherFreeCrowd : MonoBehaviour
         // create new player
         Destroy(freeCrowd);
         GameObject newPlayer = Instantiate(PlayerPrefab, freeCrowd.transform.position, freeCrowd.transform.rotation);
-        newPlayer.GetComponent<GatherFreeCrowd>().ColorMixing = ColorMixing;
-        newPlayer.GetComponent<GatherFreeCrowd>().PlayerPrefab = PlayerPrefab;
-        newPlayer.GetComponent<ObstacleCollision>().ColorMixing = ColorMixing;
-        ColorMixing.Players.AddLast(newPlayer);
+        _colorMixing.Players.AddLast(newPlayer);
 
         // set color
-        Color playerColor = gameObject.GetComponent<Renderer>().material.color;
+        Color playerColor = GetComponent<Renderer>().material.color;
         newPlayer.GetComponent<Renderer>().material.color = playerColor;
     }
 

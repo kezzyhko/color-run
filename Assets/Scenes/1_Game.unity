@@ -1259,19 +1259,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 1494339741, guid: d1ba2045b5e094c4a9f2349cdcbf3eec, type: 3}
-      propertyPath: ColorMixing
-      value: 
-      objectReference: {fileID: 1877194000}
-    - target: {fileID: 1494339742, guid: d1ba2045b5e094c4a9f2349cdcbf3eec, type: 3}
-      propertyPath: ColorMixing
-      value: 
-      objectReference: {fileID: 1877194000}
-    - target: {fileID: 1494339742, guid: d1ba2045b5e094c4a9f2349cdcbf3eec, type: 3}
-      propertyPath: PlayerPrefab
-      value: 
-      objectReference: {fileID: 1551536911099717812, guid: d1ba2045b5e094c4a9f2349cdcbf3eec,
-        type: 3}
     - target: {fileID: 1551536911099717812, guid: d1ba2045b5e094c4a9f2349cdcbf3eec,
         type: 3}
       propertyPath: m_Name
@@ -1591,11 +1578,6 @@ PrefabInstance:
       propertyPath: Speed
       value: -2
       objectReference: {fileID: 0}
-    - target: {fileID: 8468424261378625481, guid: 9ed6e3f6aeabcc1418bbb8a6b69bdb14,
-        type: 3}
-      propertyPath: Platform
-      value: 
-      objectReference: {fileID: 752207522}
     - target: {fileID: 8468424261378625485, guid: 9ed6e3f6aeabcc1418bbb8a6b69bdb14,
         type: 3}
       propertyPath: m_RootOrder
@@ -1696,7 +1678,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8911f1965eb14108bdb8b092b45649fe, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _dependencies: []
+  _dependencies:
+  - {fileID: 1877194000}
+  - {fileID: 752207523}
 --- !u!1 &1877193995
 GameObject:
   m_ObjectHideFlags: 0
@@ -1977,11 +1961,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: Saw 1
       objectReference: {fileID: 0}
-    - target: {fileID: 8468424261378625481, guid: 9ed6e3f6aeabcc1418bbb8a6b69bdb14,
-        type: 3}
-      propertyPath: Platform
-      value: 
-      objectReference: {fileID: 752207522}
     - target: {fileID: 8468424261378625485, guid: 9ed6e3f6aeabcc1418bbb8a6b69bdb14,
         type: 3}
       propertyPath: m_RootOrder
