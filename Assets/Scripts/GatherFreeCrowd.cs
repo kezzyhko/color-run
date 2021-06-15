@@ -19,7 +19,7 @@ public class GatherFreeCrowd : MonoBehaviour
         // get info
         GameObject freeCrowd = collider.gameObject;
         Properties props = freeCrowd.GetComponent<Properties>();
-        if (props == null || props.ObjectType != Properties.Type.FreeCrowd) return;
+        if (props == null || props.ObjectType != Properties.Type.Free) return;
 
         // create new player
         Destroy(freeCrowd);
