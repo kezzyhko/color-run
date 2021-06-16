@@ -7,11 +7,11 @@ public class GatherFreeCrowd : MonoBehaviour
 
     public GameObject PlayerPrefab;
 
-    private ColorMixing _colorMixing;
+    private Fight _fight;
 
-    public void Construct(ColorMixing colorMixing)
+    public void Construct(Fight fight)
     {
-        _colorMixing = colorMixing;
+        _fight = fight;
     }
 
     void OnTriggerEnter(Collider collider)
@@ -24,6 +24,7 @@ public class GatherFreeCrowd : MonoBehaviour
         // create new player
         Destroy(freeCrowd);
         GameObject newPlayer = Instantiate(PlayerPrefab, freeCrowd.transform.position, freeCrowd.transform.rotation);
+        _fight.Players.AddLast(newPlayer);
     }
 
 }

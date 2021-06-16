@@ -15,7 +15,6 @@ GameObject:
   - component: {fileID: 8468424261378625481}
   - component: {fileID: 4595201655896253169}
   - component: {fileID: 4761471295981286905}
-  - component: {fileID: 7611487969108187748}
   m_Layer: 0
   m_Name: Saw
   m_TagString: Untagged
@@ -112,6 +111,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Speed: 2
+  Amplitude: 5
 --- !u!114 &4595201655896253169
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -125,6 +125,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ColorName: 6
+  DestroyWhenFinished: 1
 --- !u!114 &4761471295981286905
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -138,18 +139,3 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ObjectType: 3
---- !u!114 &7611487969108187748
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8468424261378625480}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 596154ae2f344d76ac02b30e82d81226, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _dependencySource: 30
-  _destroyWhenFinished: 1
-  UseBakedData: 1
