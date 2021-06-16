@@ -6,11 +6,11 @@ public class Slide : MonoBehaviour
 {
 
     public float Speed = 2.0f;
-    public GameObject Platform;
+    public float Amplitude = 5.0f;
 
     void Update()
     {
-        if (Mathf.Abs(transform.position.x) - Platform.transform.localScale.x / 2 > 0)
+        if (Mathf.Abs(transform.position.x) - Amplitude / 2 > 0)
         {
             Speed = -Speed;
         }
