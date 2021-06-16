@@ -11,7 +11,6 @@ public class MoveTowardsTarget : MonoBehaviour
 
     public float Speed = 1.0f;
     public float MinDistance = 1.5f;
-    public float DestroyDelay = 1.0f;
 
 
     private LinkedList<GameObject> _thisTeam;
@@ -36,6 +35,7 @@ public class MoveTowardsTarget : MonoBehaviour
         // check for win
         if (_otherTeam.Count == 0)
         {
+            GetComponent<Rigidbody>().velocity = Vector3.zero;
             Destroy(this);
             return;
         }
@@ -54,7 +54,6 @@ public class MoveTowardsTarget : MonoBehaviour
                     closestDistance = distance;
                 }
             }
-
             Target = closestOther;
         }
 
@@ -62,8 +61,7 @@ public class MoveTowardsTarget : MonoBehaviour
         if (direction.magnitude > MinDistance)
         {
             // move to target
-            direction = Vector3.ClampMagnitude(direction, Time.deltaTime * Speed);
-            transform.position += direction;
+            GetComponent<Rigidbody>().velocity = direction.normalized;
         }
         else
         {

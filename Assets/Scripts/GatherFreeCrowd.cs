@@ -20,10 +20,11 @@ public class GatherFreeCrowd : MonoBehaviour
         GameObject freeCrowd = collider.gameObject;
         Properties props = freeCrowd.GetComponent<Properties>();
         if (props == null || props.ObjectType != Properties.Type.Free) return;
+        collider.enabled = false;
 
         // create new player
-        Destroy(freeCrowd);
         GameObject newPlayer = Instantiate(PlayerPrefab, freeCrowd.transform.position, freeCrowd.transform.rotation);
+        Destroy(freeCrowd);
         _fight.Players.AddLast(newPlayer);
     }
 
