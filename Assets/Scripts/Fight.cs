@@ -14,6 +14,13 @@ public class Fight : MonoBehaviour
     private bool _isFightStarted;
     private bool _isFightFinished;
 
+    private GUIManager _guiManager;
+
+    public void Construct(GUIManager guiManager)
+    {
+        _guiManager = guiManager;
+    }
+
     private void Start()
     {
         Players.AddLast(InitialPlayer);
@@ -61,14 +68,8 @@ public class Fight : MonoBehaviour
         if (team.Count == 0)
         {
             _isFightFinished = true;
-            if (team == Enemies)
-            {
-                Debug.Log("win");
-            }
-            else
-            {
-                Debug.Log("lose");
-            }
+            Destroy(Camera.main.GetComponent<MoveForward>()); // stop moving camera
+            _guiManager.EndLevel(team == Enemies); // show GUI
         }
     }
 }
