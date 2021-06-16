@@ -15,6 +15,7 @@ public class MoveTowardsTarget : MonoBehaviour
 
     private LinkedList<GameObject> _thisTeam;
     private LinkedList<GameObject> _otherTeam;
+    private Rigidbody _rigidbody;
 
     private void Start()
     {
@@ -28,6 +29,7 @@ public class MoveTowardsTarget : MonoBehaviour
             _thisTeam = Fight.Enemies;
             _otherTeam = Fight.Players;
         }
+        _rigidbody = GetComponent<Rigidbody>();
     }
 
     void Update()
@@ -35,7 +37,7 @@ public class MoveTowardsTarget : MonoBehaviour
         // check for win
         if (_otherTeam.Count == 0)
         {
-            GetComponent<Rigidbody>().velocity = Vector3.zero;
+            _rigidbody.velocity = Vector3.zero;
             Destroy(this);
             return;
         }
@@ -61,7 +63,7 @@ public class MoveTowardsTarget : MonoBehaviour
         if (direction.magnitude > MinDistance)
         {
             // move to target
-            GetComponent<Rigidbody>().velocity = direction.normalized;
+            _rigidbody.velocity = direction.normalized;
         }
         else
         {
