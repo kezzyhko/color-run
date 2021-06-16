@@ -65,7 +65,7 @@ PrefabInstance:
     - target: {fileID: 88239234189022637, guid: e11adf9c9d1ed344a91b0fb0ef3c92e2,
         type: 3}
       propertyPath: m_Size.x
-      value: 20
+      value: 1.5
       objectReference: {fileID: 0}
     - target: {fileID: 88239234189022637, guid: e11adf9c9d1ed344a91b0fb0ef3c92e2,
         type: 3}
@@ -80,7 +80,7 @@ PrefabInstance:
     - target: {fileID: 88239234189022639, guid: e11adf9c9d1ed344a91b0fb0ef3c92e2,
         type: 3}
       propertyPath: m_Name
-      value: Free Crowd
+      value: Free
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e11adf9c9d1ed344a91b0fb0ef3c92e2, type: 3}
