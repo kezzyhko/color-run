@@ -9,6 +9,7 @@ public class GUIManager : MonoBehaviour
 
     public GameObject EndLevelScreen;
     public UnityEngine.UI.Text EndLevelStatusText;
+    public UnityEngine.UI.Text EndLevelButtonText;
 
     public void EndLevel(bool isWin)
     {
@@ -16,10 +17,12 @@ public class GUIManager : MonoBehaviour
         if (isWin)
         {
             EndLevelStatusText.text = "Level Complete!";
+            EndLevelButtonText.text = "Next";
         }
         else
         {
             EndLevelStatusText.text = "Try again";
+            EndLevelButtonText.text = "Retry";
         }
     }
 }
