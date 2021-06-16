@@ -12,6 +12,7 @@ public class Fight : MonoBehaviour
     public LinkedList<GameObject> Enemies;
 
     private bool _isFightStarted;
+    private bool _isFightFinished;
 
     private void Start()
     {
@@ -44,6 +45,30 @@ public class Fight : MonoBehaviour
             MoveTowardsTarget moveTowardsTarget = character.AddComponent<MoveTowardsTarget>();
             moveTowardsTarget.Fight = this;
             moveTowardsTarget.ShouldDestroy = shouldDestroy;
+        }
+    }
+
+    public void RemoveCharacter(GameObject character, LinkedList<GameObject> team)
+    {
+        // no removing after fight finished
+        if (_isFightFinished) return;
+
+        // remove character
+        team.Remove(character);
+        Destroy(character);
+
+        // check if fight is finished
+        if (team.Count == 0)
+        {
+            _isFightFinished = true;
+            if (team == Enemies)
+            {
+                Debug.Log("win");
+            }
+            else
+            {
+                Debug.Log("lose");
+            }
         }
     }
 }

@@ -29,8 +29,7 @@ public class ObstacleCollision : MonoBehaviour
         else
         {
             // player didn't match the colors, destroy player
-            _fight.Players.Remove(gameObject);
-            Destroy(gameObject);
+            _fight.RemoveCharacter(gameObject, _fight.Players);
         }
     }
 
