@@ -21,11 +21,6 @@ public class Fight : MonoBehaviour
 
     void OnTriggerEnter(Collider collider)
     {
-        // get info
-        //GameObject player = collider.gameObject;
-        //Properties props = player.GetComponent<Properties>();
-        //if (props == null || props.ObjectType != Properties.Type.Player) return;
-
         // execute only once
         if (_isFightStarted) return;
         _isFightStarted = true;
