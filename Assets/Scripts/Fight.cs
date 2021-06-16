@@ -41,9 +41,9 @@ public class Fight : MonoBehaviour
     {
         foreach (GameObject character in team)
         {
-            character.AddComponent<MoveTowardsTarget>();
-            character.GetComponent<MoveTowardsTarget>().Fight = this;
-            character.GetComponent<MoveTowardsTarget>().ShouldDestroy = shouldDestroy;
+            MoveTowardsTarget moveTowardsTarget = character.AddComponent<MoveTowardsTarget>();
+            moveTowardsTarget.Fight = this;
+            moveTowardsTarget.ShouldDestroy = shouldDestroy;
         }
     }
 }

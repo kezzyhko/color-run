@@ -14,8 +14,8 @@ public class ChangeMillColor : MonoBehaviour
     {
         foreach (GameObject blade in _blades)
         {
-            blade.AddComponent<ChangeColor>();
-            blade.GetComponent<ChangeColor>().ColorName = ColorName;
+            ChangeColor changeColor = blade.AddComponent<ChangeColor>();
+            changeColor.ColorName = ColorName;
         }
     }
 
