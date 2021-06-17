@@ -70,7 +70,7 @@ public class LevelManager : MonoBehaviour
         GameObject player = levelInfo.Player;
 
         // setup player's material
-        _colorMixing.PlayerMaterial.color = Color.black;
+        _colorMixing.ResetColor();
         player.GetComponent<Renderer>().sharedMaterial = _colorMixing.PlayerMaterial;
 
         // fix camera

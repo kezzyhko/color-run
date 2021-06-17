@@ -9,19 +9,26 @@ public class ColorMixing : MonoBehaviour
     public GameObject CurrentColorIndicator;
     public float LineThickness = 8.0f;
     public Material PlayerMaterial;
+    public ChangeColor.AcceptableColor InitialColor = ChangeColor.AcceptableColor.Black;
 
     private bool _isSelectingInProcess = false;
     private Vector2 _startLinePosition;
     private LinkedList<(Vector2, Vector2)> _lines = new LinkedList<(Vector2, Vector2)>();
     private LinkedList<Color> _colors = new LinkedList<Color>();
-    private Color _mixedColor = Color.black;
+    private Color _mixedColor;
 
     void Start()
     {
         PlayerMaterial = Instantiate(PlayerMaterial);
         PlayerMaterial.name = "Player Material";
-        PlayerMaterial.color = _mixedColor;
-        CurrentColorIndicator.GetComponent<UnityEngine.UI.Image>().color = _mixedColor;
+    }
+
+    public void ResetColor()
+    {
+        Color initialColor = ChangeColor.Colors[(int) InitialColor];
+        _mixedColor = initialColor;
+        PlayerMaterial.color = initialColor;
+        CurrentColorIndicator.GetComponent<UnityEngine.UI.Image>().color = initialColor;
     }
 
     public static bool CompareWithoutAlpha(Color c1, Color c2)

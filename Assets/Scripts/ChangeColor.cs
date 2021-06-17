@@ -16,7 +16,7 @@ public class ChangeColor : MonoBehaviour
         Black,
     };
 
-    private Color[] _colors = new Color[]
+    public static Color[] Colors = new Color[]
     {
         Color.red,
         Color.green,
@@ -32,7 +32,7 @@ public class ChangeColor : MonoBehaviour
 
     void Start()
     {
-        GetComponent<Renderer>().material.color = _colors[(int) ColorName];
+        GetComponent<Renderer>().material.color = Colors[(int) ColorName];
         if (DestroyWhenFinished)
         {
             Destroy(this);
