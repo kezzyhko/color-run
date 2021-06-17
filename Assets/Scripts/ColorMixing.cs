@@ -19,6 +19,7 @@ public class ColorMixing : MonoBehaviour
     void Start()
     {
         PlayerMaterial = Instantiate(PlayerMaterial);
+        PlayerMaterial.name = "Player Material";
         PlayerMaterial.color = _mixedColor;
         CurrentColorIndicator.GetComponent<UnityEngine.UI.Image>().color = _mixedColor;
     }

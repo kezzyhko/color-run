@@ -47,6 +47,7 @@ public class LevelManager : MonoBehaviour
     {
         Destroy(LevelObject);
         LevelObject = Instantiate(Levels[_levelNumber - 1]);
+        LevelObject.name = "Level";
         EndLevelScreen.SetActive(false);
 
         // get info

@@ -27,6 +27,7 @@ public class GatherFreeCrowd : MonoBehaviour
 
         // create new player
         GameObject newPlayer = Instantiate(PlayerPrefab, freeCrowd.transform.position, freeCrowd.transform.rotation);
+        newPlayer.name = PlayerPrefab.name;
         newPlayer.transform.parent = _levelManager.LevelObject.transform;
         newPlayer.GetComponent<GatherFreeCrowd>()._levelManager = _levelManager;
         Destroy(freeCrowd);
