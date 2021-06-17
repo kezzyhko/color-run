@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class GUIManager : MonoBehaviour
+public class LevelManager : MonoBehaviour
 {
 
     public GameObject EndLevelScreen;

@@ -14,11 +14,11 @@ public class Fight : MonoBehaviour
     private bool _isFightStarted;
     private bool _isFightFinished;
 
-    private GUIManager _guiManager;
+    private LevelManager _levelManager;
 
-    public void Construct(GUIManager guiManager)
+    public void Construct(LevelManager levelManager)
     {
-        _guiManager = guiManager;
+        _levelManager = levelManager;
     }
 
     private void Start()
@@ -69,7 +69,7 @@ public class Fight : MonoBehaviour
         {
             _isFightFinished = true;
             Destroy(Camera.main.GetComponent<MoveForward>()); // stop moving camera
-            _guiManager.EndLevel(team == Enemies); // show GUI
+            _levelManager.EndLevel(team == Enemies); // show GUI
         }
     }
 }

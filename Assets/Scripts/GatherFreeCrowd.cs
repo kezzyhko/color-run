@@ -10,11 +10,11 @@ public class GatherFreeCrowd : MonoBehaviour
     [SerializeField]
     private Fight _fight;
 
-    private GUIManager _guiManager;
+    private LevelManager _levelManager;
 
-    public void Construct(GUIManager guiManager)
+    public void Construct(LevelManager levelManager)
     {
-        _guiManager = guiManager;
+        _levelManager = levelManager;
     }
 
     void OnTriggerEnter(Collider collider)
@@ -27,8 +27,8 @@ public class GatherFreeCrowd : MonoBehaviour
 
         // create new player
         GameObject newPlayer = Instantiate(PlayerPrefab, freeCrowd.transform.position, freeCrowd.transform.rotation);
-        newPlayer.transform.parent = _guiManager.LevelObject.transform;
-        newPlayer.GetComponent<GatherFreeCrowd>()._guiManager = _guiManager;
+        newPlayer.transform.parent = _levelManager.LevelObject.transform;
+        newPlayer.GetComponent<GatherFreeCrowd>()._levelManager = _levelManager;
         Destroy(freeCrowd);
         _fight.Players.AddLast(newPlayer);
     }
