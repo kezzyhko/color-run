@@ -5,12 +5,8 @@ using UnityEngine;
 public class ObstacleCollision : MonoBehaviour
 {
 
+    [SerializeField]
     private Fight _fight;
-
-    public void Construct(Fight fight)
-    {
-        _fight = fight;
-    }
 
     void OnTriggerEnter(Collider collider)
     {
