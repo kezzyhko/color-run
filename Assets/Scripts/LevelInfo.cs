@@ -20,7 +20,7 @@ public class LevelInfo : MonoBehaviour
     {
         float fullPlatformLength = PlatformLength + PaddingBeforePlayer + PaddingAfterEnd;
         Platform.transform.localScale = new Vector3(PlatformWidth, PlatformHeight, fullPlatformLength);
-        Platform.transform.position = new Vector3(0, -PlatformHeight/2, fullPlatformLength/2 - PaddingBeforePlayer);
+        Platform.transform.position = new Vector3(0, -PlatformHeight / 2, fullPlatformLength / 2 - PaddingBeforePlayer);
         Finish.transform.position = new Vector3(0, 0, PlatformLength);
     }
 }
