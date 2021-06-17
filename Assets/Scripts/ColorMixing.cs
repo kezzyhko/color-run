@@ -7,22 +7,28 @@ public class ColorMixing : MonoBehaviour
 {
 
     public GameObject CurrentColorIndicator;
-    public GameObject InitialPlayer;
-
     public float LineThickness = 8.0f;
+    public Material PlayerMaterial;
+    public ChangeColor.AcceptableColor InitialColor = ChangeColor.AcceptableColor.Black;
 
     private bool _isSelectingInProcess = false;
     private Vector2 _startLinePosition;
     private LinkedList<(Vector2, Vector2)> _lines = new LinkedList<(Vector2, Vector2)>();
     private LinkedList<Color> _colors = new LinkedList<Color>();
     private Color _mixedColor;
-    private Material _playerMaterial;
 
     void Start()
     {
-        _playerMaterial = InitialPlayer.GetComponent<Renderer>().sharedMaterial;
-        _mixedColor = _playerMaterial.color;
-        CurrentColorIndicator.GetComponent<UnityEngine.UI.Image>().color = _mixedColor;
+        PlayerMaterial = Instantiate(PlayerMaterial);
+        PlayerMaterial.name = "Player Material";
+    }
+
+    public void ResetColor()
+    {
+        Color initialColor = ChangeColor.Colors[(int) InitialColor];
+        _mixedColor = initialColor;
+        PlayerMaterial.color = initialColor;
+        CurrentColorIndicator.GetComponent<UnityEngine.UI.Image>().color = initialColor;
     }
 
     public static bool CompareWithoutAlpha(Color c1, Color c2)
@@ -41,7 +47,7 @@ public class ColorMixing : MonoBehaviour
 
     void ChangePlayersColor(Color newColor)
     {
-        _playerMaterial.color = newColor;
+        PlayerMaterial.color = newColor;
     }
 
     public void PointerClick(GameObject sender)

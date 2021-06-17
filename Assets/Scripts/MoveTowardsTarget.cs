@@ -70,15 +70,9 @@ public class MoveTowardsTarget : MonoBehaviour
             // fight with target
             if (ShouldDestroy)
             {
-                RemoveCharacter(gameObject, _thisTeam);
-                RemoveCharacter(Target, _otherTeam);
+                Fight.RemoveCharacter(Target, _otherTeam);
+                Fight.RemoveCharacter(gameObject, _thisTeam);
             }
         }
-    }
-
-    private void RemoveCharacter(GameObject character, LinkedList<GameObject> team)
-    {
-        team.Remove(character);
-        Destroy(character);
     }
 }

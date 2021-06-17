@@ -7,11 +7,14 @@ public class GatherFreeCrowd : MonoBehaviour
 
     public GameObject PlayerPrefab;
 
+    [SerializeField]
     private Fight _fight;
 
-    public void Construct(Fight fight)
+    private LevelManager _levelManager;
+
+    public void Construct(LevelManager levelManager)
     {
-        _fight = fight;
+        _levelManager = levelManager;
     }
 
     void OnTriggerEnter(Collider collider)
@@ -24,6 +27,9 @@ public class GatherFreeCrowd : MonoBehaviour
 
         // create new player
         GameObject newPlayer = Instantiate(PlayerPrefab, freeCrowd.transform.position, freeCrowd.transform.rotation);
+        newPlayer.name = PlayerPrefab.name;
+        newPlayer.transform.parent = _levelManager.LevelObject.transform;
+        newPlayer.GetComponent<GatherFreeCrowd>()._levelManager = _levelManager;
         Destroy(freeCrowd);
         _fight.Players.AddLast(newPlayer);
     }
