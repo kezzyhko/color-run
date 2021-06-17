@@ -1877,7 +1877,8 @@ MonoBehaviour:
   EndLevelStatusText: {fileID: 158222470}
   EndLevelButtonText: {fileID: 1337993085}
   Levels:
-  - {fileID: 2446149463931324179, guid: 85262b7bb13496c4d88c82e24e42dfe4, type: 3}
+  - {fileID: 569218491424875239, guid: f09e4dd1c02aa3047adb0c76eb771422, type: 3}
+  - {fileID: 569218491424875239, guid: f09e4dd1c02aa3047adb0c76eb771422, type: 3}
 --- !u!114 &1877194002
 MonoBehaviour:
   m_ObjectHideFlags: 0
