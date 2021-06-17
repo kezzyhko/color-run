@@ -17,7 +17,7 @@ public class LevelManager : MonoBehaviour
     private void Start()
     {
         _levelNumber = 1; // TODO: save/load progress
-        LoadLevel();
+        LoadLevelButton();
     }
 
     private ColorMixing _colorMixing;
@@ -32,8 +32,16 @@ public class LevelManager : MonoBehaviour
         if (isWin)
         {
             _levelNumber++;
-            EndLevelStatusText.text = "Level Complete!";
-            EndLevelButtonText.text = "Next";
+            if (_levelNumber > Levels.Length)
+            {
+                EndLevelStatusText.text = "All Levels Complete!";
+                EndLevelButtonText.text = "Start from the beginning";
+            }
+            else
+            {
+                EndLevelStatusText.text = "Level Complete!";
+                EndLevelButtonText.text = "Next";
+            }
         }
         else
         {
@@ -43,8 +51,15 @@ public class LevelManager : MonoBehaviour
         EndLevelScreen.SetActive(true);
     }
 
-    public void LoadLevel()
+    public void LoadLevelButton()
     {
+        // check if we need to start over
+        if (_levelNumber > Levels.Length)
+        {
+            _levelNumber = 1;
+        }
+
+        // create new level
         Destroy(LevelObject);
         LevelObject = Instantiate(Levels[_levelNumber - 1]);
         LevelObject.name = "Level";
