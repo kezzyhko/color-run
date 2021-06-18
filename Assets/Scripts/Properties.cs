@@ -8,7 +8,7 @@ public class Properties : MonoBehaviour
     public enum Type
     {
         Player,
-        FreeCrowd,
+        Free,
         Enemy,
         Obstacle,
     };

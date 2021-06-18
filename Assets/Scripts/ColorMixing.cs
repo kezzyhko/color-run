@@ -7,10 +7,9 @@ public class ColorMixing : MonoBehaviour
 {
 
     public GameObject CurrentColorIndicator;
-    public GameObject InitialPlayer;
-    public LinkedList<GameObject> Players = new LinkedList<GameObject>();
-
     public float LineThickness = 8.0f;
+    public Material PlayerMaterial;
+    public ChangeColor.AcceptableColor InitialColor = ChangeColor.AcceptableColor.Black;
 
     private bool _isSelectingInProcess = false;
     private Vector2 _startLinePosition;
@@ -20,9 +19,16 @@ public class ColorMixing : MonoBehaviour
 
     void Start()
     {
-        Players.AddLast(InitialPlayer);
-        _mixedColor = InitialPlayer.GetComponent<Renderer>().material.color;
-        CurrentColorIndicator.GetComponent<UnityEngine.UI.Image>().color = _mixedColor;
+        PlayerMaterial = Instantiate(PlayerMaterial);
+        PlayerMaterial.name = "Player Material";
+    }
+
+    public void ResetColor()
+    {
+        Color initialColor = ChangeColor.Colors[(int) InitialColor];
+        _mixedColor = initialColor;
+        PlayerMaterial.color = initialColor;
+        CurrentColorIndicator.GetComponent<UnityEngine.UI.Image>().color = initialColor;
     }
 
     public static bool CompareWithoutAlpha(Color c1, Color c2)
@@ -41,14 +47,12 @@ public class ColorMixing : MonoBehaviour
 
     void ChangePlayersColor(Color newColor)
     {
-        foreach (GameObject player in Players)
-        {
-            player.GetComponent<Renderer>().material.color = newColor;
-        }
+        PlayerMaterial.color = newColor;
     }
 
     public void PointerClick(GameObject sender)
     {
+        if (_isSelectingInProcess) return;
         Color newColor = sender.GetComponent<UnityEngine.UI.Image>().color;
         CurrentColorIndicator.GetComponent<UnityEngine.UI.Image>().color = newColor;
         ChangePlayersColor(newColor);

@@ -5,31 +5,33 @@ using UnityEngine;
 public class GatherFreeCrowd : MonoBehaviour
 {
 
-    public ColorMixing ColorMixing;
+    public GameObject PlayerPrefab;
+
+    [SerializeField]
+    private Fight _fight;
+
+    private LevelManager _levelManager;
+
+    public void Construct(LevelManager levelManager)
+    {
+        _levelManager = levelManager;
+    }
 
     void OnTriggerEnter(Collider collider)
     {
         // get info
-        GameObject newPlayer = collider.gameObject;
-        Properties props = newPlayer.GetComponent<Properties>();
-        if (props == null || props.ObjectType != Properties.Type.FreeCrowd) return;
+        GameObject freeCrowd = collider.gameObject;
+        Properties props = freeCrowd.GetComponent<Properties>();
+        if (props == null || props.ObjectType != Properties.Type.Free) return;
+        collider.enabled = false;
 
-        // change team
-        props.ObjectType = Properties.Type.Player;
-        ColorMixing.Players.AddLast(newPlayer);
-
-        // change color
-        Color playerColor = gameObject.GetComponent<Renderer>().material.color;
-        newPlayer.GetComponent<Renderer>().material.color = playerColor;
-
-        // add necessary scripts
-        newPlayer.AddComponent<MoveForward>();
-        newPlayer.AddComponent<GatherFreeCrowd>();
-        newPlayer.GetComponent<GatherFreeCrowd>().ColorMixing = ColorMixing;
-        newPlayer.AddComponent<ObstacleCollision>();
-        newPlayer.GetComponent<ObstacleCollision>().ColorMixing = ColorMixing;
-        newPlayer.AddComponent<Rigidbody>();
-        newPlayer.GetComponent<Rigidbody>().isKinematic = true;
+        // create new player
+        GameObject newPlayer = Instantiate(PlayerPrefab, freeCrowd.transform.position, freeCrowd.transform.rotation);
+        newPlayer.name = PlayerPrefab.name;
+        newPlayer.transform.parent = _levelManager.LevelObject.transform;
+        newPlayer.GetComponent<GatherFreeCrowd>()._levelManager = _levelManager;
+        Destroy(freeCrowd);
+        _fight.Players.AddLast(newPlayer);
     }
 
 }
