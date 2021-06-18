@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using ColorUtils;
 
 public class ObstacleCollision : MonoBehaviour
 {
@@ -10,21 +11,18 @@ public class ObstacleCollision : MonoBehaviour
 
     void OnTriggerEnter(Collider collider)
     {
-        // get info
         GameObject obstacle = collider.gameObject;
         Properties props = obstacle.GetComponent<Properties>();
         if (props == null || props.ObjectType != Properties.Type.Obstacle) return;
 
-        Color playerColor = GetComponent<Renderer>().sharedMaterial.color;
-        Color obstacleColor = obstacle.GetComponent<Renderer>().sharedMaterial.color;
-        if (ColorMixing.CompareWithoutAlpha(playerColor, obstacleColor))
+        Color playerColor = ColorHelper.GetObjectColor(gameObject);
+        Color obstacleColor = ColorHelper.GetObjectColor(obstacle);
+        if (ColorHelper.CompareColorsWithoutAlpha(playerColor, obstacleColor))
         {
-            // player matched the colors, destroy obstacle
             Destroy(obstacle);
         }
         else
         {
-            // player didn't match the colors, destroy player
             _fight.RemoveCharacter(gameObject, _fight.Players);
         }
     }
