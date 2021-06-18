@@ -75,6 +75,6 @@ public class LevelManager : MonoBehaviour
 
         // fix camera
         Camera.main.transform.position = player.transform.position + new Vector3(0, 7.2f, -5);
-        Camera.main.gameObject.AddComponent<MoveForward>();
+        Camera.main.gameObject.AddComponent<Movement.MoveForward>();
     }
 }

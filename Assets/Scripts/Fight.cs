@@ -36,9 +36,9 @@ public class Fight : MonoBehaviour
         // stop moving forward
         foreach (GameObject player in Players)
         {
-            Destroy(player.GetComponent<MoveForward>());
+            Destroy(player.GetComponent<Movement.MoveForward>());
         }
-        Destroy(Camera.main.GetComponent<MoveForward>());
+        Destroy(Camera.main.GetComponent<Movement.MoveForward>());
 
         // add fighting logic
         AddScript(Players, true);
@@ -68,7 +68,7 @@ public class Fight : MonoBehaviour
         if (team.Count == 0)
         {
             _isFightFinished = true;
-            Destroy(Camera.main.GetComponent<MoveForward>()); // stop moving camera
+            Destroy(Camera.main.GetComponent<Movement.MoveForward>()); // stop moving camera
             _levelManager.EndLevel(team == Enemies); // show GUI
         }
     }
