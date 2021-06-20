@@ -13,10 +13,12 @@ public class LevelManager : MonoBehaviour
 
     public GameObject LevelObject { get; private set; }
     private int _levelNumber;
+    private Vector3 _initialCameraPosition;
 
     private void Start()
     {
         _levelNumber = 1; // TODO: save/load progress
+        _initialCameraPosition = Camera.main.transform.position;
         LoadLevelButton();
     }
 
@@ -74,7 +76,7 @@ public class LevelManager : MonoBehaviour
         player.GetComponent<Renderer>().sharedMaterial = _colorMixing.PlayerMaterial;
 
         // fix camera
-        Camera.main.transform.position = player.transform.position + new Vector3(0, 7.2f, -5);
+        Camera.main.transform.position = _initialCameraPosition;
         Camera.main.gameObject.AddComponent<Movement.MoveForward>();
     }
 }
