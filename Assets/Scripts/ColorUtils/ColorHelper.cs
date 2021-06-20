@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 namespace ColorUtils
 {
@@ -50,12 +51,12 @@ namespace ColorUtils
 
         public static void SetUIColor(GameObject obj, Color color)
         {
-            obj.GetComponent<UnityEngine.UI.Image>().color = color;
+            obj.GetComponent<Image>().color = color;
         }
 
         public static Color GetUIColor(GameObject obj)
         {
-            return obj.GetComponent<UnityEngine.UI.Image>().color;
+            return obj.GetComponent<Image>().color;
         }
     }
 }

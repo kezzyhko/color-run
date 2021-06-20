@@ -2,13 +2,14 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using Mechanics.ColorMixing;
+using UnityEngine.UI;
 
 public class LevelManager : MonoBehaviour
 {
 
     public GameObject EndLevelScreen;
-    public UnityEngine.UI.Text EndLevelStatusText;
-    public UnityEngine.UI.Text EndLevelButtonText;
+    public Text EndLevelStatusText;
+    public Text EndLevelButtonText;
 
     public GameObject[] Levels;
 
