@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-namespace Mechanics
+namespace Mechanics.Collisions
 {
     public class GatherFreeCrowd : MonoBehaviour
     {

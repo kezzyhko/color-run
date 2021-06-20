@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using ColorUtils;
 
-namespace Mechanics
+namespace Mechanics.Collisions
 {
     public class ObstacleCollision : MonoBehaviour
     {
