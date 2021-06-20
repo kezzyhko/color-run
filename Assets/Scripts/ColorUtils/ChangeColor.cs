@@ -8,14 +8,18 @@ namespace ColorUtils
     {
 
         public ColorHelper.AcceptableColor ColorName;
-        public bool DestroyWhenFinished = true;
+        public GameObject[] ObjectsToRecolor;
 
         void Start()
         {
-            ColorHelper.SetObjectColor(gameObject, ColorHelper.EnumToColor(ColorName));
-            if (DestroyWhenFinished)
+            if (ObjectsToRecolor == null || ObjectsToRecolor.Length == 0)
             {
-                Destroy(this);
+                ObjectsToRecolor = new GameObject[] { gameObject };
+            }
+
+            foreach (GameObject obj in ObjectsToRecolor)
+            {
+                ColorHelper.SetObjectColor(obj, ColorHelper.EnumToColor(ColorName));
             }
         }
 
