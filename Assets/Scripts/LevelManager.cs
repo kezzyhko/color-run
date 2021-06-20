@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Mechanics.ColorMixing;
 
 public class LevelManager : MonoBehaviour
 {
@@ -22,9 +23,9 @@ public class LevelManager : MonoBehaviour
         LoadLevelButton();
     }
 
-    private ColorMixing _colorMixing;
+    private ColorMixingManager _colorMixing;
 
-    public void Construct(ColorMixing colorMixing)
+    public void Construct(ColorMixingManager colorMixing)
     {
         _colorMixing = colorMixing;
     }
