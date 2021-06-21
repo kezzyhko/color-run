@@ -31,18 +31,15 @@ namespace Mechanics.Fight
 
         void OnTriggerEnter(Collider collider)
         {
-            // execute only once
             if (_isFightStarted) return;
             _isFightStarted = true;
 
-            // stop moving forward
             foreach (GameObject player in Players)
             {
                 Destroy(player.GetComponent<Movement.MoveForward>());
             }
             Destroy(Camera.main.GetComponent<Movement.MoveForward>());
 
-            // add fighting logic
             AddScript(Players, shouldDestroy: true);
             AddScript(Enemies, shouldDestroy: false);
         }
@@ -59,10 +56,8 @@ namespace Mechanics.Fight
 
         public void RemoveCharacter(GameObject character, LinkedList<GameObject> team)
         {
-            // no removing after fight finished
             if (_isFightFinished) return;
 
-            // remove character
             team.Remove(character);
             Destroy(character);
 
@@ -70,8 +65,8 @@ namespace Mechanics.Fight
             if (team.Count == 0)
             {
                 _isFightFinished = true;
-                Destroy(Camera.main.GetComponent<Movement.MoveForward>()); // stop moving camera
-                _levelManager.EndLevel(isWin: team == Enemies); // show GUI
+                Destroy(Camera.main.GetComponent<Movement.MoveForward>());
+                _levelManager.EndLevel(isWin: team == Enemies);
             }
         }
     }
