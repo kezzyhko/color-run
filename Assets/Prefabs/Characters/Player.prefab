@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _dependencySource: 30
-  _destroyWhenFinished: 1
+  _destroyWhenFinished: 0
   UseBakedData: 1
 --- !u!114 &1494339741
 MonoBehaviour:

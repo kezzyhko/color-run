@@ -154,15 +154,15 @@ MonoBehaviour:
   m_GameObject: {fileID: 9146854159577144171}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b713bb7925494db4ea5bf544173bd048, type: 3}
+  m_Script: {fileID: 11500000, guid: d15dbf7e81df1684996cdeca797eaa69, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _blades:
+  ColorName: 6
+  ObjectsToRecolor:
   - {fileID: 9146854159589395804}
   - {fileID: 8828996554761664215}
   - {fileID: 2180440707023713010}
   - {fileID: 2594282382155308727}
-  ColorName: 6
 --- !u!1001 &2060613049765688625
 PrefabInstance:
   m_ObjectHideFlags: 0

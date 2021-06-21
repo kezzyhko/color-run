@@ -1,28 +1,32 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Mechanics.ColorMixing;
+using UnityEngine.UI;
 
 public class LevelManager : MonoBehaviour
 {
 
     public GameObject EndLevelScreen;
-    public UnityEngine.UI.Text EndLevelStatusText;
-    public UnityEngine.UI.Text EndLevelButtonText;
+    public Text EndLevelStatusText;
+    public Text EndLevelButtonText;
 
     public GameObject[] Levels;
 
     public GameObject LevelObject { get; private set; }
     private int _levelNumber;
+    private Vector3 _initialCameraPosition;
 
     private void Start()
     {
         _levelNumber = 1; // TODO: save/load progress
+        _initialCameraPosition = Camera.main.transform.position;
         LoadLevelButton();
     }
 
-    private ColorMixing _colorMixing;
+    private ColorMixingManager _colorMixing;
 
-    public void Construct(ColorMixing colorMixing)
+    public void Construct(ColorMixingManager colorMixing)
     {
         _colorMixing = colorMixing;
     }
@@ -74,7 +78,7 @@ public class LevelManager : MonoBehaviour
         player.GetComponent<Renderer>().sharedMaterial = _colorMixing.PlayerMaterial;
 
         // fix camera
-        Camera.main.transform.position = player.transform.position + new Vector3(0, 7.2f, -5);
-        Camera.main.gameObject.AddComponent<MoveForward>();
+        Camera.main.transform.position = _initialCameraPosition;
+        Camera.main.gameObject.AddComponent<Movement.MoveForward>();
     }
 }
