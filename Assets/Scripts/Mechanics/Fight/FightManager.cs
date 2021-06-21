@@ -43,8 +43,8 @@ namespace Mechanics.Fight
             Destroy(Camera.main.GetComponent<Movement.MoveForward>());
 
             // add fighting logic
-            AddScript(Players, true);
-            AddScript(Enemies, false);
+            AddScript(Players, shouldDestroy: true);
+            AddScript(Enemies, shouldDestroy: false);
         }
 
         private void AddScript(LinkedList<GameObject> team, bool shouldDestroy)
@@ -71,7 +71,7 @@ namespace Mechanics.Fight
             {
                 _isFightFinished = true;
                 Destroy(Camera.main.GetComponent<Movement.MoveForward>()); // stop moving camera
-                _levelManager.EndLevel(team == Enemies); // show GUI
+                _levelManager.EndLevel(isWin: team == Enemies); // show GUI
             }
         }
     }
