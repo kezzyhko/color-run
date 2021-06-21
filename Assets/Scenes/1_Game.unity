@@ -910,8 +910,6 @@ MonoBehaviour:
   EndLevelButtonText: {fileID: 1337993085}
   Levels:
   - {fileID: 2444900924343636700, guid: 09c358a2cdf678d468b400e4acd24b0b, type: 3}
-  - {fileID: 569218491424875239, guid: f09e4dd1c02aa3047adb0c76eb771422, type: 3}
-  - {fileID: 569218491424875239, guid: f09e4dd1c02aa3047adb0c76eb771422, type: 3}
 --- !u!4 &876017449
 Transform:
   m_ObjectHideFlags: 0
