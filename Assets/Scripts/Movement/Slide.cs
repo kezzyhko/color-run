@@ -14,7 +14,7 @@ namespace Movement
         {
             if (Mathf.Abs(transform.position.x) - Amplitude / 2 > 0)
             {
-                Speed = -Speed;
+                Speed = -Mathf.Sign(transform.position.x) * Mathf.Abs(Speed);
             }
             transform.position += new Vector3(Time.deltaTime * Speed, 0, 0);
         }
