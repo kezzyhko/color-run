@@ -88,8 +88,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2278689f0915edc41b40c432f09f011e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  InitialPlayer: {fileID: 4494431308886711361}
-  EnemyCrowd: {fileID: 3159072755622260321}
+  LevelInfo: {fileID: 2733935629609911599}
 --- !u!114 &3159072755619835360
 MonoBehaviour:
   m_ObjectHideFlags: 0

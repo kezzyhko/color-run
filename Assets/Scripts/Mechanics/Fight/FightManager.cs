@@ -7,8 +7,7 @@ namespace Mechanics.Fight
     public class FightManager : MonoBehaviour
     {
 
-        public GameObject InitialPlayer;
-        public GameObject EnemyCrowd;
+        public LevelInfo LevelInfo;
 
         public LinkedList<GameObject> Players = new LinkedList<GameObject>();
         public LinkedList<GameObject> Enemies = new LinkedList<GameObject>();
@@ -25,8 +24,8 @@ namespace Mechanics.Fight
 
         private void Start()
         {
-            Players.AddLast(InitialPlayer);
-            foreach (Transform enemyTransform in EnemyCrowd.transform)
+            Players.AddLast(LevelInfo.Player);
+            foreach (Transform enemyTransform in LevelInfo.EnemyCrowd.transform)
             {
                 Enemies.AddLast(enemyTransform.gameObject);
             }
