@@ -21,18 +21,19 @@ namespace Mechanics.Collisions
 
         void OnTriggerEnter(Collider collider)
         {
-            // get info
             GameObject freeCrowd = collider.gameObject;
             Properties props = freeCrowd.GetComponent<Properties>();
             if (props == null || props.ObjectType != Properties.Type.Free) return;
             collider.enabled = false;
 
-            // create new player
-            GameObject newPlayer = Instantiate(PlayerPrefab, freeCrowd.transform.position, freeCrowd.transform.rotation);
-            newPlayer.name = PlayerPrefab.name;
-            newPlayer.transform.parent = _levelManager.LevelObject.transform;
-            newPlayer.GetComponent<GatherFreeCrowd>()._levelManager = _levelManager;
+            CreateNewPlayer(freeCrowd.transform.position, freeCrowd.transform.rotation);
             Destroy(freeCrowd);
+        }
+
+        private void CreateNewPlayer(Vector3 position, Quaternion rotation)
+        {
+            GameObject newPlayer = Instantiate(PlayerPrefab, position, rotation, _levelManager.LevelObject.transform);
+            newPlayer.name = PlayerPrefab.name;
             _fight.Players.AddLast(newPlayer);
         }
 
