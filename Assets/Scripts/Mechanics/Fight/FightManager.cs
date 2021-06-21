@@ -8,10 +8,10 @@ namespace Mechanics.Fight
     {
 
         public GameObject InitialPlayer;
-        public GameObject[] InitialEnemies;
+        public GameObject EnemyCrowd;
 
         public LinkedList<GameObject> Players = new LinkedList<GameObject>();
-        public LinkedList<GameObject> Enemies;
+        public LinkedList<GameObject> Enemies = new LinkedList<GameObject>();
 
         private bool _isFightStarted;
         private bool _isFightFinished;
@@ -26,7 +26,10 @@ namespace Mechanics.Fight
         private void Start()
         {
             Players.AddLast(InitialPlayer);
-            Enemies = new LinkedList<GameObject>(InitialEnemies);
+            foreach (Transform enemyTransform in EnemyCrowd.transform)
+            {
+                Enemies.AddLast(enemyTransform.gameObject);
+            }
         }
 
         void OnTriggerEnter(Collider collider)
