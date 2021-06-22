@@ -10,11 +10,24 @@ namespace Movement
         public float Speed = 2.0f;
         public float Amplitude = 5.0f;
 
+        private float _initialPosition;
+
+        private void OnValidate()
+        {
+            Amplitude = Mathf.Max(Amplitude, float.Epsilon);
+        }
+
+        private void Start()
+        {
+            _initialPosition = transform.position.x;
+        }
+
         void Update()
         {
-            if (Mathf.Abs(transform.position.x) - Amplitude / 2 > 0)
+            float posDiff = _initialPosition - transform.position.x;
+            if (Mathf.Abs(posDiff) > Amplitude / 2)
             {
-                Speed = -Speed;
+                Speed = Mathf.Sign(posDiff) * Mathf.Abs(Speed);
             }
             transform.position += new Vector3(Time.deltaTime * Speed, 0, 0);
         }
