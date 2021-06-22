@@ -41,12 +41,12 @@ namespace ColorUtils
 
         public static void SetObjectColor(GameObject obj, Color color)
         {
-            obj.GetComponent<Renderer>().material.color = color;
+            obj.GetComponent<Properties>().Renderer.material.color = color;
         }
 
         public static Color GetObjectColor(GameObject obj)
         {
-            return obj.GetComponent<Renderer>().sharedMaterial.color;
+            return obj.GetComponent<Properties>().Renderer.sharedMaterial.color;
         }
 
         public static void SetUIColor(GameObject obj, Color color)

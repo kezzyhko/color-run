@@ -110,6 +110,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ObjectType: 3
+  Renderer: {fileID: 5921312074675754233}
 --- !u!114 &5921312074675754236
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -123,3 +124,4 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ColorName: 6
+  ObjectsToRecolor: []

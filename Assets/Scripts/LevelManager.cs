@@ -75,7 +75,7 @@ public class LevelManager : MonoBehaviour
 
         // setup player's material
         _colorMixing.ResetColor();
-        player.GetComponent<Renderer>().sharedMaterial = _colorMixing.PlayerMaterial;
+        player.GetComponent<Properties>().Renderer.sharedMaterial = _colorMixing.PlayerMaterial;
 
         // fix camera
         Camera.main.transform.position = _initialCameraPosition;

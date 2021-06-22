@@ -14,5 +14,14 @@ public class Properties : MonoBehaviour
     };
 
     public Type ObjectType;
+    public Renderer Renderer;
+
+    private void OnValidate()
+    {
+        if (Renderer == null)
+        {
+            Renderer = GetComponent<Renderer>();
+        }
+    }
 
 }
