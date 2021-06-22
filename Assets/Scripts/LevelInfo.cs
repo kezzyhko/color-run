@@ -72,6 +72,7 @@ public class LevelInfo : MonoBehaviour
                 0,
                 rowNumber * RowOffset
             );
+            enemy.transform.rotation = Quaternion.Euler(0, 180, 0);
         }
     }
 }
