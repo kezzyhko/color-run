@@ -1,75 +1,203 @@
 fileFormatVersion: 2
 guid: cb7c39ae0485b41e8bd59ad2781be0a3
 ModelImporter:
-  serializedVersion: 23
-  fileIDToRecycleName:
-    100000: Cartoonish.069
-    100002: foot.L
-    100004: foot.R
-    100006: forearm.L
-    100008: forearm.R
-    100010: hand.L
-    100012: hand.L.002
-    100014: hand.L.005
-    100016: hand.L.009
-    100018: hand.R
-    100020: hand.R.002
-    100022: hand.R.005
-    100024: hand.R.009
-    100026: metarig.071
-    100028: shin.L
-    100030: shin.R
-    100032: shoulder.L
-    100034: shoulder.R
-    100036: spine
-    100038: spine.001
-    100040: spine.003
-    100042: spine.005
-    100044: spine.006
-    100046: //RootNode
-    100048: thigh.L
-    100050: thigh.R
-    100052: toe.L
-    100054: toe.R
-    100056: upper_arm.L
-    100058: upper_arm.R
-    400000: Cartoonish.069
-    400002: foot.L
-    400004: foot.R
-    400006: forearm.L
-    400008: forearm.R
-    400010: hand.L
-    400012: hand.L.002
-    400014: hand.L.005
-    400016: hand.L.009
-    400018: hand.R
-    400020: hand.R.002
-    400022: hand.R.005
-    400024: hand.R.009
-    400026: metarig.071
-    400028: shin.L
-    400030: shin.R
-    400032: shoulder.L
-    400034: shoulder.R
-    400036: spine
-    400038: spine.001
-    400040: spine.003
-    400042: spine.005
-    400044: spine.006
-    400046: //RootNode
-    400048: thigh.L
-    400050: thigh.R
-    400052: toe.L
-    400054: toe.R
-    400056: upper_arm.L
-    400058: upper_arm.R
-    2100000: No Name
-    4300000: Cartoonish.069
-    9500000: //RootNode
-    13700000: Cartoonish.069
+  serializedVersion: 20200
+  internalIDToNameTable:
+  - first:
+      1: 100000
+    second: Cartoonish.069
+  - first:
+      1: 100002
+    second: foot.L
+  - first:
+      1: 100004
+    second: foot.R
+  - first:
+      1: 100006
+    second: forearm.L
+  - first:
+      1: 100008
+    second: forearm.R
+  - first:
+      1: 100010
+    second: hand.L
+  - first:
+      1: 100012
+    second: hand.L.002
+  - first:
+      1: 100014
+    second: hand.L.005
+  - first:
+      1: 100016
+    second: hand.L.009
+  - first:
+      1: 100018
+    second: hand.R
+  - first:
+      1: 100020
+    second: hand.R.002
+  - first:
+      1: 100022
+    second: hand.R.005
+  - first:
+      1: 100024
+    second: hand.R.009
+  - first:
+      1: 100026
+    second: metarig.071
+  - first:
+      1: 100028
+    second: shin.L
+  - first:
+      1: 100030
+    second: shin.R
+  - first:
+      1: 100032
+    second: shoulder.L
+  - first:
+      1: 100034
+    second: shoulder.R
+  - first:
+      1: 100036
+    second: spine
+  - first:
+      1: 100038
+    second: spine.001
+  - first:
+      1: 100040
+    second: spine.003
+  - first:
+      1: 100042
+    second: spine.005
+  - first:
+      1: 100044
+    second: spine.006
+  - first:
+      1: 100046
+    second: //RootNode
+  - first:
+      1: 100048
+    second: thigh.L
+  - first:
+      1: 100050
+    second: thigh.R
+  - first:
+      1: 100052
+    second: toe.L
+  - first:
+      1: 100054
+    second: toe.R
+  - first:
+      1: 100056
+    second: upper_arm.L
+  - first:
+      1: 100058
+    second: upper_arm.R
+  - first:
+      4: 400000
+    second: Cartoonish.069
+  - first:
+      4: 400002
+    second: foot.L
+  - first:
+      4: 400004
+    second: foot.R
+  - first:
+      4: 400006
+    second: forearm.L
+  - first:
+      4: 400008
+    second: forearm.R
+  - first:
+      4: 400010
+    second: hand.L
+  - first:
+      4: 400012
+    second: hand.L.002
+  - first:
+      4: 400014
+    second: hand.L.005
+  - first:
+      4: 400016
+    second: hand.L.009
+  - first:
+      4: 400018
+    second: hand.R
+  - first:
+      4: 400020
+    second: hand.R.002
+  - first:
+      4: 400022
+    second: hand.R.005
+  - first:
+      4: 400024
+    second: hand.R.009
+  - first:
+      4: 400026
+    second: metarig.071
+  - first:
+      4: 400028
+    second: shin.L
+  - first:
+      4: 400030
+    second: shin.R
+  - first:
+      4: 400032
+    second: shoulder.L
+  - first:
+      4: 400034
+    second: shoulder.R
+  - first:
+      4: 400036
+    second: spine
+  - first:
+      4: 400038
+    second: spine.001
+  - first:
+      4: 400040
+    second: spine.003
+  - first:
+      4: 400042
+    second: spine.005
+  - first:
+      4: 400044
+    second: spine.006
+  - first:
+      4: 400046
+    second: //RootNode
+  - first:
+      4: 400048
+    second: thigh.L
+  - first:
+      4: 400050
+    second: thigh.R
+  - first:
+      4: 400052
+    second: toe.L
+  - first:
+      4: 400054
+    second: toe.R
+  - first:
+      4: 400056
+    second: upper_arm.L
+  - first:
+      4: 400058
+    second: upper_arm.R
+  - first:
+      21: 2100000
+    second: No Name
+  - first:
+      43: 4300000
+    second: Cartoonish.069
+  - first:
+      95: 9500000
+    second: //RootNode
+  - first:
+      137: 13700000
+    second: Cartoonish.069
   externalObjects: {}
   materials:
-    importMaterials: 0
+    materialImportMode: 0
     materialName: 0
     materialSearch: 1
     materialLocation: 1
@@ -87,7 +215,7 @@ ModelImporter:
     animationDoRetargetingWarnings: 0
     importAnimatedCustomProperties: 0
     importConstraints: 0
-    animationCompression: 1
+    animationCompression: 3
     animationRotationError: 0.5
     animationPositionError: 0.5
     animationScaleError: 0.5
@@ -102,25 +230,32 @@ ModelImporter:
     meshCompression: 0
     addColliders: 0
     useSRGBMaterialColor: 1
+    sortHierarchyByName: 1
     importVisibility: 0
     importBlendShapes: 0
     importCameras: 0
     importLights: 0
+    fileIdsGeneration: 1
     swapUVChannels: 0
     generateSecondaryUV: 0
     useFileUnits: 1
-    optimizeMeshForGPU: 1
     keepQuads: 0
     weldVertices: 1
+    bakeAxisConversion: 0
     preserveHierarchy: 0
+    skinWeightsMode: 0
+    maxBonesPerVertex: 4
+    minBoneWeight: 0.001
+    meshOptimizationFlags: -1
     indexFormat: 0
     secondaryUVAngleDistortion: 8
     secondaryUVAreaDistortion: 15.000001
     secondaryUVHardAngle: 88
+    secondaryUVMarginMethod: 0
+    secondaryUVMinLightmapResolution: 40
+    secondaryUVMinObjectScale: 1
     secondaryUVPackMargin: 4
     useFileScale: 1
-    previousCalculatedGlobalScale: 0.1
-    hasPreviousCalculatedGlobalScale: 1
   tangentSpace:
     normalSmoothAngle: 60
     normalImportMode: 0
@@ -129,10 +264,10 @@ ModelImporter:
     legacyComputeAllNormalsFromSmoothingGroupsWhenMeshHasBlendShapes: 0
     blendShapeNormalImportMode: 1
     normalSmoothingSource: 0
+  referencedClips: []
   importAnimation: 1
-  copyAvatar: 0
   humanDescription:
-    serializedVersion: 2
+    serializedVersion: 3
     human: []
     skeleton: []
     armTwist: 0.5
@@ -142,13 +277,17 @@ ModelImporter:
     armStretch: 0.05
     legStretch: 0.05
     feetSpacing: 0
+    globalScale: 0.1
     rootMotionBoneName: 
     hasTranslationDoF: 0
-    hasExtraRoot: 0
+    hasExtraRoot: 1
     skeletonHasParents: 1
   lastHumanDescriptionAvatarSource: {instanceID: 0}
-  animationType: 2
+  autoGenerateAvatarMappingIfUnspecified: 1
+  animationType: 3
   humanoidOversampling: 1
+  avatarSetup: 1
+  addHumanoidExtraRootOnlyWhenUsingAvatar: 0
   additionalBone: 0
   userData: 
   assetBundleName: 
