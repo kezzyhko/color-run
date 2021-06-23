@@ -4,6 +4,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using Mechanics.ColorMixing;
 using Movement;
+using ColorUtils;
 
 public class LevelManager : MonoBehaviour
 {
@@ -76,7 +77,7 @@ public class LevelManager : MonoBehaviour
 
         // setup player's material
         _colorMixing.ResetColor();
-        player.GetComponent<Properties>().Renderer.sharedMaterial = _colorMixing.PlayerMaterial;
+        ColorHelper.SetObjectMaterial(player, _colorMixing.PlayerMaterial);
 
         // fix camera
         Camera.main.transform.position = _initialCameraPosition;

@@ -62,7 +62,8 @@ namespace Mechanics.Fight
             if (_isFightFinished) return;
 
             character.GetComponent<Properties>().Animator.SetBool("dead", true);
-            Destroy(character.GetComponent<MoveForward>());
+            character.GetComponent<MoveForward>().enabled = false;
+            character.GetComponent<Rigidbody>().detectCollisions = false;
 
             team.Remove(character);
             if (team.Count == 0)

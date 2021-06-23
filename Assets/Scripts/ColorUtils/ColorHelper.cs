@@ -39,6 +39,16 @@ namespace ColorUtils
             return c1.r == c2.r && c1.g == c2.g && c1.b == c2.b;
         }
 
+        public static Material GetObjectMaterial(GameObject obj)
+        {
+            return obj.GetComponent<Properties>().Renderer.sharedMaterial;
+        }
+
+        public static void SetObjectMaterial(GameObject obj, Material material)
+        {
+            obj.GetComponent<Properties>().Renderer.sharedMaterial = material;
+        }
+
         public static void SetObjectColor(GameObject obj, Color color)
         {
             obj.GetComponent<Properties>().Renderer.material.color = color;

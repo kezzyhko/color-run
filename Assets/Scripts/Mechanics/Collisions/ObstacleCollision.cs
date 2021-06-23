@@ -2,14 +2,19 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using ColorUtils;
+using Mechanics.Fight;
 
 namespace Mechanics.Collisions
 {
     public class ObstacleCollision : MonoBehaviour
     {
+        
+        private LevelInfo _levelInfo;
 
-        [SerializeField]
-        private Fight.FightManager _fight;
+        public void Construct(LevelInfo levelInfo)
+        {
+            _levelInfo = levelInfo;
+        }
 
         void OnTriggerEnter(Collider collider)
         {
@@ -24,7 +29,8 @@ namespace Mechanics.Collisions
             }
             else
             {
-                _fight.RemoveCharacter(gameObject, _fight.Players);
+                FightManager fight = _levelInfo.FightTrigger.GetComponent<FightManager>();
+                fight.RemoveCharacter(gameObject, fight.Players);
             }
         }
 

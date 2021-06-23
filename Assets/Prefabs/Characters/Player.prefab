@@ -27,7 +27,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b43fb0461d842ed4aa3a54873c02d740, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _fight: {fileID: 0}
 --- !u!114 &1494339742
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -40,8 +39,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6064d5105956a554988a6b913b93cfe1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  PlayerPrefab: {fileID: 1551536911099717812}
-  _fight: {fileID: 0}
 --- !u!114 &1494339744
 MonoBehaviour:
   m_ObjectHideFlags: 0

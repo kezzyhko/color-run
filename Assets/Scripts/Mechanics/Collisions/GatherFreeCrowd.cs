@@ -1,39 +1,52 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Movement;
+using ColorUtils;
+using Mechanics.Fight;
 
 namespace Mechanics.Collisions
 {
     public class GatherFreeCrowd : MonoBehaviour
     {
 
-        public GameObject PlayerPrefab;
+        private LinkedList<GameObject> _adjacentFreeCrowd = new LinkedList<GameObject>();
 
-        [SerializeField]
-        private Fight.FightManager _fight;
+        private LevelInfo _levelInfo;
 
-        private LevelManager _levelManager;
-
-        public void Construct(LevelManager levelManager)
+        public void Construct(LevelInfo levelInfo)
         {
-            _levelManager = levelManager;
+            _levelInfo = levelInfo;
         }
 
         void OnTriggerEnter(Collider collider)
         {
-            GameObject freeCrowd = collider.gameObject;
-            if (!Properties.DoesTypeMatch(freeCrowd, Properties.Type.Free)) return;
-            collider.enabled = false;
+            GameObject free = collider.gameObject;
+            if (!Properties.DoesTypeMatch(free, Properties.Type.Free)) return;
+            if (Properties.DoesTypeMatch(gameObject, Properties.Type.Free))
+            {
+                _adjacentFreeCrowd.AddLast(free);
+                return;
+            }
 
-            CreateNewPlayer(freeCrowd.transform.position, freeCrowd.transform.rotation);
-            Destroy(freeCrowd);
+            AddNewPlayer(free);
         }
 
-        private void CreateNewPlayer(Vector3 position, Quaternion rotation)
+        private void AddNewPlayer(GameObject newPlayer)
         {
-            GameObject newPlayer = Instantiate(PlayerPrefab, position, rotation, _levelManager.LevelObject.transform);
-            newPlayer.name = PlayerPrefab.name;
-            _fight.Players.AddLast(newPlayer);
+            newPlayer.GetComponent<Properties>().ObjectType = Properties.Type.Player;
+            newPlayer.GetComponent<MoveForward>().enabled = true;
+            ColorHelper.SetObjectMaterial(newPlayer, ColorHelper.GetObjectMaterial(gameObject));
+
+            FightManager fight = _levelInfo.FightTrigger.GetComponent<FightManager>();
+            fight.Players.AddLast(newPlayer);
+
+            LinkedList<GameObject> newAdjacentCrowd = newPlayer.GetComponent<GatherFreeCrowd>()._adjacentFreeCrowd;
+            foreach (GameObject adjacentFree in newAdjacentCrowd)
+            {
+                if (!Properties.DoesTypeMatch(adjacentFree, Properties.Type.Free)) continue;
+                AddNewPlayer(adjacentFree);
+            }
         }
 
     }
