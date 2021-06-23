@@ -59,28 +59,21 @@ public class LevelManager : MonoBehaviour
 
     public void LoadLevelButton()
     {
-        // check if we need to start over
         if (_levelNumber > Levels.Length)
         {
             _levelNumber = 1;
         }
 
-        // create new level
         Destroy(LevelObject);
         LevelObject = Instantiate(Levels[_levelNumber - 1]);
         LevelObject.name = "Level";
         EndLevelScreen.SetActive(false);
 
-        // get info
-        LevelInfo levelInfo = LevelObject.GetComponent<LevelInfo>();
-        GameObject player = levelInfo.Player;
-
-        // setup player's material
-        _colorMixing.ResetColor();
-        ColorHelper.SetObjectMaterial(player, _colorMixing.PlayerMaterial);
-
-        // fix camera
         Camera.main.transform.position = _initialCameraPosition;
         Camera.main.gameObject.AddComponent<MoveForward>();
+        _colorMixing.ResetColor();
+
+        LevelInfo levelInfo = LevelObject.GetComponent<LevelInfo>();
+        levelInfo.Player.GetComponent<CharacterManager>().MakePlayer();
     }
 }

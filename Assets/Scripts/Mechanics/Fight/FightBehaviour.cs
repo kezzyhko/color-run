@@ -72,8 +72,8 @@ namespace Mechanics.Fight
                 // fight with target
                 if (ShouldDestroy)
                 {
-                    Fight.RemoveCharacter(Target, _otherTeam);
-                    Fight.RemoveCharacter(gameObject, _thisTeam);
+                    Target.GetComponent<CharacterManager>().MakeDead();
+                    GetComponent<CharacterManager>().MakeDead();
                 }
             }
         }

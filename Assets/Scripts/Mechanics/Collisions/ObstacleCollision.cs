@@ -8,13 +8,6 @@ namespace Mechanics.Collisions
 {
     public class ObstacleCollision : MonoBehaviour
     {
-        
-        private LevelInfo _levelInfo;
-
-        public void Construct(LevelInfo levelInfo)
-        {
-            _levelInfo = levelInfo;
-        }
 
         void OnTriggerEnter(Collider collider)
         {
@@ -29,8 +22,7 @@ namespace Mechanics.Collisions
             }
             else
             {
-                FightManager fight = _levelInfo.FightTrigger.GetComponent<FightManager>();
-                fight.RemoveCharacter(gameObject, fight.Players);
+                GetComponent<CharacterManager>().MakeDead();
             }
         }
 

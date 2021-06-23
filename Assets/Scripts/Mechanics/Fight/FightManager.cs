@@ -14,18 +14,9 @@ namespace Mechanics.Fight
         public LinkedList<GameObject> Enemies = new LinkedList<GameObject>();
 
         private bool _isFightStarted;
-        private bool _isFightFinished;
-
-        private LevelManager _levelManager;
-
-        public void Construct(LevelManager levelManager)
-        {
-            _levelManager = levelManager;
-        }
 
         private void Start()
         {
-            Players.AddLast(LevelInfo.Player);
             foreach (Transform enemyTransform in LevelInfo.EnemyCrowd.transform)
             {
                 Enemies.AddLast(enemyTransform.gameObject);
@@ -57,21 +48,5 @@ namespace Mechanics.Fight
             }
         }
 
-        public void RemoveCharacter(GameObject character, LinkedList<GameObject> team)
-        {
-            if (_isFightFinished) return;
-
-            character.GetComponent<Properties>().Animator.SetBool("dead", true);
-            character.GetComponent<MoveForward>().enabled = false;
-            character.GetComponent<Rigidbody>().detectCollisions = false;
-
-            team.Remove(character);
-            if (team.Count == 0)
-            {
-                _isFightFinished = true;
-                Destroy(Camera.main.GetComponent<MoveForward>());
-                _levelManager.EndLevel(isWin: team == Enemies);
-            }
-        }
     }
 }
