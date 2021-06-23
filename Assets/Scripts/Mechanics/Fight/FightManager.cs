@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Movement;
 
 namespace Mechanics.Fight
 {
@@ -60,14 +61,14 @@ namespace Mechanics.Fight
         {
             if (_isFightFinished) return;
 
-            team.Remove(character);
-            Destroy(character);
+            character.GetComponent<Properties>().Animator.SetBool("dead", true);
+            Destroy(character.GetComponent<MoveForward>());
 
-            // check if fight is finished
+            team.Remove(character);
             if (team.Count == 0)
             {
                 _isFightFinished = true;
-                Destroy(Camera.main.GetComponent<Movement.MoveForward>());
+                Destroy(Camera.main.GetComponent<MoveForward>());
                 _levelManager.EndLevel(isWin: team == Enemies);
             }
         }

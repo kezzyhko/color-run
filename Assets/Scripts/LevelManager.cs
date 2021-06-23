@@ -1,8 +1,9 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using Mechanics.ColorMixing;
 using UnityEngine.UI;
+using Mechanics.ColorMixing;
+using Movement;
 
 public class LevelManager : MonoBehaviour
 {
@@ -79,6 +80,6 @@ public class LevelManager : MonoBehaviour
 
         // fix camera
         Camera.main.transform.position = _initialCameraPosition;
-        Camera.main.gameObject.AddComponent<Movement.MoveForward>();
+        Camera.main.gameObject.AddComponent<MoveForward>();
     }
 }
