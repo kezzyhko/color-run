@@ -27,7 +27,7 @@ namespace Movement
         private void RunningAnimation(bool isRunning)
         {
             Properties props = GetComponent<Properties>();
-            if (props == null || props.Animator == null) return;
+            if (props == null || props.Animator == null || props.Animator.runtimeAnimatorController == null) return;
             props.Animator.SetBool("running", isRunning);
         }
     }

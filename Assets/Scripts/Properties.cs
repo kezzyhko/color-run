@@ -37,10 +37,8 @@ public class Properties : MonoBehaviour
 
     private void Start()
     {
-        if (Animator != null)
-        {
-            Animator.SetFloat("offset", Random.Range(0.0f, 1.0f));
-        }
+        if (Animator == null || Animator.runtimeAnimatorController == null) return;
+        Animator.SetFloat("offset", Random.Range(0.0f, 1.0f));
     }
 
 }
