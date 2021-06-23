@@ -22,8 +22,7 @@ namespace Mechanics.Collisions
         void OnTriggerEnter(Collider collider)
         {
             GameObject freeCrowd = collider.gameObject;
-            Properties props = freeCrowd.GetComponent<Properties>();
-            if (props == null || props.ObjectType != Properties.Type.Free) return;
+            if (!Properties.DoesTypeMatch(freeCrowd, Properties.Type.Free)) return;
             collider.enabled = false;
 
             CreateNewPlayer(freeCrowd.transform.position, freeCrowd.transform.rotation);

@@ -21,7 +21,7 @@ namespace Mechanics.Fight
 
         private void Start()
         {
-            if (GetComponent<Properties>().ObjectType == Properties.Type.Player)
+            if (Properties.DoesTypeMatch(gameObject, Properties.Type.Player))
             {
                 _thisTeam = Fight.Players;
                 _otherTeam = Fight.Enemies;

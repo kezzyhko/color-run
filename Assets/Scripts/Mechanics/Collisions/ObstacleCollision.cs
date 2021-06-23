@@ -14,8 +14,7 @@ namespace Mechanics.Collisions
         void OnTriggerEnter(Collider collider)
         {
             GameObject obstacle = collider.gameObject;
-            Properties props = obstacle.GetComponent<Properties>();
-            if (props == null || props.ObjectType != Properties.Type.Obstacle) return;
+            if (!Properties.DoesTypeMatch(obstacle, Properties.Type.Obstacle)) return;
 
             Color playerColor = ColorHelper.GetObjectColor(gameObject);
             Color obstacleColor = ColorHelper.GetObjectColor(obstacle);
