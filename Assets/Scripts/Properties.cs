@@ -35,4 +35,12 @@ public class Properties : MonoBehaviour
         return props!= null && props.ObjectType == type;
     }
 
+    private void Start()
+    {
+        if (Animator != null)
+        {
+            Animator.SetFloat("offset", Random.Range(0.0f, 1.0f));
+        }
+    }
+
 }
