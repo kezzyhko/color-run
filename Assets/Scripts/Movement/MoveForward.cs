@@ -13,5 +13,22 @@ namespace Movement
         {
             transform.position += new Vector3(0, 0, Time.deltaTime * Speed);
         }
+
+        private void OnEnable()
+        {
+            RunningAnimation(true);
+        }
+
+        private void OnDisable()
+        {
+            RunningAnimation(false);
+        }
+
+        private void RunningAnimation(bool isRunning)
+        {
+            Properties props = GetComponent<Properties>();
+            if (props == null || props.Animator == null) return;
+            props.Animator.SetBool("running", isRunning);
+        }
     }
 }
