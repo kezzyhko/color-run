@@ -27,6 +27,8 @@ namespace Mechanics.Fight
 
         void Update()
         {
+            if (_characterManager.IsDead) return;
+
             if (_characterManager.IsCelebrating)
             {
                 _characterManager.RotateTowards(Vector3.back);
