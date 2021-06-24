@@ -1,11 +1,11 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using Movement;
-using ColorUtils;
 using Mechanics.Fight;
 using Mechanics.Collisions;
 using Mechanics.ColorMixing;
+using Movement;
+using ColorUtils;
 using LevelSystem;
 
 public class CharacterManager : MonoBehaviour

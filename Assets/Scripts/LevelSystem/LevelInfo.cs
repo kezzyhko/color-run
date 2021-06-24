@@ -1,7 +1,7 @@
-using Mechanics.Fight;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Mechanics.Fight;
 
 namespace LevelSystem
 {
