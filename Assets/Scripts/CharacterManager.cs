@@ -86,6 +86,7 @@ public class CharacterManager : MonoBehaviour
     {
         _animator.SetBool("dead", true);
         IsDead = true;
+        ColorHelper.SetObjectMaterial(gameObject, Instantiate(ColorHelper.GetObjectMaterial(gameObject)));
         GetComponent<Rigidbody>().detectCollisions = false;
         SetRunning(false);
 
