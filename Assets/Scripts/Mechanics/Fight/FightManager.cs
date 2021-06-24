@@ -7,26 +7,19 @@ namespace Mechanics.Fight
 {
     public class FightManager : MonoBehaviour
     {
-
-        public LevelInfo LevelInfo;
-
         public LinkedList<GameObject> Players = new LinkedList<GameObject>();
         public LinkedList<GameObject> Enemies = new LinkedList<GameObject>();
 
-        private bool _isFightStarted;
-
-        private void Start()
+        public bool IsFightStarted
         {
-            foreach (Transform enemyTransform in LevelInfo.EnemyCrowd.transform)
-            {
-                Enemies.AddLast(enemyTransform.gameObject);
-            }
+            get;
+            private set;
         }
 
         void OnTriggerEnter(Collider collider)
         {
-            if (_isFightStarted) return;
-            _isFightStarted = true;
+            if (IsFightStarted) return;
+            IsFightStarted = true;
 
             foreach (GameObject player in Players)
             {

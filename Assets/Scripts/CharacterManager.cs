@@ -13,9 +13,13 @@ public class CharacterManager : MonoBehaviour
     private FightManager _fight;
     private LevelManager _levelManager;
     private ColorMixingManager _colorMixing;
-    private LinkedList<GameObject> _thisTeam;
-    private LinkedList<GameObject> _otherTeam;
     private Animator _animator;
+
+    public LinkedList<GameObject> ThisTeam { get; private set; }
+    public LinkedList<GameObject> OtherTeam { get; private set; }
+
+    public bool IsFighting { get; private set; }
+    public bool IsDead { get; private set; }
 
     public void Construct(LevelInfo levelInfo, LevelManager levelManager, ColorMixingManager colorMixing)
     {
@@ -28,13 +32,13 @@ public class CharacterManager : MonoBehaviour
 
         if (Properties.DoesTypeMatch(gameObject, Properties.Type.Enemy))
         {
-            _thisTeam = _fight.Enemies;
-            _otherTeam = _fight.Players;
+            ThisTeam = _fight.Enemies;
+            OtherTeam = _fight.Players;
         }
         else
         {
-            _thisTeam = _fight.Players;
-            _otherTeam = _fight.Enemies;
+            ThisTeam = _fight.Players;
+            OtherTeam = _fight.Enemies;
         }
     }
 
@@ -57,21 +61,46 @@ public class CharacterManager : MonoBehaviour
     public void SetRunning(bool isRunning)
     {
         _animator.SetBool("running", isRunning);
-        GetComponent<MoveForward>().enabled = isRunning;
+        if (_fight.IsFightStarted)
+        {
+            GetComponent<FightBehaviour>().enabled = isRunning;
+            if (!isRunning)
+            {
+                GetComponent<Rigidbody>().velocity = Vector3.zero;
+            }
+        }
+        else
+        {
+            GetComponent<MoveForward>().enabled = isRunning;
+        }
+    }
+
+    public void SetFighting(bool isFighting)
+    {
+        _animator.SetBool("fighting", isFighting);
+        IsFighting = isFighting;
     }
 
     public void MakeDead()
     {
         _animator.SetBool("dead", true);
+        IsDead = true;
         GetComponent<Rigidbody>().detectCollisions = false;
         SetRunning(false);
 
-        _thisTeam.Remove(gameObject);
-        if (_thisTeam.Count == 0)
+        ThisTeam.Remove(gameObject);
+        if (ThisTeam.Count == 0)
         {
             Destroy(Camera.main.GetComponent<MoveForward>());
-            _levelManager.EndLevel(isWin: _thisTeam == _fight.Enemies);
+            _levelManager.EndLevel(isWin: ThisTeam == _fight.Enemies);
         }
+    }
+
+    public void MakeCelebrating()
+    {
+        _animator.SetBool("celebrating", true);
+        transform.rotation = Quaternion.Euler(0, 180, 0);
+        SetRunning(false);
     }
 
 }

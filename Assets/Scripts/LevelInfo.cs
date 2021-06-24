@@ -29,6 +29,8 @@ public class LevelInfo : MonoBehaviour
     private const float RowOffset = 0.6f;
     private const int EnemiesInOneRow = 5;
 
+    private FightManager _fightManager;
+
     private void OnValidate()
     {
         EnemiesAmount = Mathf.Max(EnemiesAmount, 1);
@@ -38,6 +40,7 @@ public class LevelInfo : MonoBehaviour
 
     private void Start()
     {
+        _fightManager = FightTrigger.GetComponent<FightManager>();
         CreateEnemies();
     }
 
@@ -73,6 +76,8 @@ public class LevelInfo : MonoBehaviour
                 rowNumber * RowOffset
             );
             enemy.transform.rotation = Quaternion.Euler(0, 180, 0);
+
+            _fightManager.Enemies.AddLast(enemy);
         }
     }
 }

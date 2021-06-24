@@ -11,45 +11,34 @@ namespace Mechanics.Fight
         public FightManager Fight;
         public bool ShouldDestroy;
 
-        public float Speed = 1.0f;
-        public float MinDistance = 1.5f;
+        private const float SecondsToFight = 2.0f;
 
-
-        private LinkedList<GameObject> _thisTeam;
-        private LinkedList<GameObject> _otherTeam;
         private Rigidbody _rigidbody;
+        private CharacterManager _characterManager;
+        private CharacterManager _targetManager;
 
         private void Start()
         {
-            if (Properties.DoesTypeMatch(gameObject, Properties.Type.Player))
-            {
-                _thisTeam = Fight.Players;
-                _otherTeam = Fight.Enemies;
-            }
-            else
-            {
-                _thisTeam = Fight.Enemies;
-                _otherTeam = Fight.Players;
-            }
             _rigidbody = GetComponent<Rigidbody>();
+            _characterManager = GetComponent<CharacterManager>();
+            _characterManager.SetRunning(true);
         }
 
         void Update()
         {
-            // check for win
-            if (_otherTeam.Count == 0)
+            if (_targetManager == null || _targetManager.IsDead)
             {
-                _rigidbody.velocity = Vector3.zero;
-                Destroy(this);
-                return;
-            }
+                // check for win
+                if (_characterManager.OtherTeam.Count == 0)
+                {
+                    _characterManager.MakeCelebrating();
+                    return;
+                }
 
-            // choose target
-            if (Target == null)
-            {
+                // choose target
                 GameObject closestOther = null;
                 float closestDistance = float.PositiveInfinity;
-                foreach (GameObject other in _otherTeam)
+                foreach (GameObject other in _characterManager.OtherTeam)
                 {
                     float distance = Vector3.Distance(other.transform.position, transform.position);
                     if (distance < closestDistance)
@@ -59,23 +48,25 @@ namespace Mechanics.Fight
                     }
                 }
                 Target = closestOther;
+                _targetManager = Target.GetComponent<CharacterManager>();
             }
 
+            // move to target
             Vector3 direction = Target.transform.position - transform.position;
-            if (direction.magnitude > MinDistance)
-            {
-                // move to target
-                _rigidbody.velocity = direction.normalized;
-            }
-            else
-            {
-                // fight with target
-                if (ShouldDestroy)
-                {
-                    Target.GetComponent<CharacterManager>().MakeDead();
-                    GetComponent<CharacterManager>().MakeDead();
-                }
-            }
+            _rigidbody.velocity = direction.normalized;
+            transform.LookAt(Target.transform.position);
+        }
+
+        private IEnumerator OnTriggerStay(Collider collider)
+        {
+            if (collider.gameObject != Target) yield break;
+            if (_characterManager.IsFighting) yield break;
+
+            _characterManager.SetFighting(true);
+            yield return new WaitForSeconds(SecondsToFight);
+            if (_characterManager.IsDead) yield break;
+            Target.GetComponent<CharacterManager>().MakeDead();
+            _characterManager.SetFighting(false);
         }
     }
 }
