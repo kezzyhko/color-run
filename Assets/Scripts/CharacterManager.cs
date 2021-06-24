@@ -7,6 +7,7 @@ using Mechanics.ColorMixing;
 using Movement;
 using ColorUtils;
 using LevelSystem;
+using static Properties.Type;
 
 public class CharacterManager : MonoBehaviour
 {
@@ -35,7 +36,7 @@ public class CharacterManager : MonoBehaviour
         _animator = GetComponentInChildren<Animator>();
         _animator.SetFloat("offset", Random.Range(0.0f, 1.0f));
 
-        if (Properties.DoesTypeMatch(gameObject, Properties.Type.Enemy))
+        if (Properties.DoesTypeMatch(gameObject, Enemy))
         {
             ThisTeam = _fight.Enemies;
             OtherTeam = _fight.Players;
@@ -49,7 +50,7 @@ public class CharacterManager : MonoBehaviour
 
     public void MakePlayer()
     {
-        GetComponent<Properties>().ObjectType = Properties.Type.Player;
+        GetComponent<Properties>().ObjectType = Player;
         SetRunning(true);
         ColorHelper.SetObjectMaterial(gameObject, _colorMixing.PlayerMaterial);
 
@@ -58,7 +59,7 @@ public class CharacterManager : MonoBehaviour
         LinkedList<GameObject> newAdjacentCrowd = GetComponent<GatherFreeCrowd>().AdjacentFreeCrowd;
         foreach (GameObject adjacentFree in newAdjacentCrowd)
         {
-            if (!Properties.DoesTypeMatch(adjacentFree, Properties.Type.Free)) continue;
+            if (!Properties.DoesTypeMatch(adjacentFree, Free)) continue;
             adjacentFree.GetComponent<CharacterManager>().MakePlayer();
         }
     }
