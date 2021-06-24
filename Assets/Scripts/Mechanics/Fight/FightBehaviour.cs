@@ -11,7 +11,8 @@ namespace Mechanics.Fight
         public FightManager Fight;
         public bool ShouldDestroy;
 
-        private const float SecondsToFight = 2.0f;
+        private const float MinSecondsToFight = 3.0f;
+        private const float MaxSecondsToFight = 5.0f;
 
         private Rigidbody _rigidbody;
         private CharacterManager _characterManager;
@@ -75,7 +76,7 @@ namespace Mechanics.Fight
             if (_characterManager.IsFighting) yield break;
 
             _characterManager.SetFighting(true);
-            yield return new WaitForSeconds(SecondsToFight);
+            yield return new WaitForSeconds(Random.Range(MinSecondsToFight, MaxSecondsToFight));
             if (_characterManager.IsDead) yield break;
             Target.GetComponent<CharacterManager>().MakeDead();
             _characterManager.SetFighting(false);
