@@ -8,8 +8,6 @@ namespace Mechanics.Fight
     {
 
         public GameObject Target = null;
-        public FightManager Fight;
-        public bool ShouldDestroy;
 
         private const float MinSecondsToFight = 3.0f;
         private const float MaxSecondsToFight = 5.0f;

@@ -23,17 +23,15 @@ namespace Mechanics.Fight
 
             Camera.main.GetComponent<MoveForward>().enabled = false;
 
-            AddScript(Players, shouldDestroy: true);
-            AddScript(Enemies, shouldDestroy: false);
+            AddScript(Players);
+            AddScript(Enemies);
         }
 
-        private void AddScript(LinkedList<GameObject> team, bool shouldDestroy)
+        private void AddScript(LinkedList<GameObject> team)
         {
             foreach (GameObject character in team)
             {
                 FightBehaviour moveTowardsTarget = character.AddComponent<FightBehaviour>();
-                moveTowardsTarget.Fight = this;
-                moveTowardsTarget.ShouldDestroy = shouldDestroy;
             }
         }
 
