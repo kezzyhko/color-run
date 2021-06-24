@@ -35,6 +35,8 @@ public class LevelManager : MonoBehaviour
 
     public void EndLevel(bool isWin)
     {
+        if (EndLevelScreen.activeSelf) return;
+
         if (isWin)
         {
             _levelNumber++;
