@@ -14,15 +14,6 @@ public class Properties : MonoBehaviour
     };
 
     public Type ObjectType;
-    public Animator Animator;
-
-    private void OnValidate()
-    {
-        if (Animator == null)
-        {
-            Animator = GetComponentInChildren<Animator>();
-        }
-    }
 
     public static bool DoesTypeMatch(GameObject obj, Type type)
     {

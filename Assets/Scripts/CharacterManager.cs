@@ -27,7 +27,7 @@ public class CharacterManager : MonoBehaviour
         _levelManager = levelManager;
         _colorMixing = colorMixing;
 
-        _animator = GetComponent<Properties>().Animator;
+        _animator = GetComponentInChildren<Animator>();
         _animator.SetFloat("offset", Random.Range(0.0f, 1.0f));
 
         if (Properties.DoesTypeMatch(gameObject, Properties.Type.Enemy))
