@@ -17,9 +17,12 @@ namespace ColorUtils
                 ObjectsToRecolor = new GameObject[] { gameObject };
             }
 
+            Material material = ColorHelper.GetObjectMaterial(gameObject);
+            material = Instantiate(material);
+            material.color = ColorHelper.EnumToColor(ColorName);
             foreach (GameObject obj in ObjectsToRecolor)
             {
-                ColorHelper.SetObjectColor(obj, ColorHelper.EnumToColor(ColorName));
+                ColorHelper.SetObjectMaterial(obj, material);
             }
         }
 
