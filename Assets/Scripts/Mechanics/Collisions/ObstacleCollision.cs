@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using ColorUtils;
+using static Properties.Type;
 
 namespace Mechanics.Collisions
 {
@@ -11,7 +12,7 @@ namespace Mechanics.Collisions
         void OnTriggerEnter(Collider collider)
         {
             GameObject obstacle = collider.gameObject;
-            if (!Properties.DoesTypeMatch(obstacle, Properties.Type.Obstacle)) return;
+            if (!Properties.DoesTypeMatch(obstacle, Obstacle)) return;
 
             Color playerColor = ColorHelper.GetObjectColor(gameObject);
             Color obstacleColor = ColorHelper.GetObjectColor(obstacle);
