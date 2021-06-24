@@ -10,6 +10,8 @@ using Mechanics.ColorMixing;
 public class CharacterManager : MonoBehaviour
 {
 
+    public float Speed = 2.0f;
+
     private FightManager _fight;
     private LevelManager _levelManager;
     private ColorMixingManager _colorMixing;
@@ -61,23 +63,16 @@ public class CharacterManager : MonoBehaviour
     public void SetRunning(bool isRunning)
     {
         _animator.SetBool("running", isRunning);
-        if (_fight.IsFightStarted)
-        {
-            GetComponent<FightBehaviour>().enabled = isRunning;
-            if (!isRunning)
-            {
-                GetComponent<Rigidbody>().velocity = Vector3.zero;
-            }
-        }
-        else
-        {
-            GetComponent<MoveForward>().enabled = isRunning;
-        }
+        Rigidbody rigidbody = GetComponent<Rigidbody>();
+        rigidbody.velocity = isRunning ? Vector3.forward * Speed : Vector3.zero;
+        rigidbody.constraints = isRunning ? RigidbodyConstraints.FreezeRotation : RigidbodyConstraints.FreezeAll;
+
     }
 
     public void SetFighting(bool isFighting)
     {
         _animator.SetBool("fighting", isFighting);
+        SetRunning(!isFighting);
         IsFighting = isFighting;
     }
 
@@ -91,7 +86,7 @@ public class CharacterManager : MonoBehaviour
         ThisTeam.Remove(gameObject);
         if (ThisTeam.Count == 0)
         {
-            Destroy(Camera.main.GetComponent<MoveForward>());
+            Camera.main.GetComponent<MoveForward>().enabled = false;
             _levelManager.EndLevel(isWin: ThisTeam == _fight.Enemies);
         }
     }

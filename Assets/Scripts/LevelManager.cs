@@ -72,7 +72,7 @@ public class LevelManager : MonoBehaviour
         EndLevelScreen.SetActive(false);
 
         Camera.main.transform.position = _initialCameraPosition;
-        Camera.main.gameObject.AddComponent<MoveForward>();
+        Camera.main.gameObject.GetComponent<MoveForward>().enabled = true;
         _colorMixing.ResetColor();
 
         LevelInfo levelInfo = LevelObject.GetComponent<LevelInfo>();

@@ -21,6 +21,8 @@ namespace Mechanics.Fight
         {
             _rigidbody = GetComponent<Rigidbody>();
             _characterManager = GetComponent<CharacterManager>();
+
+            FindTarget();
             _characterManager.SetRunning(true);
         }
 
@@ -35,26 +37,36 @@ namespace Mechanics.Fight
                     return;
                 }
 
-                // choose target
-                GameObject closestOther = null;
-                float closestDistance = float.PositiveInfinity;
-                foreach (GameObject other in _characterManager.OtherTeam)
-                {
-                    float distance = Vector3.Distance(other.transform.position, transform.position);
-                    if (distance < closestDistance)
-                    {
-                        closestOther = other;
-                        closestDistance = distance;
-                    }
-                }
-                Target = closestOther;
-                _targetManager = Target.GetComponent<CharacterManager>();
+                FindTarget();
             }
 
-            // move to target
-            Vector3 direction = Target.transform.position - transform.position;
-            _rigidbody.velocity = direction.normalized;
-            transform.LookAt(Target.transform.position);
+            if (!_characterManager.IsFighting)
+            {
+                Vector3 direction = Target.transform.position - transform.position;
+                direction.Normalize();
+                _rigidbody.velocity = direction * _characterManager.Speed;
+            }
+            else
+            {
+                _rigidbody.velocity = Vector3.zero;
+            }
+        }
+
+        private void FindTarget()
+        {
+            GameObject closestOther = null;
+            float closestDistance = float.PositiveInfinity;
+            foreach (GameObject other in _characterManager.OtherTeam)
+            {
+                float distance = Vector3.Distance(other.transform.position, transform.position);
+                if (distance < closestDistance)
+                {
+                    closestOther = other;
+                    closestDistance = distance;
+                }
+            }
+            Target = closestOther;
+            _targetManager = Target.GetComponent<CharacterManager>();
         }
 
         private IEnumerator OnTriggerStay(Collider collider)

@@ -21,11 +21,7 @@ namespace Mechanics.Fight
             if (IsFightStarted) return;
             IsFightStarted = true;
 
-            foreach (GameObject player in Players)
-            {
-                Destroy(player.GetComponent<Movement.MoveForward>());
-            }
-            Destroy(Camera.main.GetComponent<Movement.MoveForward>());
+            Camera.main.GetComponent<MoveForward>().enabled = false;
 
             AddScript(Players, shouldDestroy: true);
             AddScript(Enemies, shouldDestroy: false);
