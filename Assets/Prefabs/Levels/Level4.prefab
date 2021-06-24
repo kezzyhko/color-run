@@ -239,6 +239,11 @@ PrefabInstance:
       propertyPath: Speed
       value: -90
       objectReference: {fileID: 0}
+    - target: {fileID: 9146854159577144168, guid: 09331642e4e01f64ea7ace4c36861981,
+        type: 3}
+      propertyPath: Speed.y
+      value: -90
+      objectReference: {fileID: 0}
     - target: {fileID: 9146854159577144169, guid: 09331642e4e01f64ea7ace4c36861981,
         type: 3}
       propertyPath: m_RootOrder
