@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Shrink : MonoBehaviour
 {
-    
+
     public float ShrinkSpeed = 40.0f;
 
     void Update()

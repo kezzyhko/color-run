@@ -18,7 +18,7 @@ public class Properties : MonoBehaviour
     public static bool DoesTypeMatch(GameObject obj, Type type)
     {
         Properties props = obj.GetComponent<Properties>();
-        return props!= null && props.ObjectType == type;
+        return props != null && props.ObjectType == type;
     }
 
 }

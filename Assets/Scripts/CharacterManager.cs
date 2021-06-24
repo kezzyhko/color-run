@@ -10,7 +10,7 @@ using LevelSystem;
 
 public class CharacterManager : MonoBehaviour
 {
-    
+
     public float Speed = 2.0f;
     public float RotationSpeed = 90.0f;
 
