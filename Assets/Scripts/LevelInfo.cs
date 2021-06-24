@@ -22,7 +22,7 @@ public class LevelInfo : MonoBehaviour
     private const float PlatformWidth = 5.0f;
     private const float PlatformHeight = 1.0f;
     private const float PaddingBeforePlayer = 5.0f;
-    private const float PaddingAfterEnd = 10.0f;
+    private const float PaddingAfterEnd = 0;
 
     // enemies spawn constants
     private const float EnemyOffset = 0.6f;
