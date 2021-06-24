@@ -78,7 +78,7 @@ public class CharacterManager : MonoBehaviour
     public void SetFighting(bool isFighting)
     {
         _animator.SetBool("fighting", isFighting);
-        SetRunning(!isFighting);
+        if (!IsCelebrating) SetRunning(!isFighting);
         IsFighting = isFighting;
     }
 
