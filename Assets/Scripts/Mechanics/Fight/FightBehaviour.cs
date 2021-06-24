@@ -29,9 +29,14 @@ namespace Mechanics.Fight
 
         void Update()
         {
+            if (_characterManager.IsCelebrating)
+            {
+                _characterManager.RotateTowards(Vector3.back);
+                return;
+            }
+
             if (_targetManager == null || _targetManager.IsDead)
             {
-                // check for win
                 if (_characterManager.OtherTeam.Count == 0)
                 {
                     _characterManager.MakeCelebrating();
@@ -46,10 +51,7 @@ namespace Mechanics.Fight
                 Vector3 direction = Target.transform.position - transform.position;
                 direction.Normalize();
                 _rigidbody.velocity = direction * _characterManager.Speed;
-            }
-            else
-            {
-                _rigidbody.velocity = Vector3.zero;
+                _characterManager.RotateTowards(direction);
             }
         }
 

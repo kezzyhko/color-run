@@ -9,8 +9,9 @@ using Mechanics.ColorMixing;
 
 public class CharacterManager : MonoBehaviour
 {
-
+    
     public float Speed = 2.0f;
+    public float RotationSpeed = 90.0f;
 
     private FightManager _fight;
     private LevelManager _levelManager;
@@ -22,6 +23,7 @@ public class CharacterManager : MonoBehaviour
 
     public bool IsFighting { get; private set; }
     public bool IsDead { get; private set; }
+    public bool IsCelebrating { get; private set; }
 
     public void Construct(LevelInfo levelInfo, LevelManager levelManager, ColorMixingManager colorMixing)
     {
@@ -60,13 +62,17 @@ public class CharacterManager : MonoBehaviour
         }
     }
 
+    public void RotateTowards(Vector3 direction)
+    {
+        transform.rotation = Quaternion.RotateTowards(transform.rotation, Quaternion.LookRotation(direction), Time.deltaTime * RotationSpeed);
+    }
+
     public void SetRunning(bool isRunning)
     {
         _animator.SetBool("running", isRunning);
         Rigidbody rigidbody = GetComponent<Rigidbody>();
         rigidbody.velocity = isRunning ? Vector3.forward * Speed : Vector3.zero;
         rigidbody.constraints = isRunning ? RigidbodyConstraints.FreezeRotation : RigidbodyConstraints.FreezeAll;
-
     }
 
     public void SetFighting(bool isFighting)
@@ -94,7 +100,7 @@ public class CharacterManager : MonoBehaviour
     public void MakeCelebrating()
     {
         _animator.SetBool("celebrating", true);
-        transform.rotation = Quaternion.Euler(0, 180, 0);
+        IsCelebrating = true;
         SetRunning(false);
     }
 
