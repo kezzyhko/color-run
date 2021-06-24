@@ -7,14 +7,14 @@ namespace Mechanics.Fight
     public class FightBehaviour : MonoBehaviour
     {
 
-        public GameObject Target = null;
-
         private const float MinSecondsToFight = 3.0f;
         private const float MaxSecondsToFight = 5.0f;
 
+        public GameObject Target;
+        private CharacterManager _targetManager;
+
         private Rigidbody _rigidbody;
         private CharacterManager _characterManager;
-        private CharacterManager _targetManager;
 
         private void Start()
         {
@@ -78,7 +78,7 @@ namespace Mechanics.Fight
             _characterManager.SetFighting(true);
             yield return new WaitForSeconds(Random.Range(MinSecondsToFight, MaxSecondsToFight));
             if (_characterManager.IsDead) yield break;
-            Target.GetComponent<CharacterManager>().MakeDead();
+            _targetManager.MakeDead();
             _characterManager.SetFighting(false);
         }
     }
