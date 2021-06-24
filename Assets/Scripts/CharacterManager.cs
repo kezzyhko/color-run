@@ -6,6 +6,7 @@ using ColorUtils;
 using Mechanics.Fight;
 using Mechanics.Collisions;
 using Mechanics.ColorMixing;
+using LevelSystem;
 
 public class CharacterManager : MonoBehaviour
 {
