@@ -18,7 +18,8 @@ namespace Mechanics.Collisions
             Color obstacleColor = ColorHelper.GetObjectColor(obstacle);
             if (ColorHelper.CompareColorsWithoutAlpha(playerColor, obstacleColor))
             {
-                obstacle.AddComponent<Shrink>();
+                bool shrinkAlreadyAdded = obstacle.TryGetComponent<Shrink>(out _);
+                if (!shrinkAlreadyAdded) obstacle.AddComponent<Shrink>();
             }
             else
             {

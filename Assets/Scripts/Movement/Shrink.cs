@@ -5,7 +5,7 @@ using UnityEngine;
 public class Shrink : MonoBehaviour
 {
 
-    public float ShrinkSpeed = 40.0f;
+    public float ShrinkSpeed = 10.0f;
 
     void Update()
     {
@@ -15,7 +15,7 @@ public class Shrink : MonoBehaviour
         }
         else
         {
-            transform.localScale = Vector3.MoveTowards(transform.localScale, Vector3.zero, Time.deltaTime);
+            transform.localScale = Vector3.MoveTowards(transform.localScale, Vector3.zero, Time.deltaTime * ShrinkSpeed);
         }
     }
 }
