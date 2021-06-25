@@ -223,3 +223,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ObjectType: 3
+  Renderers:
+  - {fileID: 4402803420079318452}
+  - {fileID: 1148089245393113503}

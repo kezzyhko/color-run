@@ -41,12 +41,12 @@ namespace ColorUtils
 
         public static Material GetObjectMaterial(GameObject obj)
         {
-            return obj.GetComponentInChildren<Renderer>().sharedMaterial;
+            return Properties.GetRenderers(obj)[0].sharedMaterial;
         }
 
         public static void SetObjectMaterial(GameObject obj, Material material)
         {
-            foreach (Renderer r in obj.GetComponentsInChildren<Renderer>())
+            foreach (Renderer r in Properties.GetRenderers(obj))
             {
                 r.sharedMaterial = material;
             }
