@@ -79,7 +79,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ColorName: 6
-  ObjectsToRecolor: []
 --- !u!1001 &645213759956645062
 PrefabInstance:
   m_ObjectHideFlags: 0
