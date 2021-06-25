@@ -7,75 +7,81 @@ namespace Mechanics.Fight
     public class FightBehaviour : MonoBehaviour
     {
 
-        public GameObject Target = null;
-        public FightManager Fight;
-        public bool ShouldDestroy;
+        private const float MinSecondsToFight = 3.0f;
+        private const float MaxSecondsToFight = 5.0f;
 
-        public float Speed = 1.0f;
-        public float MinDistance = 1.5f;
+        public GameObject Target;
+        private CharacterManager _targetManager;
 
-
-        private LinkedList<GameObject> _thisTeam;
-        private LinkedList<GameObject> _otherTeam;
         private Rigidbody _rigidbody;
+        private CharacterManager _characterManager;
 
         private void Start()
         {
-            if (GetComponent<Properties>().ObjectType == Properties.Type.Player)
-            {
-                _thisTeam = Fight.Players;
-                _otherTeam = Fight.Enemies;
-            }
-            else
-            {
-                _thisTeam = Fight.Enemies;
-                _otherTeam = Fight.Players;
-            }
             _rigidbody = GetComponent<Rigidbody>();
+            _characterManager = GetComponent<CharacterManager>();
+
+            FindTarget();
+            _characterManager.SetRunning(true);
         }
 
         void Update()
         {
-            // check for win
-            if (_otherTeam.Count == 0)
+            if (_characterManager.IsDead) return;
+
+            if (_characterManager.IsCelebrating)
             {
-                _rigidbody.velocity = Vector3.zero;
-                Destroy(this);
+                _characterManager.RotateTowards(Vector3.back);
                 return;
             }
 
-            // choose target
-            if (Target == null)
+            if (_targetManager == null || _targetManager.IsDead)
             {
-                GameObject closestOther = null;
-                float closestDistance = float.PositiveInfinity;
-                foreach (GameObject other in _otherTeam)
+                if (_characterManager.OtherTeam.Count == 0)
                 {
-                    float distance = Vector3.Distance(other.transform.position, transform.position);
-                    if (distance < closestDistance)
-                    {
-                        closestOther = other;
-                        closestDistance = distance;
-                    }
+                    _characterManager.MakeCelebrating();
+                    return;
                 }
-                Target = closestOther;
+
+                FindTarget();
             }
 
-            Vector3 direction = Target.transform.position - transform.position;
-            if (direction.magnitude > MinDistance)
+            if (!_characterManager.IsFighting)
             {
-                // move to target
-                _rigidbody.velocity = direction.normalized;
+                Vector3 direction = Target.transform.position - transform.position;
+                direction.Normalize();
+                _rigidbody.velocity = direction * _characterManager.Speed;
+                _characterManager.RotateTowards(direction);
             }
-            else
+        }
+
+        private void FindTarget()
+        {
+            GameObject closestOther = null;
+            float closestDistance = float.PositiveInfinity;
+            foreach (GameObject other in _characterManager.OtherTeam)
             {
-                // fight with target
-                if (ShouldDestroy)
+                float distance = Vector3.Distance(other.transform.position, transform.position);
+                if (distance < closestDistance)
                 {
-                    Fight.RemoveCharacter(Target, _otherTeam);
-                    Fight.RemoveCharacter(gameObject, _thisTeam);
+                    closestOther = other;
+                    closestDistance = distance;
                 }
             }
+            Target = closestOther;
+            _targetManager = Target.GetComponent<CharacterManager>();
+        }
+
+        private IEnumerator OnTriggerStay(Collider collider)
+        {
+            if (collider.gameObject != Target) yield break;
+            if (_characterManager.IsFighting) yield break;
+
+            _characterManager.SetFighting(true);
+            yield return new WaitForSeconds(Random.Range(MinSecondsToFight, MaxSecondsToFight));
+            if (_characterManager.IsDead) yield break;
+            _targetManager.MakeDead();
+            _characterManager.SetFighting(false);
         }
     }
 }

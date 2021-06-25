@@ -2,30 +2,28 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using ColorUtils;
+using static Properties.Type;
 
 namespace Mechanics.Collisions
 {
     public class ObstacleCollision : MonoBehaviour
     {
 
-        [SerializeField]
-        private Fight.FightManager _fight;
-
         void OnTriggerEnter(Collider collider)
         {
             GameObject obstacle = collider.gameObject;
-            Properties props = obstacle.GetComponent<Properties>();
-            if (props == null || props.ObjectType != Properties.Type.Obstacle) return;
+            if (!Properties.DoesTypeMatch(obstacle, Obstacle)) return;
 
             Color playerColor = ColorHelper.GetObjectColor(gameObject);
             Color obstacleColor = ColorHelper.GetObjectColor(obstacle);
             if (ColorHelper.CompareColorsWithoutAlpha(playerColor, obstacleColor))
             {
-                Destroy(obstacle);
+                bool shrinkAlreadyAdded = obstacle.TryGetComponent<Shrink>(out _);
+                if (!shrinkAlreadyAdded) obstacle.AddComponent<Shrink>();
             }
             else
             {
-                _fight.RemoveCharacter(gameObject, _fight.Players);
+                GetComponent<CharacterManager>().MakeDead();
             }
         }
 

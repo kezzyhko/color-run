@@ -1,20 +1,5 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!114 &-7466163325714124841
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1551536911099717812}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 596154ae2f344d76ac02b30e82d81226, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _dependencySource: 30
-  _destroyWhenFinished: 0
-  UseBakedData: 1
 --- !u!114 &1494339741
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -27,7 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b43fb0461d842ed4aa3a54873c02d740, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _fight: {fileID: 0}
 --- !u!114 &1494339742
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -40,21 +24,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6064d5105956a554988a6b913b93cfe1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  PlayerPrefab: {fileID: 1551536911099717812}
-  _fight: {fileID: 0}
---- !u!114 &1494339744
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1551536911099717812}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b3ceb86fd1fee424b95fd4b360240775, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  Speed: 2
 --- !u!1001 &1491069176538184987
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -120,7 +89,7 @@ PrefabInstance:
     - target: {fileID: 88239234189022638, guid: e11adf9c9d1ed344a91b0fb0ef3c92e2,
         type: 3}
       propertyPath: ObjectType
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 88239234189022639, guid: e11adf9c9d1ed344a91b0fb0ef3c92e2,
         type: 3}

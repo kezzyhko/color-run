@@ -8,19 +8,13 @@ namespace ColorUtils
     {
 
         public ColorHelper.AcceptableColor ColorName;
-        public GameObject[] ObjectsToRecolor;
 
         void Start()
         {
-            if (ObjectsToRecolor == null || ObjectsToRecolor.Length == 0)
-            {
-                ObjectsToRecolor = new GameObject[] { gameObject };
-            }
-
-            foreach (GameObject obj in ObjectsToRecolor)
-            {
-                ColorHelper.SetObjectColor(obj, ColorHelper.EnumToColor(ColorName));
-            }
+            Material material = ColorHelper.GetObjectMaterial(gameObject);
+            material = Instantiate(material);
+            material.color = ColorHelper.EnumToColor(ColorName);
+            ColorHelper.SetObjectMaterial(gameObject, material);
         }
 
     }

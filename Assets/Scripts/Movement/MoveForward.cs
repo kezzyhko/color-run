@@ -9,9 +9,9 @@ namespace Movement
 
         public float Speed = 2.0f;
 
-        void Update()
+        void FixedUpdate()
         {
-            transform.position += new Vector3(0, 0, Time.deltaTime * Speed);
+            transform.position += new Vector3(0, 0, Time.fixedDeltaTime * Speed);
         }
     }
 }

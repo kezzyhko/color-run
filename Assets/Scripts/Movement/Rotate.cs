@@ -7,11 +7,11 @@ namespace Movement
     public class Rotate : MonoBehaviour
     {
 
-        public float Speed = 90.0f;
+        public Vector3 Speed = new Vector3(0, 90, 0);
 
         void Update()
         {
-            transform.Rotate(new Vector3(0, Time.deltaTime * Speed, 0));
+            transform.Rotate(Time.deltaTime * Speed);
         }
     }
 }

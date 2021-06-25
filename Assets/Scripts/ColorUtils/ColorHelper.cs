@@ -39,14 +39,27 @@ namespace ColorUtils
             return c1.r == c2.r && c1.g == c2.g && c1.b == c2.b;
         }
 
+        public static Material GetObjectMaterial(GameObject obj)
+        {
+            return Properties.GetRenderers(obj)[0].sharedMaterial;
+        }
+
+        public static void SetObjectMaterial(GameObject obj, Material material)
+        {
+            foreach (Renderer r in Properties.GetRenderers(obj))
+            {
+                r.sharedMaterial = material;
+            }
+        }
+
         public static void SetObjectColor(GameObject obj, Color color)
         {
-            obj.GetComponent<Renderer>().material.color = color;
+            GetObjectMaterial(obj).color = color;
         }
 
         public static Color GetObjectColor(GameObject obj)
         {
-            return obj.GetComponent<Renderer>().sharedMaterial.color;
+            return GetObjectMaterial(obj).color;
         }
 
         public static void SetUIColor(GameObject obj, Color color)
