@@ -27,13 +27,16 @@ public class CharacterManager : MonoBehaviour
     public bool IsDead { get; private set; }
     public bool IsCelebrating { get; private set; }
 
-    public void Construct(LevelInfo levelInfo, LevelManager levelManager, ColorMixingManager colorMixing)
+    public void Construct(LevelInfo levelInfo, LevelManager levelManager, ColorMixingManager colorMixing, Animator animator)
     {
         _fight = levelInfo.FightTrigger.GetComponent<FightManager>();
         _levelManager = levelManager;
         _colorMixing = colorMixing;
+        _animator = animator;
+    }
 
-        _animator = GetComponentInChildren<Animator>();
+    private void Start()
+    {
         _animator.SetFloat("offset", Random.Range(0.0f, 1.0f));
 
         if (Properties.DoesTypeMatch(gameObject, Enemy))
