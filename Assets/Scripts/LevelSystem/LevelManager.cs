@@ -10,7 +10,6 @@ namespace LevelSystem
     public class LevelManager : MonoBehaviour
     {
 
-        public GameObject Tint;
         public GameObject WinScreen;
         public GameObject LoseScreen;
 
@@ -26,7 +25,7 @@ namespace LevelSystem
         {
             _levelNumber = 1; // TODO: save/load progress
             _initialCameraPosition = Camera.main.transform.position;
-            LoadLevelButton();
+            LoadLevel();
         }
 
         private ColorMixingManager _colorMixing;
@@ -48,10 +47,9 @@ namespace LevelSystem
 
             _currentGUIObject = isWin ? WinScreen : LoseScreen;
             _currentGUIObject.SetActive(true);
-            Tint.SetActive(true);
         }
 
-        public void LoadLevelButton()
+        public void LoadLevel()
         {
             if (_levelNumber > Levels.Length)
             {
@@ -63,7 +61,6 @@ namespace LevelSystem
             LevelObject.name = "Level";
 
             if (_currentGUIObject) _currentGUIObject.SetActive(false);
-            Tint.SetActive(false);
             _levelStarted = true;
 
             Camera.main.transform.position = _initialCameraPosition;
