@@ -25,8 +25,7 @@ public class CoinsManager : MonoBehaviour
             CoinsAmountText.text = Coins.ToString();
         }
     }
-
-
+    
     void Start()
     {
         Coins = 0; // TODO: save/load progress
