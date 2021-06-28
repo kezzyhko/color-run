@@ -28,9 +28,11 @@ namespace Mechanics.ColorMixing
 
         void Start()
         {
-            ColorHelper.SetUIColor(gameObject, ColorHelper.EnumToColor(_colorName));
-            EventTrigger trigger = GetComponent<EventTrigger>();
+            Color color = ColorHelper.EnumToColor(_colorName);
+            color.a = 0;
+            ColorHelper.SetUIColor(gameObject, color);
 
+            EventTrigger trigger = GetComponent<EventTrigger>();
             foreach ((EventTriggerType type, System.Action<GameObject> func) in _events)
             {
                 EventTrigger.Entry entry = new EventTrigger.Entry();
