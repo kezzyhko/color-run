@@ -28,5 +28,4 @@ public class CoinsManager : MonoBehaviour
     void Start()
     {
         Coins = 0; // TODO: save/load progress
-    }
-}
+        CoinsForLevelFinishText.text = CoinsForLevelFinish.T}
