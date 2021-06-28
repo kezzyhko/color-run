@@ -10,6 +10,7 @@ namespace LevelSystem
     public class LevelManager : MonoBehaviour
     {
 
+        public GameObject Tint;
         public GameObject WinScreen;
         public GameObject LoseScreen;
 
@@ -47,6 +48,7 @@ namespace LevelSystem
 
             _currentGUIObject = isWin ? WinScreen : LoseScreen;
             _currentGUIObject.SetActive(true);
+            Tint.SetActive(true);
         }
 
         public void LoadLevelButton()
@@ -61,6 +63,7 @@ namespace LevelSystem
             LevelObject.name = "Level";
 
             if (_currentGUIObject) _currentGUIObject.SetActive(false);
+            Tint.SetActive(false);
             _levelStarted = true;
 
             Camera.main.transform.position = _initialCameraPosition;
