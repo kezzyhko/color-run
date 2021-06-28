@@ -44,7 +44,7 @@ namespace LevelSystem
             if (isWin)
             {
                 _levelNumber++;
-                _coinsManager.Coins += CoinsManager.CoinsForLevelFinish;
+                _coinsManager.Coins += _coinsManager.CoinsForLevelFinish;
             }
 
             _currentGUIObject = isWin ? WinScreen : LoseScreen;

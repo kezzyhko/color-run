@@ -1409,6 +1409,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fbe7a1704fa131440a30130cfe1de6b7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  CoinsForLevelFinish: 300
   CoinsAmountText: {fileID: 957272006}
   CoinsForLevelFinishText: {fileID: 1357717440}
 --- !u!4 &1537287530

@@ -6,7 +6,10 @@ using UnityEngine.UI;
 public class CoinsManager : MonoBehaviour
 {
 
+    public int CoinsForLevelFinish = 300;
+
     public Text CoinsAmountText;
+    public Text CoinsForLevelFinishText;
 
     private int _coins;
     
@@ -23,9 +26,10 @@ public class CoinsManager : MonoBehaviour
         }
     }
 
-    public const int CoinsForLevelFinish = 300;
 
     void Start()
     {
         Coins = 0; // TODO: save/load progress
-        CoinsForLevelFinishText.text = CoinsForLevelFinish.T}
+        CoinsForLevelFinishText.text = CoinsForLevelFinish.ToString();
+    }
+}
