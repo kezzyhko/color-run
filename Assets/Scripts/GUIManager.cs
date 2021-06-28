@@ -5,16 +5,12 @@ using UnityEngine;
 public class GUIManager : MonoBehaviour
 {
 
+    public GameObject Menu;
     public GameObject PlayControls;
     public GameObject WinScreen;
     public GameObject LoseScreen;
 
     private GameObject _currentScreen;
-
-    private void Start()
-    {
-        _currentScreen = PlayControls;
-    }
 
     public void ShowScreen(GameObject screen)
     {

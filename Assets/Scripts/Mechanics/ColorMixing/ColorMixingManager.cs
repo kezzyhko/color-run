@@ -25,12 +25,11 @@ namespace Mechanics.ColorMixing
             PlayerMaterial.name = "Player Material";
         }
 
-        void OnDisable()
+        public void AbortSelection()
         {
             _isSelectingInProcess = false;
             _lines.Clear();
             _colors.Clear();
-            ColorHelper.SetUIColor(CurrentColorIndicator, PlayerMaterial.color);
         }
 
         public void ResetColor()

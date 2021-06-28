@@ -32,7 +32,8 @@ namespace LevelSystem
 
         private GameObject _levelObject;
         private Vector3 _initialCameraPosition;
-        private bool _isLevelStarted = false;
+        private bool _isLevelEnded = false;
+        private CharacterManager _playerManager;
 
         private void Start()
         {
@@ -54,8 +55,8 @@ namespace LevelSystem
 
         public void EndLevel(bool isWin)
         {
-            if (!_isLevelStarted) return;
-            _isLevelStarted = false;
+            if (_isLevelEnded) return;
+            _isLevelEnded = true;
 
             if (isWin)
             {
@@ -64,6 +65,7 @@ namespace LevelSystem
             }
 
             _guiManager.ShowScreen(isWin ? _guiManager.WinScreen : _guiManager.LoseScreen);
+            _colorMixing.AbortSelection();
         }
 
         public void LoadLevel()
@@ -77,15 +79,22 @@ namespace LevelSystem
             _levelObject = Instantiate(Levels[LevelNumber - 1]);
             _levelObject.name = "Level";
 
-            Camera.main.transform.position = _initialCameraPosition;
-            Camera.main.gameObject.GetComponent<MoveForward>().enabled = true;
-
             LevelInfo levelInfo = _levelObject.GetComponent<LevelInfo>();
-            levelInfo.Player.GetComponent<CharacterManager>().MakePlayer();
+            _playerManager = levelInfo.Player.GetComponent<CharacterManager>();
+            _playerManager.MakePlayer();
+            _playerManager.SetRunning(false);
 
-            _guiManager.ShowScreen(_guiManager.PlayControls);
+            Camera.main.transform.position = _initialCameraPosition;
+            _guiManager.ShowScreen(_guiManager.Menu);
             _colorMixing.ResetColor();
-            _isLevelStarted = true;
+            _isLevelEnded = false;
+        }
+
+        public void StartLevel()
+        {
+            _playerManager.SetRunning(true);
+            Camera.main.gameObject.GetComponent<MoveForward>().enabled = true;
+            _guiManager.ShowScreen(_guiManager.PlayControls);
         }
 
     }
