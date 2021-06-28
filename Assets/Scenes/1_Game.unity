@@ -726,6 +726,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f5fdaa8e762de054590af6969d4ffd7f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  PlayControls: {fileID: 1242653821}
   WinScreen: {fileID: 1747013081}
   LoseScreen: {fileID: 1496965685}
   Levels:

@@ -25,6 +25,14 @@ namespace Mechanics.ColorMixing
             PlayerMaterial.name = "Player Material";
         }
 
+        public void AbortSelection()
+        {
+            _isSelectingInProcess = false;
+            _lines.Clear();
+            _colors.Clear();
+            ColorHelper.SetUIColor(CurrentColorIndicator, PlayerMaterial.color);
+        }
+
         public void ResetColor()
         {
             Color initialColor = ColorHelper.EnumToColor(InitialColor);

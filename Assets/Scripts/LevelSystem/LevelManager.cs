@@ -9,6 +9,7 @@ namespace LevelSystem
     public class LevelManager : MonoBehaviour
     {
 
+        public GameObject PlayControls;
         public GameObject WinScreen;
         public GameObject LoseScreen;
 
@@ -17,7 +18,7 @@ namespace LevelSystem
         public GameObject LevelObject { get; private set; }
         private int _levelNumber;
         private Vector3 _initialCameraPosition;
-        private bool _levelStarted = false;
+        private bool _isLevelStarted = false;
         private GameObject _currentGUIObject;
 
         private void Start()
@@ -38,8 +39,7 @@ namespace LevelSystem
 
         public void EndLevel(bool isWin)
         {
-            if (!_levelStarted) return;
-            _levelStarted = false;
+            if (!_isLevelStarted) return;
 
             if (isWin)
             {
@@ -48,7 +48,7 @@ namespace LevelSystem
             }
 
             _currentGUIObject = isWin ? WinScreen : LoseScreen;
-            _currentGUIObject.SetActive(true);
+            UpdateGUI(isLevelStarted: false);
         }
 
         public void LoadLevel()
@@ -62,15 +62,22 @@ namespace LevelSystem
             LevelObject = Instantiate(Levels[_levelNumber - 1]);
             LevelObject.name = "Level";
 
-            if (_currentGUIObject) _currentGUIObject.SetActive(false);
-            _levelStarted = true;
-
             Camera.main.transform.position = _initialCameraPosition;
             Camera.main.gameObject.GetComponent<MoveForward>().enabled = true;
+
             _colorMixing.ResetColor();
+            UpdateGUI(isLevelStarted: true);
 
             LevelInfo levelInfo = LevelObject.GetComponent<LevelInfo>();
             levelInfo.Player.GetComponent<CharacterManager>().MakePlayer();
+        }
+
+        public void UpdateGUI(bool isLevelStarted)
+        {
+            _isLevelStarted = isLevelStarted;
+            if (_currentGUIObject) _currentGUIObject.SetActive(!isLevelStarted);
+            PlayControls.SetActive(isLevelStarted);
+            if (!isLevelStarted) _colorMixing.AbortSelection();
         }
     }
 }
