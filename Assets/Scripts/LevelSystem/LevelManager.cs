@@ -25,7 +25,7 @@ namespace LevelSystem
                 _levelNumber = value;
                 foreach (Text currentLevelIndicator in CurrentLevelIndicators)
                 {
-                    currentLevelIndicator.text = "Level " + value.ToString();
+                    currentLevelIndicator.text = "LEVEL " + value.ToString();
                 }
             }
         }
