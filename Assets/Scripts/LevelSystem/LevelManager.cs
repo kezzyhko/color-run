@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 using Mechanics.ColorMixing;
 using Movement;
 
@@ -11,14 +12,31 @@ namespace LevelSystem
 
         public GameObject[] Levels;
 
-        public GameObject LevelObject { get; private set; }
+        public Text[] CurrentLevelIndicators;
         private int _levelNumber;
+        public int LevelNumber
+        {
+            get
+            {
+                return _levelNumber;
+            }
+            set
+            {
+                _levelNumber = value;
+                foreach (Text currentLevelIndicator in CurrentLevelIndicators)
+                {
+                    currentLevelIndicator.text = "Level " + value.ToString();
+                }
+            }
+        }
+
+        private GameObject _levelObject;
         private Vector3 _initialCameraPosition;
         private bool _isLevelStarted = false;
 
         private void Start()
         {
-            _levelNumber = 1; // TODO: save/load progress
+            LevelNumber = 1; // TODO: save/load progress
             _initialCameraPosition = Camera.main.transform.position;
             LoadLevel();
         }
@@ -41,7 +59,7 @@ namespace LevelSystem
 
             if (isWin)
             {
-                _levelNumber++;
+                LevelNumber++;
                 _coinsManager.Coins += _coinsManager.CoinsForLevelFinish;
             }
 
@@ -50,19 +68,19 @@ namespace LevelSystem
 
         public void LoadLevel()
         {
-            if (_levelNumber > Levels.Length)
+            if (LevelNumber > Levels.Length)
             {
-                _levelNumber = 1;
+                LevelNumber = 1;
             }
 
-            Destroy(LevelObject);
-            LevelObject = Instantiate(Levels[_levelNumber - 1]);
-            LevelObject.name = "Level";
+            Destroy(_levelObject);
+            _levelObject = Instantiate(Levels[LevelNumber - 1]);
+            _levelObject.name = "Level";
 
             Camera.main.transform.position = _initialCameraPosition;
             Camera.main.gameObject.GetComponent<MoveForward>().enabled = true;
 
-            LevelInfo levelInfo = LevelObject.GetComponent<LevelInfo>();
+            LevelInfo levelInfo = _levelObject.GetComponent<LevelInfo>();
             levelInfo.Player.GetComponent<CharacterManager>().MakePlayer();
 
             _guiManager.ShowScreen(_guiManager.PlayControls);
