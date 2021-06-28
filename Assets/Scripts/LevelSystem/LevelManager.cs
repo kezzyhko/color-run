@@ -1,7 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.UI;
 using Mechanics.ColorMixing;
 using Movement;
 
@@ -29,10 +28,12 @@ namespace LevelSystem
         }
 
         private ColorMixingManager _colorMixing;
+        private CoinsManager _coinsManager;
 
-        public void Construct(ColorMixingManager colorMixing)
+        public void Construct(ColorMixingManager colorMixing, CoinsManager coinsManager)
         {
             _colorMixing = colorMixing;
+            _coinsManager = coinsManager;
         }
 
         public void EndLevel(bool isWin)
@@ -43,6 +44,7 @@ namespace LevelSystem
             if (isWin)
             {
                 _levelNumber++;
+                _coinsManager.Coins += CoinsManager.CoinsForLevelFinish;
             }
 
             _currentGUIObject = isWin ? WinScreen : LoseScreen;
