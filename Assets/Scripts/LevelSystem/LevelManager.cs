@@ -9,17 +9,12 @@ namespace LevelSystem
     public class LevelManager : MonoBehaviour
     {
 
-        public GameObject PlayControls;
-        public GameObject WinScreen;
-        public GameObject LoseScreen;
-
         public GameObject[] Levels;
 
         public GameObject LevelObject { get; private set; }
         private int _levelNumber;
         private Vector3 _initialCameraPosition;
         private bool _isLevelStarted = false;
-        private GameObject _currentGUIObject;
 
         private void Start()
         {
@@ -30,16 +25,19 @@ namespace LevelSystem
 
         private ColorMixingManager _colorMixing;
         private CoinsManager _coinsManager;
+        private GUIManager _guiManager;
 
-        public void Construct(ColorMixingManager colorMixing, CoinsManager coinsManager)
+        public void Construct(ColorMixingManager colorMixing, CoinsManager coinsManager, GUIManager guiManager)
         {
             _colorMixing = colorMixing;
             _coinsManager = coinsManager;
+            _guiManager = guiManager;
         }
 
         public void EndLevel(bool isWin)
         {
             if (!_isLevelStarted) return;
+            _isLevelStarted = false;
 
             if (isWin)
             {
@@ -47,8 +45,7 @@ namespace LevelSystem
                 _coinsManager.Coins += _coinsManager.CoinsForLevelFinish;
             }
 
-            _currentGUIObject = isWin ? WinScreen : LoseScreen;
-            UpdateGUI(isLevelStarted: false);
+            _guiManager.ShowScreen(isWin ? _guiManager.WinScreen : _guiManager.LoseScreen);
         }
 
         public void LoadLevel()
@@ -65,19 +62,13 @@ namespace LevelSystem
             Camera.main.transform.position = _initialCameraPosition;
             Camera.main.gameObject.GetComponent<MoveForward>().enabled = true;
 
-            _colorMixing.ResetColor();
-            UpdateGUI(isLevelStarted: true);
-
             LevelInfo levelInfo = LevelObject.GetComponent<LevelInfo>();
             levelInfo.Player.GetComponent<CharacterManager>().MakePlayer();
+
+            _guiManager.ShowScreen(_guiManager.PlayControls);
+            _colorMixing.ResetColor();
+            _isLevelStarted = true;
         }
 
-        public void UpdateGUI(bool isLevelStarted)
-        {
-            _isLevelStarted = isLevelStarted;
-            if (_currentGUIObject) _currentGUIObject.SetActive(!isLevelStarted);
-            PlayControls.SetActive(isLevelStarted);
-            if (!isLevelStarted) _colorMixing.AbortSelection();
-        }
     }
 }

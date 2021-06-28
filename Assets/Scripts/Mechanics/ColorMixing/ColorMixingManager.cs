@@ -25,7 +25,7 @@ namespace Mechanics.ColorMixing
             PlayerMaterial.name = "Player Material";
         }
 
-        public void AbortSelection()
+        void OnDisable()
         {
             _isSelectingInProcess = false;
             _lines.Clear();
