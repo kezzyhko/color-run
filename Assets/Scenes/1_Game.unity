@@ -1595,6 +1595,26 @@ PrefabInstance:
       propertyPath: m_Text
       value: YOU WON!
       objectReference: {fileID: 0}
+    - target: {fileID: 2802065676028725725, guid: fb90bfd5d5917674d93d3697edbf2de9,
+        type: 3}
+      propertyPath: m_EffectColor.a
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2802065676028725725, guid: fb90bfd5d5917674d93d3697edbf2de9,
+        type: 3}
+      propertyPath: m_EffectColor.b
+      value: 0.23921569
+      objectReference: {fileID: 0}
+    - target: {fileID: 2802065676028725725, guid: fb90bfd5d5917674d93d3697edbf2de9,
+        type: 3}
+      propertyPath: m_EffectColor.g
+      value: 0.5803922
+      objectReference: {fileID: 0}
+    - target: {fileID: 2802065676028725725, guid: fb90bfd5d5917674d93d3697edbf2de9,
+        type: 3}
+      propertyPath: m_EffectColor.r
+      value: 0.050980393
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: fb90bfd5d5917674d93d3697edbf2de9, type: 3}
 --- !u!224 &1747013080 stripped
@@ -2001,6 +2021,26 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Text
       value: YOU FAILED!
+      objectReference: {fileID: 0}
+    - target: {fileID: 2802065676028725725, guid: fb90bfd5d5917674d93d3697edbf2de9,
+        type: 3}
+      propertyPath: m_EffectColor.a
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2802065676028725725, guid: fb90bfd5d5917674d93d3697edbf2de9,
+        type: 3}
+      propertyPath: m_EffectColor.b
+      value: 0.23137255
+      objectReference: {fileID: 0}
+    - target: {fileID: 2802065676028725725, guid: fb90bfd5d5917674d93d3697edbf2de9,
+        type: 3}
+      propertyPath: m_EffectColor.g
+      value: 0.23137255
+      objectReference: {fileID: 0}
+    - target: {fileID: 2802065676028725725, guid: fb90bfd5d5917674d93d3697edbf2de9,
+        type: 3}
+      propertyPath: m_EffectColor.r
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: fb90bfd5d5917674d93d3697edbf2de9, type: 3}
