@@ -10,15 +10,16 @@ namespace LevelSystem
     public class LevelManager : MonoBehaviour
     {
 
-        public GameObject EndLevelScreen;
-        public Text EndLevelStatusText;
-        public Text EndLevelButtonText;
+        public GameObject WinScreen;
+        public GameObject LoseScreen;
 
         public GameObject[] Levels;
 
         public GameObject LevelObject { get; private set; }
         private int _levelNumber;
         private Vector3 _initialCameraPosition;
+        private bool _levelStarted = false;
+        private GameObject _currentGUIObject;
 
         private void Start()
         {
@@ -36,28 +37,16 @@ namespace LevelSystem
 
         public void EndLevel(bool isWin)
         {
-            if (EndLevelScreen.activeSelf) return;
+            if (!_levelStarted) return;
+            _levelStarted = false;
 
             if (isWin)
             {
                 _levelNumber++;
-                if (_levelNumber > Levels.Length)
-                {
-                    EndLevelStatusText.text = "All Levels Complete!";
-                    EndLevelButtonText.text = "Start from the beginning";
-                }
-                else
-                {
-                    EndLevelStatusText.text = "Level Complete!";
-                    EndLevelButtonText.text = "Next";
-                }
             }
-            else
-            {
-                EndLevelStatusText.text = "Try again";
-                EndLevelButtonText.text = "Retry";
-            }
-            EndLevelScreen.SetActive(true);
+
+            _currentGUIObject = isWin ? WinScreen : LoseScreen;
+            _currentGUIObject.SetActive(true);
         }
 
         public void LoadLevelButton()
@@ -70,7 +59,9 @@ namespace LevelSystem
             Destroy(LevelObject);
             LevelObject = Instantiate(Levels[_levelNumber - 1]);
             LevelObject.name = "Level";
-            EndLevelScreen.SetActive(false);
+
+            if (_currentGUIObject) _currentGUIObject.SetActive(false);
+            _levelStarted = true;
 
             Camera.main.transform.position = _initialCameraPosition;
             Camera.main.gameObject.GetComponent<MoveForward>().enabled = true;
