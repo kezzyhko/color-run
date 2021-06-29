@@ -4,10 +4,10 @@ using UnityEngine;
 
 namespace Utils
 {
-    public class DelayHelper
+    public static class DelayHelper
     {
 
-        public static void DelayedExecute(MonoBehaviour caller, System.Action action, float delay)
+        public static void DelayedExecute(this MonoBehaviour caller, System.Action action, float delay)
         {
             if (delay == 0)
             {
@@ -15,11 +15,11 @@ namespace Utils
             }
             else
             {
-                caller.StartCoroutine(DelayRoutine(action, delay));
+                caller.StartCoroutine(Routine(action, delay));
             }
         }
 
-        private static IEnumerator DelayRoutine(System.Action action, float delay)
+        private static IEnumerator Routine(System.Action action, float delay)
         {
             yield return new WaitForSeconds(delay);
             action();

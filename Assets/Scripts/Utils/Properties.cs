@@ -21,18 +21,6 @@ namespace Utils
         public ColorHelper.AcceptableColor ColorName;
         public Renderer[] Renderers;
 
-        public static bool DoesTypeMatch(GameObject obj, Type type)
-        {
-            if (!obj.TryGetComponent(out Properties props)) return false;
-            return props.ObjectType == type;
-        }
-
-        public static Renderer[] GetRenderers(GameObject obj)
-        {
-            if (!obj.TryGetComponent(out Properties props)) return null;
-            return props.Renderers;
-        }
-
         private void OnValidate()
         {
             if (Renderers == null || Renderers.Length == 0)

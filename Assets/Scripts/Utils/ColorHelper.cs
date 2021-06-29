@@ -32,22 +32,22 @@ namespace Utils
             /* 111 */ Color.black,
         };
 
-        public static Color EnumToColor(AcceptableColor acceptableColor)
+        public static Color EnumToColor(this AcceptableColor acceptableColor)
         {
             return Colors[(int) acceptableColor];
         }
 
-        public static bool CompareColorsWithoutAlpha(Color c1, Color c2)
+        public static bool CompareColorsWithoutAlpha(this Color c1, Color c2)
         {
             return c1.r == c2.r && c1.g == c2.g && c1.b == c2.b;
         }
 
-        public static Material GetObjectMaterial(GameObject obj)
+        public static Material GetObjectMaterial(this GameObject obj)
         {
             return Properties.GetRenderers(obj)[0].sharedMaterial;
         }
 
-        public static void SetObjectMaterial(GameObject obj, Material material)
+        public static void SetObjectMaterial(this GameObject obj, Material material)
         {
             foreach (Renderer r in Properties.GetRenderers(obj))
             {
@@ -55,22 +55,22 @@ namespace Utils
             }
         }
 
-        public static void SetObjectColor(GameObject obj, Color color)
+        public static void SetObjectColor(this GameObject obj, Color color)
         {
             GetObjectMaterial(obj).color = color;
         }
 
-        public static Color GetObjectColor(GameObject obj)
+        public static Color GetObjectColor(this GameObject obj)
         {
             return GetObjectMaterial(obj).color;
         }
 
-        public static void SetUIColor(GameObject obj, Color color)
+        public static void SetUIColor(this GameObject obj, Color color)
         {
             obj.GetComponent<Image>().color = color;
         }
 
-        public static Color GetUIColor(GameObject obj)
+        public static Color GetUIColor(this GameObject obj)
         {
             return obj.GetComponent<Image>().color;
         }
