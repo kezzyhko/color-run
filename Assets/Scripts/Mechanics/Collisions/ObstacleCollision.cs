@@ -12,10 +12,10 @@ namespace Mechanics.Collisions
         void OnTriggerEnter(Collider collider)
         {
             GameObject obstacle = collider.gameObject;
-            if (!Properties.DoesTypeMatch(obstacle, Obstacle)) return;
+            if (!obstacle.DoesTypeMatch(Obstacle)) return;
 
-            Color playerColor = ColorHelper.GetObjectColor(gameObject);
-            Color obstacleColor = ColorHelper.GetObjectColor(obstacle);
+            Color playerColor = gameObject.GetObjectColor();
+            Color obstacleColor = obstacle.GetObjectColor();
             if (ColorHelper.CompareColorsWithoutAlpha(playerColor, obstacleColor))
             {
                 bool shrinkAlreadyAdded = obstacle.TryGetComponent<Shrink>(out _);

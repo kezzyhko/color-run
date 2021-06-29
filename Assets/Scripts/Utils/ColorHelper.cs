@@ -44,12 +44,12 @@ namespace Utils
 
         public static Material GetObjectMaterial(this GameObject obj)
         {
-            return Properties.GetRenderers(obj)[0].sharedMaterial;
+            return obj.GetRenderers()[0].sharedMaterial;
         }
 
         public static void SetObjectMaterial(this GameObject obj, Material material)
         {
-            foreach (Renderer r in Properties.GetRenderers(obj))
+            foreach (Renderer r in obj.GetRenderers())
             {
                 r.sharedMaterial = material;
             }
@@ -57,12 +57,12 @@ namespace Utils
 
         public static void SetObjectColor(this GameObject obj, Color color)
         {
-            GetObjectMaterial(obj).color = color;
+            obj.GetObjectMaterial().color = color;
         }
 
         public static Color GetObjectColor(this GameObject obj)
         {
-            return GetObjectMaterial(obj).color;
+            return obj.GetObjectMaterial().color;
         }
 
         public static void SetUIColor(this GameObject obj, Color color)

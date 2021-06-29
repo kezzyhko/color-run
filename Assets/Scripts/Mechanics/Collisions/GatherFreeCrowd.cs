@@ -14,8 +14,8 @@ namespace Mechanics.Collisions
         void OnTriggerEnter(Collider collider)
         {
             GameObject free = collider.gameObject;
-            if (!Properties.DoesTypeMatch(free, Free)) return;
-            if (Properties.DoesTypeMatch(gameObject, Free))
+            if (!free.DoesTypeMatch(Free)) return;
+            if (gameObject.DoesTypeMatch(Free))
             {
                 AdjacentFreeCrowd.AddLast(free);
                 return;

@@ -41,7 +41,7 @@ namespace Utils
         {
             _animator.SetFloat("offset", Random.Range(0.0f, 1.0f));
 
-            if (Properties.DoesTypeMatch(gameObject, Enemy))
+            if (gameObject.DoesTypeMatch(Enemy))
             {
                 ThisTeam = _fight.Enemies;
                 OtherTeam = _fight.Players;
@@ -57,14 +57,14 @@ namespace Utils
         {
             GetComponent<Properties>().ObjectType = Player;
             SetRunning(true);
-            ColorHelper.SetObjectMaterial(gameObject, _colorMixing.PlayerMaterial);
+            gameObject.SetObjectMaterial(_colorMixing.PlayerMaterial);
 
             _fight.Players.AddLast(gameObject);
 
             LinkedList<GameObject> newAdjacentCrowd = GetComponent<GatherFreeCrowd>().AdjacentFreeCrowd;
             foreach (GameObject adjacentFree in newAdjacentCrowd)
             {
-                if (!Properties.DoesTypeMatch(adjacentFree, Free)) continue;
+                if (!adjacentFree.DoesTypeMatch(Free)) continue;
                 adjacentFree.GetComponent<CharacterManager>().MakePlayer();
             }
         }
@@ -93,7 +93,7 @@ namespace Utils
         {
             _animator.SetBool("dead", true);
             IsDead = true;
-            ColorHelper.SetObjectMaterial(gameObject, Instantiate(ColorHelper.GetObjectMaterial(gameObject)));
+            gameObject.SetObjectMaterial(Instantiate(gameObject.GetObjectMaterial()));
             GetComponent<Rigidbody>().detectCollisions = false;
             SetRunning(false);
 

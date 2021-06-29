@@ -28,9 +28,9 @@ namespace Mechanics.ColorMixing
 
         void Start()
         {
-            Color color = ColorHelper.EnumToColor(_colorName);
+            Color color = _colorName.EnumToColor();
             color.a = 0;
-            ColorHelper.SetUIColor(gameObject, color);
+            gameObject.SetUIColor(color);
 
             foreach ((EventTriggerType type, System.Action<GameObject> func) in _events)
             {

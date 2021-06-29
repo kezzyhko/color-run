@@ -33,10 +33,10 @@ namespace Utils
         {
             if (ColorName != NoRecolor)
             {
-                Material material = ColorHelper.GetObjectMaterial(gameObject);
+                Material material = gameObject.GetObjectMaterial();
                 material = Instantiate(material);
-                material.color = ColorHelper.EnumToColor(ColorName);
-                ColorHelper.SetObjectMaterial(gameObject, material);
+                material.color = ColorName.EnumToColor();
+                gameObject.SetObjectMaterial(material);
             }
         }
 

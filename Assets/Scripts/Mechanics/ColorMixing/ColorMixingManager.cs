@@ -34,27 +34,27 @@ namespace Mechanics.ColorMixing
 
         public void ResetColor()
         {
-            Color initialColor = ColorHelper.EnumToColor(InitialColor);
+            Color initialColor = InitialColor.EnumToColor();
             _mixedColor = initialColor;
             PlayerMaterial.color = initialColor;
-            ColorHelper.SetUIColor(CurrentColorIndicator, initialColor);
+            CurrentColorIndicator.SetUIColor(initialColor);
         }
 
         void UpdateMixedColor(GameObject sender)
         {
-            Color newColor = ColorHelper.GetUIColor(sender);
+            Color newColor = sender.GetUIColor();
             _colors.AddLast(newColor);
             _mixedColor += newColor;
             if (ColorHelper.CompareColorsWithoutAlpha(_mixedColor, Color.white)) _mixedColor = Color.black;
-            ColorHelper.SetUIColor(CurrentColorIndicator, _mixedColor);
+            CurrentColorIndicator.SetUIColor(_mixedColor);
         }
 
         public void PointerClick(GameObject sender)
         {
             if (_isSelectingInProcess) return;
-            Color newColor = ColorHelper.GetUIColor(sender);
+            Color newColor = sender.GetUIColor();
             newColor.a = 1;
-            ColorHelper.SetUIColor(CurrentColorIndicator, newColor);
+            CurrentColorIndicator.SetUIColor(newColor);
             PlayerMaterial.color = newColor;
         }
 
@@ -69,7 +69,7 @@ namespace Mechanics.ColorMixing
         public void PointerEnter(GameObject sender)
         {
             if (!_isSelectingInProcess) return;
-            Color color = ColorHelper.GetUIColor(sender);
+            Color color = sender.GetUIColor();
             if (_colors.Contains(color)) return;
 
             _lines.AddLast((_startLinePosition, sender.transform.position));
