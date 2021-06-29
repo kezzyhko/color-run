@@ -9,6 +9,9 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2802065675903680734}
+  - component: {fileID: 9064570308654413831}
+  - component: {fileID: 7170856099765458898}
+  - component: {fileID: 8453304789275778731}
   m_Layer: 5
   m_Name: GUIScreen
   m_TagString: Untagged
@@ -35,3 +38,54 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &9064570308654413831
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2802065675903680733}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a37493cfa3004a3398dca64e67c27c9d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _closeOnStart: 1
+  _blockRaycastsWhenClosed: 1
+--- !u!225 &7170856099765458898
+CanvasGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2802065675903680733}
+  m_Enabled: 1
+  m_Alpha: 1
+  m_Interactable: 1
+  m_BlocksRaycasts: 1
+  m_IgnoreParentGroups: 0
+--- !u!114 &8453304789275778731
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2802065675903680733}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 47d568cb8bd04188826512b3fd5014f7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _openData:
+    Delay: 0
+    Duration: 0.2
+    Ease: 0
+    Overshoot: 1.7
+  _openToInitialState: 1
+  _openState: 0
+  _closeData:
+    Delay: 0
+    Duration: 0.2
+    Ease: 0
+    Overshoot: 1.7
+  _closedState: 0
