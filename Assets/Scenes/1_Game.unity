@@ -156,7 +156,7 @@ MonoBehaviour:
   CurrentColorIndicator: {fileID: 274662244}
   LineThickness: 8
   PlayerMaterial: {fileID: 2100000, guid: 31321ba15b8f8eb4c954353edc038b1d, type: 2}
-  InitialColor: 6
+  InitialColor: 7
 --- !u!4 &49866147
 Transform:
   m_ObjectHideFlags: 0
@@ -2146,7 +2146,7 @@ PrefabInstance:
     - target: {fileID: 6394021375077844019, guid: db0f81d1adedd9f46aceaf26d63af063,
         type: 3}
       propertyPath: _colorName
-      value: 3
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 9148447913947811313, guid: db0f81d1adedd9f46aceaf26d63af063,
         type: 3}
