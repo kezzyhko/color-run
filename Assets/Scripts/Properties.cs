@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using ColorUtils;
 
 public class Properties : MonoBehaviour
 {
@@ -15,7 +16,9 @@ public class Properties : MonoBehaviour
     };
 
     public Type ObjectType;
+    public ColorHelper.AcceptableColor ColorName;
     public Renderer[] Renderers;
+    public bool Revalidated = false;
 
     public static bool DoesTypeMatch(GameObject obj, Type type)
     {
@@ -36,6 +39,28 @@ public class Properties : MonoBehaviour
         {
             Renderers = GetComponentsInChildren<Renderer>();
         }
+        if (!Revalidated)
+        {
+            ChangeColor cc = GetComponent<ChangeColor>();
+            if (cc)
+            {
+                int[] tr = new int[] {1, 2, 4, 5, 3, 6, 7};
+                ColorName = (ColorHelper.AcceptableColor) tr[(int)cc.ColorName];
+            }
+            else
+            {
+                ColorName = 0;
+            }
+            Revalidated = true;
+        }
     }
 
-}
+    /*void Start()
+    {
+        Material material = ColorHelper.GetObjectMaterial(gameObject);
+        material = Instantiate(material);
+        material.color = ColorHelper.EnumToColor(ColorName);
+        ColorHelper.SetObjectMaterial(gameObject, material);
+    }*/
+
+            }

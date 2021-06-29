@@ -9,17 +9,19 @@ namespace ColorUtils
     {
         public enum AcceptableColor
         {
-            Red,
-            Green,
-            Blue,
-            Pink,
-            Yellow,
-            Cyan,
-            Black,
+            Gray = 0,
+            Red = 1,
+            Green = 2,
+            Blue = 4,
+            Pink = 5,
+            Yellow = 3,
+            Cyan = 6,
+            Black = 7,
         };
 
         private static Color[] Colors = new Color[]
         {
+            Color.gray,
             Color.red,
             Color.green,
             Color.blue,
