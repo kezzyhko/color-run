@@ -21,7 +21,7 @@ namespace LevelSystem
 
         private void OnDestroy()
         {
-            GetComponent<Button>().onClick.RemoveAllListeners();
+            GetComponent<Button>().onClick.RemoveListener(_levelManager.LoadLevel);
         }
     }
 }
