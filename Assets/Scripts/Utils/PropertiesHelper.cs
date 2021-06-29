@@ -19,7 +19,7 @@ namespace Utils
         public static bool DoesTypeMatch(this GameObject obj, ObjectType type)
         {
             if (!obj.TryGetComponent(out Properties props)) return false;
-            return props.ObjectType == type;
+            return props.Type == type;
         }
 
         public static Renderer[] GetRenderers(this GameObject obj)

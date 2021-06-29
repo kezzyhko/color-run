@@ -55,7 +55,7 @@ namespace Utils
 
         public void MakePlayer()
         {
-            GetComponent<Properties>().ObjectType = Player;
+            GetComponent<Properties>().Type = Player;
             SetRunning(true);
             gameObject.SetObjectMaterial(_colorMixing.PlayerMaterial);
 

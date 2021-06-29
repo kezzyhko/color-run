@@ -8,7 +8,7 @@ namespace Utils
     public class Properties : MonoBehaviour
     {
 
-        public PropertiesHelper.ObjectType ObjectType;
+        public PropertiesHelper.ObjectType Type;
         public ColorHelper.AcceptableColor ColorName;
         public Renderer[] Renderers;
 
