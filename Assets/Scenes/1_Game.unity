@@ -1214,6 +1214,7 @@ MonoBehaviour:
   - {fileID: 4963680915086627606, guid: 2c6510aad53436343a6fe9be85ec1378, type: 3}
   - {fileID: 875162607303095913, guid: 1676c4c8009a4aa439494eb755524dd3, type: 3}
   - {fileID: 3001455427011038306, guid: 8f35a4c4d6924f44e86ba8d9429b3ac3, type: 3}
+  AfterFightDelay: 5.5
 --- !u!4 &876017449
 Transform:
   m_ObjectHideFlags: 0

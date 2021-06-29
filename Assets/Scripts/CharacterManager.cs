@@ -98,7 +98,7 @@ public class CharacterManager : MonoBehaviour
         ThisTeam.Remove(gameObject);
         if (ThisTeam.Count == 0)
         {
-            _levelManager.EndLevel(isWin: ThisTeam == _fight.Enemies);
+            _levelManager.EndLevel(isWin: ThisTeam == _fight.Enemies, isOnFight: _fight.IsFightStarted);
         }
     }
 
