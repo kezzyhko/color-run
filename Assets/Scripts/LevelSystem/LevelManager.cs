@@ -61,6 +61,7 @@ namespace LevelSystem
                 _coinsManager.Coins += _coinsManager.CoinsForLevelFinish;
             }
 
+            Camera.main.GetComponent<MoveForward>().enabled = false;
             _guiManager.ShowScreen(isWin ? _guiManager.WinScreen : _guiManager.LoseScreen);
             _colorMixing.AbortSelection();
         }

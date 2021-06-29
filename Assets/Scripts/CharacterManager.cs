@@ -98,7 +98,6 @@ public class CharacterManager : MonoBehaviour
         ThisTeam.Remove(gameObject);
         if (ThisTeam.Count == 0)
         {
-            Camera.main.GetComponent<MoveForward>().enabled = false;
             _levelManager.EndLevel(isWin: ThisTeam == _fight.Enemies);
         }
     }
