@@ -172,6 +172,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ObjectType: 0
+  ColorName: 7
   Renderers:
   - {fileID: 8895097125745460078}
   - {fileID: 5298072382496421701}

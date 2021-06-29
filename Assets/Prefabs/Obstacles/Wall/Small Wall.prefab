@@ -60,6 +60,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ObjectType: 4
+  ColorName: 7
   Renderers:
   - {fileID: 654510524140037429}
 --- !u!114 &5921312074675754236

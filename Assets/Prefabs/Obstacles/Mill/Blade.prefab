@@ -223,6 +223,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ObjectType: 4
+  ColorName: 0
   Renderers:
-  - {fileID: 4402803420079318452}
-  - {fileID: 1148089245393113503}
+  - {fileID: 0}
