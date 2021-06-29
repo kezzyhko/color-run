@@ -6,17 +6,17 @@ using DELTation.UI.Screens;
 public class GUIManager : MonoBehaviour
 {
 
-    public GameObject Menu;
-    public GameObject PlayControls;
-    public GameObject WinScreen;
-    public GameObject LoseScreen;
+    public GameScreen Menu;
+    public GameScreen PlayControls;
+    public GameScreen WinScreen;
+    public GameScreen LoseScreen;
 
-    private GameObject _currentScreen;
+    private GameScreen _currentScreen;
 
-    public void ShowScreen(GameObject screen)
+    public void ShowScreen(GameScreen screen)
     {
-        if (_currentScreen) _currentScreen.GetComponent<GameScreen>().Close();
-        screen.GetComponent<GameScreen>().Open();
+        if (_currentScreen) _currentScreen.Close();
+        screen.Open();
         _currentScreen = screen;
     }
 
