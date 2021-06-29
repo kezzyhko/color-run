@@ -1,7 +1,8 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using static Properties.Type;
+using Utils;
+using static Utils.Properties.Type;
 
 namespace Mechanics.Collisions
 {

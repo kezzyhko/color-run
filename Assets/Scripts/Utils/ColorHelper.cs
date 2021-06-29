@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-namespace ColorUtils
+namespace Utils
 {
     public static class ColorHelper
     {

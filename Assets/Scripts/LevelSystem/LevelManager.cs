@@ -4,6 +4,7 @@ using UnityEngine;
 using Mechanics.ColorMixing;
 using Movement;
 using CoinsSystem;
+using Utils;
 
 namespace LevelSystem
 {
