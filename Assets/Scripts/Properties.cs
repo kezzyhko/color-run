@@ -49,6 +49,8 @@ public class Properties : MonoBehaviour
         {
             ColorName = 0;
         }
+        UnityEditor.EditorUtility.SetDirty(gameObject);
+        UnityEditor.PrefabUtility.RecordPrefabInstancePropertyModifications(gameObject);
     }
 
     /*void Start()
