@@ -76,8 +76,8 @@ public class CharacterManager : MonoBehaviour
     {
         _animator.SetBool("running", isRunning);
         Rigidbody rigidbody = GetComponent<Rigidbody>();
-        rigidbody.velocity = isRunning ? Vector3.forward * Speed : Vector3.zero;
         rigidbody.constraints = isRunning ? RigidbodyConstraints.FreezeRotation : RigidbodyConstraints.FreezeAll;
+        rigidbody.velocity = isRunning ? Vector3.forward * Speed : Vector3.zero;
     }
 
     public void SetFighting(bool isFighting)

@@ -25,6 +25,13 @@ namespace Mechanics.ColorMixing
             PlayerMaterial.name = "Player Material";
         }
 
+        public void AbortSelection()
+        {
+            _isSelectingInProcess = false;
+            _lines.Clear();
+            _colors.Clear();
+        }
+
         public void ResetColor()
         {
             Color initialColor = ColorHelper.EnumToColor(InitialColor);
@@ -46,6 +53,7 @@ namespace Mechanics.ColorMixing
         {
             if (_isSelectingInProcess) return;
             Color newColor = ColorHelper.GetUIColor(sender);
+            newColor.a = 1;
             ColorHelper.SetUIColor(CurrentColorIndicator, newColor);
             PlayerMaterial.color = newColor;
         }
