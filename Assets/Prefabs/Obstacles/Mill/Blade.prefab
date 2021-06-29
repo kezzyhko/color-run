@@ -225,4 +225,5 @@ MonoBehaviour:
   ObjectType: 4
   ColorName: 0
   Renderers:
-  - {fileID: 0}
+  - {fileID: 4402803420079318452}
+  - {fileID: 1148089245393113503}

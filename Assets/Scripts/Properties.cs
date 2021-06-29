@@ -40,12 +40,12 @@ public class Properties : MonoBehaviour
         }
     }
 
-    /*void Start()
+    void Start()
     {
         Material material = ColorHelper.GetObjectMaterial(gameObject);
         material = Instantiate(material);
         material.color = ColorHelper.EnumToColor(ColorName);
         ColorHelper.SetObjectMaterial(gameObject, material);
-    }*/
+    }
 
-            }
+}
