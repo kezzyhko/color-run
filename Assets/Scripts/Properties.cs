@@ -38,19 +38,6 @@ public class Properties : MonoBehaviour
         {
             Renderers = GetComponentsInChildren<Renderer>();
         }
-
-        ChangeColor cc = GetComponent<ChangeColor>();
-        if (cc)
-        {
-            int[] tr = new int[] {1, 2, 4, 5, 3, 6, 7};
-            ColorName = (ColorHelper.AcceptableColor) tr[(int)cc.ColorName];
-        }
-        else
-        {
-            ColorName = 0;
-        }
-        UnityEditor.EditorUtility.SetDirty(gameObject);
-        UnityEditor.PrefabUtility.RecordPrefabInstancePropertyModifications(gameObject);
     }
 
     /*void Start()
