@@ -4,10 +4,9 @@ using UnityEngine;
 using Mechanics.Fight;
 using Mechanics.Collisions;
 using Mechanics.ColorMixing;
-using Movement;
-using Utils;
 using LevelSystem;
 using static Utils.PropertiesHelper.ObjectType;
+using static Utils.ColorHelper;
 
 namespace Utils
 {
@@ -57,9 +56,11 @@ namespace Utils
         {
             GetComponent<Properties>().Type = Player;
             SetRunning(true);
-            gameObject.SetObjectMaterial(_colorMixing.PlayerMaterial);
-
             _fight.Players.AddLast(gameObject);
+
+            gameObject.SetObjectMaterial(_colorMixing.PlayerMaterial);
+            _colorMixing.PlayerColorUpdated += UpdatePlayerColorInProperties;
+            UpdatePlayerColorInProperties(_colorMixing.CurrentPlayerColor);
 
             LinkedList<GameObject> newAdjacentCrowd = GetComponent<GatherFreeCrowd>().AdjacentFreeCrowd;
             foreach (GameObject adjacentFree in newAdjacentCrowd)
@@ -67,6 +68,11 @@ namespace Utils
                 if (!adjacentFree.DoesTypeMatch(Free)) continue;
                 adjacentFree.GetComponent<CharacterManager>().MakePlayer();
             }
+        }
+
+        private void UpdatePlayerColorInProperties(AcceptableColor color)
+        {
+            GetComponent<Properties>().ColorName = color;
         }
 
         public void RotateTowards(Vector3 direction)
@@ -93,9 +99,11 @@ namespace Utils
         {
             _animator.SetBool("dead", true);
             IsDead = true;
-            gameObject.SetObjectMaterial(Instantiate(gameObject.GetObjectMaterial()));
-            GetComponent<Rigidbody>().detectCollisions = false;
             SetRunning(false);
+            GetComponent<Rigidbody>().detectCollisions = false;
+
+            gameObject.SetObjectMaterial(Instantiate(gameObject.GetObjectMaterial()));
+            _colorMixing.PlayerColorUpdated -= UpdatePlayerColorInProperties;
 
             ThisTeam.Remove(gameObject);
             if (ThisTeam.Count == 0)
@@ -109,6 +117,11 @@ namespace Utils
             _animator.SetBool("celebrating", true);
             IsCelebrating = true;
             SetRunning(false);
+        }
+
+        private void OnDestroy()
+        {
+            _colorMixing.PlayerColorUpdated -= UpdatePlayerColorInProperties;
         }
 
     }

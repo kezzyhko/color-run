@@ -9,8 +9,7 @@ namespace Mechanics.ColorMixing
     public class ColorMixingButton : MonoBehaviour
     {
 
-        [SerializeField]
-        private ColorHelper.AcceptableColor _colorName;
+        public ColorHelper.AcceptableColor ColorName;
 
         private LinkedList<(EventTriggerType, System.Action<GameObject>)> _events = new LinkedList<(EventTriggerType, System.Action<GameObject>)>();
 
@@ -28,10 +27,6 @@ namespace Mechanics.ColorMixing
 
         void Start()
         {
-            Color color = _colorName.EnumToColor();
-            color.a = 0;
-            gameObject.SetUIColor(color);
-
             foreach ((EventTriggerType type, System.Action<GameObject> func) in _events)
             {
                 EventTrigger.Entry entry = new EventTrigger.Entry();

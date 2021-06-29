@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using Mechanics.ColorMixing;
 
 namespace Utils
 {
@@ -37,11 +38,6 @@ namespace Utils
             return Colors[(int) acceptableColor - 1];
         }
 
-        public static bool CompareColorsWithoutAlpha(this Color c1, Color c2)
-        {
-            return c1.r == c2.r && c1.g == c2.g && c1.b == c2.b;
-        }
-
         public static Material GetObjectMaterial(this GameObject obj)
         {
             return obj.GetRenderers()[0].sharedMaterial;
@@ -55,24 +51,25 @@ namespace Utils
             }
         }
 
-        public static void SetObjectColor(this GameObject obj, Color color)
+        public static void SetObjectColor(this GameObject obj, AcceptableColor color)
         {
-            obj.GetObjectMaterial().color = color;
+            obj.GetComponent<Properties>().ColorName = color;
+            obj.GetObjectMaterial().color = color.EnumToColor();
         }
 
-        public static Color GetObjectColor(this GameObject obj)
+        public static AcceptableColor GetObjectColor(this GameObject obj)
         {
-            return obj.GetObjectMaterial().color;
+            return obj.GetComponent<Properties>().ColorName;
         }
 
-        public static void SetUIColor(this GameObject obj, Color color)
+        public static void SetUIColor(this GameObject obj, AcceptableColor color)
         {
-            obj.GetComponent<Image>().color = color;
+            obj.GetComponent<Image>().color = color.EnumToColor();
         }
 
-        public static Color GetUIColor(this GameObject obj)
+        public static AcceptableColor GetUIColor(this GameObject obj)
         {
-            return obj.GetComponent<Image>().color;
+            return obj.GetComponent<ColorMixingButton>().ColorName;
         }
     }
 }

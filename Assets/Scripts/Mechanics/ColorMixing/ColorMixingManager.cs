@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using Utils;
+using static Utils.ColorHelper;
 
 namespace Mechanics.ColorMixing
 {
@@ -11,13 +12,16 @@ namespace Mechanics.ColorMixing
         public GameObject CurrentColorIndicator;
         public float LineThickness = 8.0f;
         public Material PlayerMaterial;
-        public ColorHelper.AcceptableColor InitialColor = ColorHelper.AcceptableColor.Black;
+        public AcceptableColor InitialColor = AcceptableColor.Black;
+
+        public event System.Action<AcceptableColor> PlayerColorUpdated;
+        [System.NonSerialized]
+        public AcceptableColor CurrentPlayerColor;
 
         private bool _isSelectingInProcess = false;
         private Vector2 _startLinePosition;
         private LinkedList<(Vector2, Vector2)> _lines = new LinkedList<(Vector2, Vector2)>();
-        private LinkedList<Color> _colors = new LinkedList<Color>();
-        private Color _mixedColor;
+        private AcceptableColor _mixedColor;
 
         void Start()
         {
@@ -25,52 +29,54 @@ namespace Mechanics.ColorMixing
             PlayerMaterial.name = "Player Material";
         }
 
+        private void UpdatePlayerColor(AcceptableColor color)
+        {
+            PlayerMaterial.color = color.EnumToColor();
+            CurrentPlayerColor = color;
+            if (PlayerColorUpdated != null) PlayerColorUpdated(color);
+        }
+
         public void AbortSelection()
         {
             _isSelectingInProcess = false;
             _lines.Clear();
-            _colors.Clear();
         }
 
         public void ResetColor()
         {
-            Color initialColor = InitialColor.EnumToColor();
-            _mixedColor = initialColor;
-            PlayerMaterial.color = initialColor;
-            CurrentColorIndicator.SetUIColor(initialColor);
+            _mixedColor = InitialColor;
+            UpdatePlayerColor(InitialColor);
+            CurrentColorIndicator.SetUIColor(InitialColor);
         }
 
-        void UpdateMixedColor(GameObject sender)
+        private void UpdateMixedColor(GameObject sender)
         {
-            Color newColor = sender.GetUIColor();
-            _colors.AddLast(newColor);
-            _mixedColor += newColor;
-            if (ColorHelper.CompareColorsWithoutAlpha(_mixedColor, Color.white)) _mixedColor = Color.black;
+            AcceptableColor newColor = sender.GetUIColor();
+            _mixedColor |= newColor;
             CurrentColorIndicator.SetUIColor(_mixedColor);
         }
 
         public void PointerClick(GameObject sender)
         {
             if (_isSelectingInProcess) return;
-            Color newColor = sender.GetUIColor();
-            newColor.a = 1;
+            AcceptableColor newColor = sender.GetUIColor();
             CurrentColorIndicator.SetUIColor(newColor);
-            PlayerMaterial.color = newColor;
+            UpdatePlayerColor(newColor);
         }
 
         public void BeginDrag(GameObject sender)
         {
             _startLinePosition = sender.transform.position;
             _isSelectingInProcess = true;
-            _mixedColor = Color.black;
+            _mixedColor = AcceptableColor.None;
             UpdateMixedColor(sender);
         }
 
         public void PointerEnter(GameObject sender)
         {
             if (!_isSelectingInProcess) return;
-            Color color = sender.GetUIColor();
-            if (_colors.Contains(color)) return;
+            AcceptableColor color = sender.GetUIColor();
+            if ((_mixedColor & color) != AcceptableColor.None) return;
 
             _lines.AddLast((_startLinePosition, sender.transform.position));
             _startLinePosition = sender.transform.position;
@@ -79,10 +85,8 @@ namespace Mechanics.ColorMixing
 
         public void EndDrag(GameObject sender)
         {
-            _isSelectingInProcess = false;
-            _lines.Clear();
-            _colors.Clear();
-            PlayerMaterial.color = _mixedColor;
+            AbortSelection();
+            UpdatePlayerColor(_mixedColor);
         }
 
         void OnGUI()

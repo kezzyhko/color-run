@@ -14,9 +14,7 @@ namespace Mechanics.Collisions
             GameObject obstacle = collider.gameObject;
             if (!obstacle.DoesTypeMatch(Obstacle)) return;
 
-            Color playerColor = gameObject.GetObjectColor();
-            Color obstacleColor = obstacle.GetObjectColor();
-            if (ColorHelper.CompareColorsWithoutAlpha(playerColor, obstacleColor))
+            if (gameObject.GetObjectColor() == obstacle.GetObjectColor())
             {
                 bool shrinkAlreadyAdded = obstacle.TryGetComponent<Shrink>(out _);
                 if (!shrinkAlreadyAdded) obstacle.AddComponent<Shrink>();
