@@ -53,6 +53,7 @@ namespace Mechanics.ColorMixing
         {
             if (_isSelectingInProcess) return;
             Color newColor = ColorHelper.GetUIColor(sender);
+            newColor.a = 1;
             ColorHelper.SetUIColor(CurrentColorIndicator, newColor);
             PlayerMaterial.color = newColor;
         }
