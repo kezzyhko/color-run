@@ -22,7 +22,7 @@ namespace Utils
 
         void Start()
         {
-            if (ColorName != NoRecolor)
+            if (ColorName != None)
             {
                 Material material = gameObject.GetObjectMaterial();
                 material = Instantiate(material);

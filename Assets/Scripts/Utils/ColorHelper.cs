@@ -9,7 +9,7 @@ namespace Utils
     {
         public enum AcceptableColor
         {
-            Gray   = 0b000,
+            None = 0,
             Red    = 0b001,
             Green  = 0b010,
             Blue   = 0b100,
@@ -17,12 +17,11 @@ namespace Utils
             Pink   = 0b101,
             Cyan   = 0b110,
             Black  = 0b111,
-            NoRecolor,
+            Gray,
         };
 
         private static Color[] Colors = new Color[]
         {
-            /* 000 */ Color.gray,
             /* 001 */ Color.red,
             /* 010 */ Color.green,
             /* 011 */ Color.red + Color.green,
@@ -30,11 +29,12 @@ namespace Utils
             /* 101 */ Color.red + Color.blue,
             /* 110 */ Color.green + Color.blue,
             /* 111 */ Color.black,
+            Color.gray,
         };
 
         public static Color EnumToColor(this AcceptableColor acceptableColor)
         {
-            return Colors[(int) acceptableColor];
+            return Colors[(int) acceptableColor - 1];
         }
 
         public static bool CompareColorsWithoutAlpha(this Color c1, Color c2)
