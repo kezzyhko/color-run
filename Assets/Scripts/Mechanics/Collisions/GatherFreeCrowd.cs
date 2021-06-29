@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using Utils;
-using static Utils.Properties.Type;
+using static Utils.PropertiesHelper.ObjectType;
 
 namespace Mechanics.Collisions
 {

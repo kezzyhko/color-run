@@ -8,16 +8,7 @@ namespace Utils
     public class Properties : MonoBehaviour
     {
 
-        public enum Type
-        {
-            Other,
-            Player,
-            Free,
-            Enemy,
-            Obstacle,
-        };
-
-        public Type ObjectType;
+        public PropertiesHelper.ObjectType ObjectType;
         public ColorHelper.AcceptableColor ColorName;
         public Renderer[] Renderers;
 

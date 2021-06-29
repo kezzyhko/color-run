@@ -6,7 +6,17 @@ namespace Utils
 {
     public static class PropertiesHelper
     {
-        public static bool DoesTypeMatch(this GameObject obj, Properties.Type type)
+
+        public enum ObjectType
+        {
+            Other,
+            Player,
+            Free,
+            Enemy,
+            Obstacle,
+        };
+
+        public static bool DoesTypeMatch(this GameObject obj, ObjectType type)
         {
             if (!obj.TryGetComponent(out Properties props)) return false;
             return props.ObjectType == type;

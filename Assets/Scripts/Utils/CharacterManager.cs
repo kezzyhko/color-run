@@ -7,7 +7,7 @@ using Mechanics.ColorMixing;
 using Movement;
 using Utils;
 using LevelSystem;
-using static Utils.Properties.Type;
+using static Utils.PropertiesHelper.ObjectType;
 
 namespace Utils
 {
