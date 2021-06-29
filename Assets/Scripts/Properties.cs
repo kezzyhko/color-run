@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using ColorUtils;
+using static ColorUtils.ColorHelper.AcceptableColor;
 
 public class Properties : MonoBehaviour
 {
@@ -42,10 +43,13 @@ public class Properties : MonoBehaviour
 
     void Start()
     {
-        Material material = ColorHelper.GetObjectMaterial(gameObject);
-        material = Instantiate(material);
-        material.color = ColorHelper.EnumToColor(ColorName);
-        ColorHelper.SetObjectMaterial(gameObject, material);
+        if (ColorName != NoRecolor)
+        {
+            Material material = ColorHelper.GetObjectMaterial(gameObject);
+            material = Instantiate(material);
+            material.color = ColorHelper.EnumToColor(ColorName);
+            ColorHelper.SetObjectMaterial(gameObject, material);
+        }
     }
 
 }

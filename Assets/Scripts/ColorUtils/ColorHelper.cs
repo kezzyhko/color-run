@@ -17,6 +17,7 @@ namespace ColorUtils
             Pink   = 0b101,
             Cyan   = 0b110,
             Black  = 0b111,
+            NoRecolor,
         };
 
         private static Color[] Colors = new Color[]
