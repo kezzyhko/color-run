@@ -1,9 +1,9 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.UI;
 using Mechanics.ColorMixing;
 using Movement;
+using CoinsSystem;
 
 namespace LevelSystem
 {
@@ -12,8 +12,8 @@ namespace LevelSystem
 
         public GameObject[] Levels;
 
-        public Text[] CurrentLevelIndicators;
         private int _levelNumber;
+        public event System.Action<int> LevelNumberChanged;
         public int LevelNumber
         {
             get
@@ -23,10 +23,7 @@ namespace LevelSystem
             set
             {
                 _levelNumber = value;
-                foreach (Text currentLevelIndicator in CurrentLevelIndicators)
-                {
-                    currentLevelIndicator.text = "LEVEL " + value.ToString();
-                }
+                if (LevelNumberChanged != null) LevelNumberChanged(value);
             }
         }
 
