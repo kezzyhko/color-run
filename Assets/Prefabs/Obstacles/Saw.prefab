@@ -11,7 +11,6 @@ GameObject:
   - component: {fileID: 8468424261378625485}
   - component: {fileID: 8468424261378625486}
   - component: {fileID: 8468424261378625481}
-  - component: {fileID: 4595201655896253169}
   - component: {fileID: 4761471295981286905}
   - component: {fileID: 8300708614952029663}
   m_Layer: 0
@@ -63,19 +62,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Speed: 2
   Amplitude: 5
---- !u!114 &4595201655896253169
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8468424261378625480}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d15dbf7e81df1684996cdeca797eaa69, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  ColorName: 6
 --- !u!114 &4761471295981286905
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -88,7 +74,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6a6e4af3c477fa64495f0b4d5dba15f5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ObjectType: 4
+  Type: 4
+  ColorName: 7
   Renderers:
   - {fileID: 8840567604635502161}
 --- !u!114 &8300708614952029663

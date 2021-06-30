@@ -2,15 +2,14 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.EventSystems;
-using ColorUtils;
+using Utils;
 
 namespace Mechanics.ColorMixing
 {
     public class ColorMixingButton : MonoBehaviour
     {
 
-        [SerializeField]
-        private ColorHelper.AcceptableColor _colorName;
+        public ColorHelper.AcceptableColor ColorName;
 
         private LinkedList<(EventTriggerType, System.Action<GameObject>)> _events = new LinkedList<(EventTriggerType, System.Action<GameObject>)>();
 
@@ -28,10 +27,6 @@ namespace Mechanics.ColorMixing
 
         void Start()
         {
-            Color color = ColorHelper.EnumToColor(_colorName);
-            color.a = 0;
-            ColorHelper.SetUIColor(gameObject, color);
-
             foreach ((EventTriggerType type, System.Action<GameObject> func) in _events)
             {
                 EventTrigger.Entry entry = new EventTrigger.Entry();
