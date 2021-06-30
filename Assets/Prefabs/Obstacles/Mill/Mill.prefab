@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 9146854158225653507}
   - component: {fileID: 9146854158225653506}
   - component: {fileID: 9146854158225653509}
+  - component: {fileID: 6829935861561317044}
   m_Layer: 0
   m_Name: Central Cube
   m_TagString: Untagged
@@ -60,7 +61,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 31321ba15b8f8eb4c954353edc038b1d, type: 2}
+  - {fileID: 2100000, guid: bf5f81d01256b0a4a9466ee0ffd385fe, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -95,6 +96,22 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &6829935861561317044
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9146854158225653511}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6a6e4af3c477fa64495f0b4d5dba15f5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Type: 0
+  ColorName: 8
+  Renderers:
+  - {fileID: 9146854158225653506}
 --- !u!1 &9146854159577144171
 GameObject:
   m_ObjectHideFlags: 0
@@ -105,7 +122,6 @@ GameObject:
   m_Component:
   - component: {fileID: 9146854159577144169}
   - component: {fileID: 9146854159577144168}
-  - component: {fileID: 6485437853587036879}
   - component: {fileID: 8241410207763314605}
   m_Layer: 0
   m_Name: Mill
@@ -146,19 +162,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Speed: {x: 0, y: 90, z: 0}
---- !u!114 &6485437853587036879
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 9146854159577144171}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d15dbf7e81df1684996cdeca797eaa69, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  ColorName: 6
 --- !u!114 &8241410207763314605
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -171,7 +174,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6a6e4af3c477fa64495f0b4d5dba15f5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ObjectType: 0
+  Type: 0
+  ColorName: 7
   Renderers:
   - {fileID: 8895097125745460078}
   - {fileID: 5298072382496421701}

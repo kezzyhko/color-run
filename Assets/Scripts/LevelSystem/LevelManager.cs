@@ -4,6 +4,7 @@ using UnityEngine;
 using Mechanics.ColorMixing;
 using Movement;
 using CoinsSystem;
+using Utils;
 
 namespace LevelSystem
 {
@@ -11,6 +12,7 @@ namespace LevelSystem
     {
 
         public GameObject[] Levels;
+        public float AfterFightDelay = 5.5f;
 
         private int _levelNumber;
         public event System.Action<int> LevelNumberChanged;
@@ -50,7 +52,7 @@ namespace LevelSystem
             _guiManager = guiManager;
         }
 
-        public void EndLevel(bool isWin)
+        public void EndLevel(bool isWin, bool isOnFight)
         {
             if (_isLevelEnded) return;
             _isLevelEnded = true;
@@ -61,7 +63,12 @@ namespace LevelSystem
                 _coinsManager.Coins += _coinsManager.CoinsForLevelFinish;
             }
 
-            _guiManager.ShowScreen(isWin ? _guiManager.WinScreen : _guiManager.LoseScreen);
+            Camera.main.GetComponent<MoveForward>().enabled = false;
+            DelayHelper.DelayedExecute(
+                caller: this,
+                action: () => _guiManager.ShowScreen(isWin ? _guiManager.WinScreen : _guiManager.LoseScreen),
+                delay: isOnFight ? AfterFightDelay : 0
+            );
             _colorMixing.AbortSelection();
         }
 
