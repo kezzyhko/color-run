@@ -12,7 +12,7 @@ namespace LevelSystem
     {
 
         public GameObject[] Levels;
-        public float AfterFightDelay = 5.5f;
+        public float AfterFightDelay = 3.0f;
 
         private int _levelNumber;
         public event System.Action<int> LevelNumberChanged;

@@ -11,12 +11,17 @@ namespace Utils
         public PropertiesHelper.ObjectType Type;
         public ColorHelper.AcceptableColor ColorName;
         public Renderer[] Renderers;
+        public ParticleSystem ParticleSystem;
 
         private void OnValidate()
         {
             if (Renderers == null || Renderers.Length == 0)
             {
                 Renderers = GetComponentsInChildren<Renderer>();
+            }
+            if (ParticleSystem == null)
+            {
+                ParticleSystem = GetComponentInChildren<ParticleSystem>();
             }
         }
 
