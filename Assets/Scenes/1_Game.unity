@@ -156,7 +156,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   CurrentColorIndicator: {fileID: 2962821965449013490}
   LineThickness: 8
-  PlayerMaterial: {fileID: 2100000, guid: 31321ba15b8f8eb4c954353edc038b1d, type: 2}
+  PlayerMaterial: {fileID: 2100000, guid: bf5f81d01256b0a4a9466ee0ffd385fe, type: 2}
   InitialColor: 7
 --- !u!4 &49866147
 Transform:
