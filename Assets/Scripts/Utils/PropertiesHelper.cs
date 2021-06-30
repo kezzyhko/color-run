@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using static Utils.ColorHelper;
 
 namespace Utils
 {
@@ -26,6 +27,12 @@ namespace Utils
         {
             if (!obj.TryGetComponent(out Properties props)) return null;
             return props.Renderers;
+        }
+
+        public static AcceptableColor GetColor(this GameObject obj)
+        {
+            if (!obj.TryGetComponent(out Properties props)) return AcceptableColor.None;
+            return props.ColorName;
         }
     }
 }

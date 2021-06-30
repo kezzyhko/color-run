@@ -29,6 +29,10 @@ namespace Utils
                 material.color = ColorName.EnumToColor();
                 gameObject.SetObjectMaterial(material);
             }
+            else
+            {
+                ColorName = transform.parent.gameObject.GetColor();
+            }
         }
 
     }
