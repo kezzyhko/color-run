@@ -25,7 +25,15 @@ namespace Mechanics.Collisions
             if (_colorMixing.CurrentPlayerColor == obstacle.GetObjectColor())
             {
                 bool shrinkAlreadyAdded = obstacle.TryGetComponent<Shrink>(out _);
-                if (!shrinkAlreadyAdded) obstacle.AddComponent<Shrink>();
+                if (!shrinkAlreadyAdded)
+                {
+                    obstacle.AddComponent<Shrink>();
+
+                    ParticleSystem particles = obstacle.GetComponent<Properties>().ParticleSystem;
+                    particles.transform.parent = null;
+                    particles.GetComponent<ParticleSystemRenderer>().sharedMaterial = obstacle.GetObjectMaterial();
+                    particles.Play();
+                }
             }
             else
             {
