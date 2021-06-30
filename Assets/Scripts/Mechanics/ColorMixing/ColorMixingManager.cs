@@ -14,7 +14,6 @@ namespace Mechanics.ColorMixing
         public Material PlayerMaterial;
         public AcceptableColor InitialColor = AcceptableColor.Black;
 
-        public event System.Action<AcceptableColor> PlayerColorUpdated;
         [System.NonSerialized]
         public AcceptableColor CurrentPlayerColor;
 
@@ -33,7 +32,6 @@ namespace Mechanics.ColorMixing
         {
             PlayerMaterial.color = color.EnumToColor();
             CurrentPlayerColor = color;
-            if (PlayerColorUpdated != null) PlayerColorUpdated(color);
         }
 
         public void AbortSelection()
