@@ -22,7 +22,7 @@ Material:
     m_TexEnvs:
     - _BaseMap:
         m_Texture: {fileID: 2800000, guid: 1fbce0de7e4d8304594f3e469f0ed78e, type: 3}
-        m_Scale: {x: 10, y: 30}
+        m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _BumpMap:
         m_Texture: {fileID: 0}
@@ -46,7 +46,7 @@ Material:
         m_Offset: {x: 0, y: 0}
     - _FoamTex:
         m_Texture: {fileID: 0}
-        m_Scale: {x: 0, y: 0}
+        m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _MainTex:
         m_Texture: {fileID: 0}
@@ -230,7 +230,6 @@ Material:
     - _SpecularColor: {r: 0.75, g: 0.75, b: 0.75, a: 1}
     - _VerticalFogColor: {r: 0.82779294, g: 0.40583837, b: 0.9056604, a: 1}
     - _WindDirection: {r: 39.2, g: 12.49, b: 0, a: 0}
-  m_BuildTextureStacks: []
 --- !u!114 &5775797126299850829
 MonoBehaviour:
   m_ObjectHideFlags: 11
