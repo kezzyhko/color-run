@@ -123,6 +123,8 @@ GameObject:
   - component: {fileID: 9146854159577144169}
   - component: {fileID: 9146854159577144168}
   - component: {fileID: 8241410207763314605}
+  - component: {fileID: 2033977261724357103}
+  - component: {fileID: 7136922808484164844}
   m_Layer: 0
   m_Name: Mill
   m_TagString: Untagged
@@ -174,7 +176,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6a6e4af3c477fa64495f0b4d5dba15f5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Type: 0
+  Type: 4
   ColorName: 7
   Renderers:
   - {fileID: 8895097125745460078}
@@ -185,6 +187,34 @@ MonoBehaviour:
   - {fileID: 2969232124966848747}
   - {fileID: 2414249103130267781}
   - {fileID: 1402327795690579118}
+--- !u!136 &2033977261724357103
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9146854159577144171}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  m_Radius: 0.25
+  m_Height: 12.5
+  m_Direction: 0
+  m_Center: {x: 0, y: 0, z: 0}
+--- !u!136 &7136922808484164844
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9146854159577144171}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  m_Radius: 0.25
+  m_Height: 12.5
+  m_Direction: 2
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1001 &2060613049765688625
 PrefabInstance:
   m_ObjectHideFlags: 0
