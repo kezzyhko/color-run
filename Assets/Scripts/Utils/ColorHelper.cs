@@ -19,19 +19,28 @@ namespace Utils
             Cyan   = 0b110,
             Black  = 0b111,
             Gray,
+            LightBlue,
+            VeryLightBlue,
         };
 
         private static Color[] Colors = new Color[]
         {
-            /* 001 */ 0xF87B84.RgbToColor(),
-            /* 010 */ 0xBCE086.RgbToColor(),
-            /* 011 */ 0xFFE724.RgbToColor(),
-            /* 100 */ 0x0083C2.RgbToColor(),
-            /* 101 */ 0xFCB2D7.RgbToColor(),
-            /* 110 */ 0x5DE0F5.RgbToColor(),
-            /* 111 */ 0x606060.RgbToColor(),
-            0xD4D4D4.RgbToColor(),
+            0xF87B84.RgbToColor(), // 001
+            0xBCE086.RgbToColor(), // 010
+            0xFFE724.RgbToColor(), // 011
+            0x0083C2.RgbToColor(), // 100
+            0xFCB2D7.RgbToColor(), // 101
+            0x5DE0F5.RgbToColor(), // 110
+            0x606060.RgbToColor(), // 111
+            0xD4D4D4.RgbToColor(), // gray
+            0xBBE0F3.RgbToColor(), // light blue
+            0xE8F7FF.RgbToColor(), // very light blue
         };
+
+        public static Color EnumToColor(this AcceptableColor acceptableColor)
+        {
+            return Colors[(int) acceptableColor - 1];
+        }
 
         public static Color RgbToColor(this int rgb)
         {
@@ -39,11 +48,6 @@ namespace Utils
             int g = (rgb & 0x00ff00) >> 8;
             int b = (rgb & 0x0000ff);
             return new Color(r/255f, g/255f, b/255f);
-        }
-
-        public static Color EnumToColor(this AcceptableColor acceptableColor)
-        {
-            return Colors[(int) acceptableColor - 1];
         }
 
         public static Material GetObjectMaterial(this GameObject obj)
