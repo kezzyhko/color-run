@@ -11,13 +11,13 @@ namespace Utils
         public enum AcceptableColor
         {
             None = 0,
-            Red    = 0b001,
-            Green  = 0b010,
-            Blue   = 0b100,
+            Red = 0b001,
+            Green = 0b010,
+            Blue = 0b100,
             Yellow = 0b011,
-            Pink   = 0b101,
-            Cyan   = 0b110,
-            Black  = 0b111,
+            Pink = 0b101,
+            Cyan = 0b110,
+            Black = 0b111,
             Gray,
             LightBlue,
             VeryLightBlue,
@@ -47,7 +47,7 @@ namespace Utils
             int r = (rgb & 0xff0000) >> 16;
             int g = (rgb & 0x00ff00) >> 8;
             int b = (rgb & 0x0000ff);
-            return new Color(r/255f, g/255f, b/255f);
+            return new Color(r / 255f, g / 255f, b / 255f);
         }
 
         public static Material GetObjectMaterial(this GameObject obj)
