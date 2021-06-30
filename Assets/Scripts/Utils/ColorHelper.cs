@@ -23,15 +23,23 @@ namespace Utils
 
         private static Color[] Colors = new Color[]
         {
-            /* 001 */ Color.red,
-            /* 010 */ Color.green,
-            /* 011 */ Color.red + Color.green,
-            /* 100 */ Color.blue,
-            /* 101 */ Color.red + Color.blue,
-            /* 110 */ Color.green + Color.blue,
-            /* 111 */ Color.black,
-            Color.gray,
+            /* 001 */ 0xF87B84.RgbToColor(),
+            /* 010 */ 0xBCE086.RgbToColor(),
+            /* 011 */ 0xFFE724.RgbToColor(),
+            /* 100 */ 0x0083C2.RgbToColor(),
+            /* 101 */ 0xFCB2D7.RgbToColor(),
+            /* 110 */ 0x5DE0F5.RgbToColor(),
+            /* 111 */ 0x606060.RgbToColor(),
+            0xD4D4D4.RgbToColor(),
         };
+
+        public static Color RgbToColor(this int rgb)
+        {
+            int r = (rgb & 0xff0000) >> 16;
+            int g = (rgb & 0x00ff00) >> 8;
+            int b = (rgb & 0x0000ff);
+            return new Color(r/255f, g/255f, b/255f);
+        }
 
         public static Color EnumToColor(this AcceptableColor acceptableColor)
         {
