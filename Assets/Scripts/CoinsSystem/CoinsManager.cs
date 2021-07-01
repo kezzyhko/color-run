@@ -20,13 +20,15 @@ namespace CoinsSystem
             set
             {
                 _coins = value;
+                PlayerPrefs.SetInt("Coins", value);
+                PlayerPrefs.Save();
                 if (CoinsAmountChanged != null) CoinsAmountChanged(value);
             }
         }
 
         void Start()
         {
-            Coins = 0; // TODO: save/load progress
+            Coins = PlayerPrefs.GetInt("Coins", 0);
         }
     }
 }
