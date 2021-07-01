@@ -68,10 +68,12 @@ namespace LevelSystem
             Camera.main.GetComponent<MoveForward>().enabled = false;
             DelayHelper.DelayedExecute(
                 caller: this,
-                action: () => _guiManager.ShowScreen(isWin ? _guiManager.WinScreen : _guiManager.LoseScreen),
+                action: () => {
+                    _guiManager.ShowScreen(isWin ? _guiManager.WinScreen : _guiManager.LoseScreen);
+                    _colorMixing.AbortSelection();
+                },
                 delay: isOnFight ? AfterFightDelay : 0
             );
-            _colorMixing.AbortSelection();
         }
 
         public void LoadLevel()
