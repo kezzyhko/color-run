@@ -27,7 +27,6 @@ namespace LevelSystem
                 _levelNumber = value;
                 PlayerPrefs.SetInt("LevelNumber", value);
                 PlayerPrefs.Save();
-                if (LevelNumberChanged != null) LevelNumberChanged(value);
             }
         }
 
@@ -39,6 +38,7 @@ namespace LevelSystem
         private void Start()
         {
             LevelNumber = PlayerPrefs.GetInt("LevelNumber", 1);
+            if (LevelNumberChanged != null) LevelNumberChanged(LevelNumber);
             _initialCameraPosition = Camera.main.transform.position;
             LoadLevel();
         }
@@ -82,6 +82,7 @@ namespace LevelSystem
             {
                 LevelNumber = 1;
             }
+            if (LevelNumberChanged != null) LevelNumberChanged(LevelNumber);
 
             Destroy(_levelObject);
             _levelObject = Instantiate(Levels[LevelNumber - 1]);
