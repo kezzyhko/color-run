@@ -14,6 +14,7 @@ namespace LevelSystem
         public GameObject[] Levels;
         public float AfterFightDelay = 3.0f;
 
+        private const string LevelNumberPlayerPrefsKey = "LevelNumber";
         private int _levelNumber;
         public event System.Action<int> LevelNumberChanged;
         public int LevelNumber
@@ -25,7 +26,8 @@ namespace LevelSystem
             set
             {
                 _levelNumber = value;
-                if (LevelNumberChanged != null) LevelNumberChanged(value);
+                PlayerPrefs.SetInt(LevelNumberPlayerPrefsKey, value);
+                PlayerPrefs.Save();
             }
         }
 
@@ -36,7 +38,8 @@ namespace LevelSystem
 
         private void Start()
         {
-            LevelNumber = 1; // TODO: save/load progress
+            LevelNumber = PlayerPrefs.GetInt(LevelNumberPlayerPrefsKey, 1);
+            if (LevelNumberChanged != null) LevelNumberChanged(LevelNumber);
             _initialCameraPosition = Camera.main.transform.position;
             LoadLevel();
         }
@@ -66,10 +69,13 @@ namespace LevelSystem
             Camera.main.GetComponent<MoveForward>().enabled = false;
             DelayHelper.DelayedExecute(
                 caller: this,
-                action: () => _guiManager.ShowScreen(isWin ? _guiManager.WinScreen : _guiManager.LoseScreen),
+                action: () =>
+                {
+                    _guiManager.ShowScreen(isWin ? _guiManager.WinScreen : _guiManager.LoseScreen);
+                    _colorMixing.AbortSelection();
+                },
                 delay: isOnFight ? AfterFightDelay : 0
             );
-            _colorMixing.AbortSelection();
         }
 
         public void LoadLevel()
@@ -78,6 +84,7 @@ namespace LevelSystem
             {
                 LevelNumber = 1;
             }
+            if (LevelNumberChanged != null) LevelNumberChanged(LevelNumber);
 
             Destroy(_levelObject);
             _levelObject = Instantiate(Levels[LevelNumber - 1]);
