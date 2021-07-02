@@ -9,6 +9,7 @@ namespace CoinsSystem
 
         public int CoinsForLevelFinish = 300;
 
+        private const string CoinsAmountPlayerPrefsKey = "Coins";
         private int _coins;
         public event System.Action<int> CoinsAmountChanged;
         public int Coins
@@ -20,7 +21,7 @@ namespace CoinsSystem
             set
             {
                 _coins = value;
-                PlayerPrefs.SetInt("Coins", value);
+                PlayerPrefs.SetInt(CoinsAmountPlayerPrefsKey, value);
                 PlayerPrefs.Save();
                 if (CoinsAmountChanged != null) CoinsAmountChanged(value);
             }
@@ -28,7 +29,7 @@ namespace CoinsSystem
 
         void Start()
         {
-            Coins = PlayerPrefs.GetInt("Coins", 0);
+            Coins = PlayerPrefs.GetInt(CoinsAmountPlayerPrefsKey, 0);
         }
     }
 }

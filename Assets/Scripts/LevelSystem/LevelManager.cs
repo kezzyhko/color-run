@@ -14,6 +14,7 @@ namespace LevelSystem
         public GameObject[] Levels;
         public float AfterFightDelay = 3.0f;
 
+        private const string LevelNumberPlayerPrefsKey = "LevelNumber";
         private int _levelNumber;
         public event System.Action<int> LevelNumberChanged;
         public int LevelNumber
@@ -25,7 +26,7 @@ namespace LevelSystem
             set
             {
                 _levelNumber = value;
-                PlayerPrefs.SetInt("LevelNumber", value);
+                PlayerPrefs.SetInt(LevelNumberPlayerPrefsKey, value);
                 PlayerPrefs.Save();
             }
         }
@@ -37,7 +38,7 @@ namespace LevelSystem
 
         private void Start()
         {
-            LevelNumber = PlayerPrefs.GetInt("LevelNumber", 1);
+            LevelNumber = PlayerPrefs.GetInt(LevelNumberPlayerPrefsKey, 1);
             if (LevelNumberChanged != null) LevelNumberChanged(LevelNumber);
             _initialCameraPosition = Camera.main.transform.position;
             LoadLevel();
