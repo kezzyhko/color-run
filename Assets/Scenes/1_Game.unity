@@ -1362,6 +1362,12 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 889444494}
   m_CullTransparentMesh: 1
+--- !u!1 &903566112 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 5000892984525174166, guid: 506c66c8d3400c340845bb62c8429c91,
+    type: 3}
+  m_PrefabInstance: {fileID: 1249367832}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &957272004
 GameObject:
   m_ObjectHideFlags: 0
@@ -2348,6 +2354,7 @@ MonoBehaviour:
   PlayControls: {fileID: 558571132}
   WinScreen: {fileID: 1249367838}
   LoseScreen: {fileID: 1788460657}
+  WinScreenNextLevelButton: {fileID: 903566112}
 --- !u!1 &1651402834
 GameObject:
   m_ObjectHideFlags: 0

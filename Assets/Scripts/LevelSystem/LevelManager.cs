@@ -40,7 +40,16 @@ namespace LevelSystem
             LevelNumber = PlayerPrefs.GetInt("LevelNumber", 1);
             if (LevelNumberChanged != null) LevelNumberChanged(LevelNumber);
             _initialCameraPosition = Camera.main.transform.position;
-            LoadLevel();
+
+            if (LevelNumber > Levels.Length)
+            {
+                _guiManager.WinScreenNextLevelButton.SetActive(false);
+                _guiManager.ShowScreen(_guiManager.WinScreen);
+            }
+            else
+            {
+                LoadLevel();
+            }
         }
 
         private ColorMixingManager _colorMixing;
@@ -69,8 +78,13 @@ namespace LevelSystem
             DelayHelper.DelayedExecute(
                 caller: this,
                 action: () => {
+                    if (LevelNumber > Levels.Length)
+                    {
+                        _guiManager.WinScreenNextLevelButton.SetActive(false);
+                    }
                     _guiManager.ShowScreen(isWin ? _guiManager.WinScreen : _guiManager.LoseScreen);
                     _colorMixing.AbortSelection();
+                    if (LevelNumberChanged != null) LevelNumberChanged(LevelNumber);
                 },
                 delay: isOnFight ? AfterFightDelay : 0
             );
@@ -78,12 +92,6 @@ namespace LevelSystem
 
         public void LoadLevel()
         {
-            if (LevelNumber > Levels.Length)
-            {
-                LevelNumber = 1;
-            }
-            if (LevelNumberChanged != null) LevelNumberChanged(LevelNumber);
-
             Destroy(_levelObject);
             _levelObject = Instantiate(Levels[LevelNumber - 1]);
             _levelObject.name = "Level";

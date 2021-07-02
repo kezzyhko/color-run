@@ -13,6 +13,8 @@ namespace Utils
         public GameScreen WinScreen;
         public GameScreen LoseScreen;
 
+        public GameObject WinScreenNextLevelButton;
+
         private GameScreen _currentScreen;
 
         public void ShowScreen(GameScreen screen)
