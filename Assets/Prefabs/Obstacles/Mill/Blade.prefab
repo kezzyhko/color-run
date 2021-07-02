@@ -59,7 +59,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 31321ba15b8f8eb4c954353edc038b1d, type: 2}
+  - {fileID: 2100000, guid: bf5f81d01256b0a4a9466ee0ffd385fe, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -140,7 +140,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 31321ba15b8f8eb4c954353edc038b1d, type: 2}
+  - {fileID: 2100000, guid: bf5f81d01256b0a4a9466ee0ffd385fe, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -171,8 +171,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4078144369280592775}
-  - component: {fileID: 4078144369280592768}
-  - component: {fileID: 6976031408457501947}
   m_Layer: 0
   m_Name: Blade
   m_TagString: Untagged
@@ -196,33 +194,3 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 90}
---- !u!136 &4078144369280592768
-CapsuleCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4078144369280592774}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
-  m_Enabled: 1
-  m_Radius: 0.25
-  m_Height: 6.5
-  m_Direction: 1
-  m_Center: {x: 0, y: 3, z: 0}
---- !u!114 &6976031408457501947
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4078144369280592774}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6a6e4af3c477fa64495f0b4d5dba15f5, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  ObjectType: 4
-  Renderers:
-  - {fileID: 4402803420079318452}
-  - {fileID: 1148089245393113503}

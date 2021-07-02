@@ -1,7 +1,8 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using static Properties.Type;
+using Utils;
+using static Utils.PropertiesHelper.ObjectType;
 
 namespace Mechanics.Collisions
 {
@@ -13,8 +14,8 @@ namespace Mechanics.Collisions
         void OnTriggerEnter(Collider collider)
         {
             GameObject free = collider.gameObject;
-            if (!Properties.DoesTypeMatch(free, Free)) return;
-            if (Properties.DoesTypeMatch(gameObject, Free))
+            if (!free.DoesTypeMatch(Free)) return;
+            if (gameObject.DoesTypeMatch(Free))
             {
                 AdjacentFreeCrowd.AddLast(free);
                 return;

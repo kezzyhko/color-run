@@ -62,7 +62,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6a6e4af3c477fa64495f0b4d5dba15f5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ObjectType: 0
+  Type: 0
+  ColorName: 8
   Renderers:
   - {fileID: 1108566124689252132}
 --- !u!54 &3884657622999923529
@@ -183,6 +184,10 @@ PrefabInstance:
       propertyPath: m_Controller
       value: 
       objectReference: {fileID: 9100000, guid: 0596ba4973f12574baebe9662b59e169, type: 2}
+    - target: {fileID: 13700000, guid: cb7c39ae0485b41e8bd59ad2781be0a3, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: bf5f81d01256b0a4a9466ee0ffd385fe, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: cb7c39ae0485b41e8bd59ad2781be0a3, type: 3}
 --- !u!4 &1108566124703075882 stripped
