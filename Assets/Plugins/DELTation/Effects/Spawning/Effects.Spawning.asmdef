@@ -1,0 +1,17 @@
+{
+    "name": "Effects.Spawning",
+    "references": [
+        "GUID:4ec5ce0d59472134899ff89406c592ab",
+        "GUID:df4eb322b5b518d43987f237afd57d0a",
+        "GUID:3bc5a330873c5f14f86bda6a65445d5d"
+    ],
+    "includePlatforms": [],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": true,
+    "defineConstraints": [],
+    "versionDefines": [],
+    "noEngineReferences": false
+}

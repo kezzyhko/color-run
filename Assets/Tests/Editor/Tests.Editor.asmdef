@@ -1,0 +1,23 @@
+{
+    "name": "Tests.Editor",
+    "rootNamespace": "",
+    "references": [
+        "GUID:03911ad9f9351b04aa2e49f725a4e16b",
+        "GUID:89a6d1cafc1cd6d4990418a6d7c66e15"
+    ],
+    "includePlatforms": [
+        "Editor"
+    ],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": true,
+    "precompiledReferences": [
+        "nunit.framework.dll",
+        "NSubstitute.dll",
+        "FluentAssertions.dll"
+    ],
+    "autoReferenced": true,
+    "defineConstraints": [],
+    "versionDefines": [],
+    "noEngineReferences": false
+}

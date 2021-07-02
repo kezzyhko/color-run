@@ -1,0 +1,16 @@
+{
+    "name": "Tests.Shared",
+    "rootNamespace": "",
+    "references": [
+        "GUID:03911ad9f9351b04aa2e49f725a4e16b"
+    ],
+    "includePlatforms": [],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": true,
+    "defineConstraints": [],
+    "versionDefines": [],
+    "noEngineReferences": false
+}

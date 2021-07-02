@@ -1,0 +1,16 @@
+{
+    "name": "Effects.Events",
+    "references": [
+        "GUID:4ec5ce0d59472134899ff89406c592ab",
+        "GUID:9aed556cc98631b48a6ee6a0e5444940"
+    ],
+    "includePlatforms": [],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": true,
+    "defineConstraints": [],
+    "versionDefines": [],
+    "noEngineReferences": false
+}
