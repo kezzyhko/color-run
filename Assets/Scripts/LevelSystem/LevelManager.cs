@@ -68,7 +68,8 @@ namespace LevelSystem
             Camera.main.GetComponent<MoveForward>().enabled = false;
             DelayHelper.DelayedExecute(
                 caller: this,
-                action: () => {
+                action: () =>
+                {
                     _guiManager.ShowScreen(isWin ? _guiManager.WinScreen : _guiManager.LoseScreen);
                     _colorMixing.AbortSelection();
                 },
