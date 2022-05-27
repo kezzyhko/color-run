@@ -1,7 +1,8 @@
 # Color Run
 A hypercasual unity game. Match colors to destroy walls and get to the end with at little loss as possible.
 
-* **Build in itch.io**: https://kezzyhko.itch.io/color-run
-* **Build in VK**: https://vk.com/app7892168
-* **Build in GitHub Pages**: https://kezzyhko.github.io/color-run
-* **Build files**: https://github.com/kezzyhko/color-run-build
+* **HTML5 build files**: https://github.com/kezzyhko/color-run-build
+* **HTML5 build in itch.io**: https://kezzyhko.itch.io/color-run
+* **HTML5 build in VK**: https://vk.com/app7892168
+* **HTML5 build in GitHub Pages**: https://kezzyhko.github.io/color-run
+* **.apk build**: https://github.com/kezzyhko/color-run-build/releases/download/v1.0.0/ColorRun.apk
