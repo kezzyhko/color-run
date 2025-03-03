@@ -9,7 +9,7 @@ A hypercasual unity game. Match colors to destroy obstacles and get to the end w
 * **HTML5 build on itch.io**: https://kezzyhko.itch.io/color-run
 * **HTML5 build on VK**: https://vk.com/app7892168
 * **HTML5 build files**: https://github.com/kezzyhko/color-run-build
-* **.apk build**: https://github.com/kezzyhko/color-run-build/releases/download/v1.1.0/ColorRun.apk
+* **.apk build**: https://github.com/kezzyhko/color-run/releases/download/v1.1.0/ColorRun.apk
 
 
 ## Branches
