@@ -51,7 +51,7 @@ namespace Mechanics.Fight
             {
                 Vector3 direction = Target.transform.position - transform.position;
                 direction.Normalize();
-                _rigidbody.velocity = direction * _characterManager.Speed;
+                _rigidbody.linearVelocity = direction * _characterManager.Speed;
                 _characterManager.RotateTowards(direction);
             }
         }

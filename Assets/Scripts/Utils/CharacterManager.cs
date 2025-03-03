@@ -77,7 +77,7 @@ namespace Utils
             _animator.SetBool("running", isRunning);
             Rigidbody rigidbody = GetComponent<Rigidbody>();
             rigidbody.constraints = isRunning ? RigidbodyConstraints.FreezeRotation : RigidbodyConstraints.FreezeAll;
-            rigidbody.velocity = isRunning ? Vector3.forward * Speed : Vector3.zero;
+            rigidbody.linearVelocity = isRunning ? Vector3.forward * Speed : Vector3.zero;
         }
 
         public void SetFighting(bool isFighting)
