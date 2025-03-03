@@ -9,3 +9,4 @@ This repo contains a build of the game. Sources are private.
 * **HTML5 build on VK**: https://vk.com/app7892168
 * **HTML5 build files**: https://github.com/kezzyhko/color-run-build
 * **.apk build**: https://github.com/kezzyhko/color-run-build/releases/download/v1.1.0/ColorRun.apk
+* **Source files**: https://github.com/kezzyhko/color-run
