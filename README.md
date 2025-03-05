@@ -16,3 +16,4 @@ A hypercasual unity game. Match colors to destroy obstacles and get to the end w
 
 * **`main`**: latest version, fetched from Unity Collaborate, with some additional fixes
 * **`original_commits`**: original history of commits copied from the original repository
+* **`github-pages`**: web files - html5 build and privacy policy
