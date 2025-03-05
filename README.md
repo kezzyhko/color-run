@@ -1,7 +1,7 @@
-# Color Run
+# <img src="store-page/main/logo.png" style="height: 1em; vertical-align: middle;" alt="logo"> Color Run
 A hypercasual unity game. Match colors to destroy obstacles and get to the end with at little loss as possible.
 
-![logo](store-page/main/logo.png)
+
 ![poster](store-page/main/poster.png)
 
 
@@ -24,15 +24,21 @@ A hypercasual unity game. Match colors to destroy obstacles and get to the end w
 
 ## Screenshots
 
-![phone screenshot](store-page/phone_screenshots/screenshot0.png)
-![phone screenshot](store-page/phone_screenshots/screenshot1.png)
-![phone screenshot](store-page/phone_screenshots/screenshot2.png)
-![phone screenshot](store-page/phone_screenshots/screenshot3.png)
-![phone screenshot](store-page/phone_screenshots/screenshot4.png)
-![tablet screenshot](store-page/tablet_screenshots/screenshot0.png)
-![tablet screenshot](store-page/tablet_screenshots/screenshot1.png)
-![tablet screenshot](store-page/tablet_screenshots/screenshot2.png)
-![tablet screenshot](store-page/tablet_screenshots/screenshot3.png)
-![tablet screenshot](store-page/tablet_screenshots/screenshot4.png)
-![tablet screenshot](store-page/tablet_screenshots/screenshot5.png)
-![tablet screenshot](store-page/tablet_screenshots/screenshot6.png)
+<details>
+  <summary>Phone screenshots</summary>
+  <img src="store-page/phone_screenshots/screenshot0.png" width="190px">
+  <img src="store-page/phone_screenshots/screenshot1.png" width="190px">
+  <img src="store-page/phone_screenshots/screenshot2.png" width="190px">
+  <img src="store-page/phone_screenshots/screenshot3.png" width="190px">
+  <img src="store-page/phone_screenshots/screenshot4.png" width="190px">
+</details>
+<details>
+  <summary>Tablet/html5 screenshots</summary>
+  <img src="store-page/tablet_screenshots/screenshot0.png" width="240px">
+  <img src="store-page/tablet_screenshots/screenshot1.png" width="240px">
+  <img src="store-page/tablet_screenshots/screenshot2.png" width="240px">
+  <img src="store-page/tablet_screenshots/screenshot3.png" width="240px">
+  <img src="store-page/tablet_screenshots/screenshot4.png" width="240px">
+  <img src="store-page/tablet_screenshots/screenshot5.png" width="240px">
+  <img src="store-page/tablet_screenshots/screenshot6.png" width="240px">
+</details>
