@@ -26,11 +26,11 @@ A hypercasual unity game. Match colors to destroy obstacles and get to the end w
 
 <details>
   <summary>Phone screenshots</summary>
-  <img src="store-page/phone_screenshots/screenshot0.png" width="190px">
-  <img src="store-page/phone_screenshots/screenshot1.png" width="190px">
-  <img src="store-page/phone_screenshots/screenshot2.png" width="190px">
-  <img src="store-page/phone_screenshots/screenshot3.png" width="190px">
-  <img src="store-page/phone_screenshots/screenshot4.png" width="190px">
+  <img src="store-page/phone_screenshots/screenshot0.png" width="150px">
+  <img src="store-page/phone_screenshots/screenshot1.png" width="150px">
+  <img src="store-page/phone_screenshots/screenshot2.png" width="150px">
+  <img src="store-page/phone_screenshots/screenshot3.png" width="150px">
+  <img src="store-page/phone_screenshots/screenshot4.png" width="150px">
 </details>
 <details>
   <summary>Tablet/html5 screenshots</summary>
